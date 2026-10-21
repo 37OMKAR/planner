@@ -10,10 +10,10 @@ Use this document to quickly fill the submission form. Every section is tuned sp
 ---
 
 ## 2. Public GitHub Repository Link
-*(Repository size is < 100 KB, far below the 10 MB limit. Must be PUBLIC.)*
+*(Repository size is 1.72 MB, well below the 10 MB limit. Set to PUBLIC.)*
 
 ```
-https://github.com/<your-github-username>/eventora-ai-planner
+https://github.com/37OMKAR/planner
 ```
 
 ---
@@ -22,7 +22,7 @@ https://github.com/<your-github-username>/eventora-ai-planner
 *(GitHub Pages deployment URL)*
 
 ```
-https://<your-github-username>.github.io/eventora-ai-planner/
+https://37omkar.github.io/planner/
 ```
 
 ---
@@ -91,8 +91,8 @@ Key highlights:
 🛡️ Privacy & Security: Ephemeral in-memory API key handling (never saved to storage/cookies), robust HTML escaping, and 18 automated contract tests
 
 Check out the live demo and source code:
-🔗 Live: https://<your-github-username>.github.io/eventora-ai-planner/
-💻 Repo: https://github.com/<your-github-username>/eventora-ai-planner
+🔗 Live: https://37omkar.github.io/planner/
+💻 Repo: https://github.com/37OMKAR/planner
 
 #GenAI #WebDevelopment #Accessibility #EventPlanning #GeminiAPI #AICodeSubmission
 ```
