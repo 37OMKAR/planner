@@ -1,0 +1,2203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EVENTORA.OS // Championship Event Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark: #0a0e14;
+  --bg-surface: #101722;
+  --bg-surface-elevated: #16202f;
+  --bg-card: #141d2b;
+  --orange: #ff5500;
+  --orange-hover: #ff6e26;
+  --orange-light: rgba(255, 85, 0, 0.15);
+  --blue: #3b82f6;
+  --blue-light: rgba(59, 130, 246, 0.15);
+  --green: #10b981;
+  --green-light: rgba(16, 185, 129, 0.15);
+  --cream: #f6f3ed;
+  --cream-card: #fbf9f4;
+  --ink: #0f141c;
+  --text-main: #f0f4f8;
+  --text-muted: #8b9bb4;
+  --text-subtle: #566781;
+  --border-line: #222f42;
+  --border-strong: #33445e;
+  --font-display: 'Anton', impact, sans-serif;
+  --font-sans: 'Inter', -apple-system, blinkmacsystemfont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --shadow-block: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 25px rgba(255, 85, 0, 0.25);
+}
+
+[data-theme="light"] {
+  --bg-dark: #eef2f6;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f4f6fa;
+  --bg-card: #ffffff;
+  --text-main: #0c131d;
+  --text-muted: #53647d;
+  --text-subtle: #8a9bb2;
+  --border-line: #d2dbe5;
+  --border-strong: #bccad9;
+  --shadow-block: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 20px rgba(255, 85, 0, 0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+/* Global App Frame */
+.app-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+/* SIDEBAR: Championship Locker Navigation */
+.app-sidebar {
+  background: var(--bg-surface);
+  border-right: 2px solid var(--border-line);
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 50;
+}
+
+.brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-line);
+  border-left: 4px solid var(--orange);
+  border-radius: var(--radius-sm);
+}
+.brand-badge .logo-stars {
+  font-size: 13px;
+  color: var(--orange);
+  letter-spacing: -2px;
+}
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.brand-title span { color: var(--orange); }
+.brand-sub {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-group-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-subtle);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-left: 10px;
+}
+
+.nav-menu { display: flex; flex-direction: column; gap: 6px; }
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  text-align: left;
+}
+.nav-item:hover {
+  background: var(--bg-surface-elevated);
+  color: var(--text-main);
+  border-color: var(--border-line);
+  transform: translateX(3px);
+}
+.nav-item.active {
+  background: var(--orange);
+  color: #ffffff;
+  border-color: var(--orange);
+  box-shadow: 0 4px 14px rgba(255, 85, 0, 0.35);
+}
+.nav-item.active .badge-pill {
+  background: #ffffff;
+  color: var(--orange);
+}
+.nav-left { display: flex; align-items: center; gap: 10px; }
+.nav-icon { font-size: 14px; }
+.badge-pill {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 99px;
+  background: var(--border-strong);
+  color: var(--text-main);
+}
+
+.sidebar-callout {
+  margin-top: auto;
+  background: linear-gradient(135deg, var(--bg-surface-elevated) 0%, #1a2537 100%);
+  border: 1px solid var(--border-strong);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+}
+.sidebar-callout:before {
+  content: "★ ★ ★";
+  position: absolute;
+  right: -10px;
+  top: -6px;
+  font-size: 32px;
+  font-family: var(--font-display);
+  color: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+.sidebar-callout strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.sidebar-callout p {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.sidebar-callout button {
+  width: 100%;
+  background: var(--bg-dark);
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  font-family: var(--font-display);
+  font-size: 12px;
+  padding: 8px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+}
+.sidebar-callout button:hover {
+  background: var(--orange);
+  color: #ffffff;
+}
+
+/* MAIN CONTENT AREA */
+.app-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* TOP STATUS BAR */
+.top-header {
+  height: 68px;
+  border-bottom: 2px solid var(--border-line);
+  background: var(--bg-surface);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.header-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--green-light);
+  color: var(--green);
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.status-indicator .pulse {
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--green);
+  animation: pulseGreen 1.8s infinite;
+}
+@keyframes pulseGreen {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.util-btn {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-main);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.util-btn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-1px);
+}
+.btn-primary {
+  background: var(--orange);
+  border: 1px solid var(--orange);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(255, 85, 0, 0.3);
+  transition: all 0.15s ease;
+}
+.btn-primary:hover {
+  background: var(--orange-hover);
+  box-shadow: 0 6px 18px rgba(255, 85, 0, 0.45);
+  transform: translateY(-1px);
+}
+
+/* WORKSPACE CONTAINER */
+.workspace-wrapper {
+  padding: 28px 36px 60px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* SECTION TABS (PAGES) */
+.view-panel { display: none; }
+.view-panel.active { display: flex; flex-direction: column; gap: 28px; animation: fadeIn 0.2s ease-out; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HERO POSTER BANNER (ATHLETIC CHAMPIONSHIP INSPIRED) */
+.hero-poster-banner {
+  background: var(--cream);
+  border: 3px solid var(--orange);
+  border-radius: var(--radius-md);
+  padding: 28px 32px;
+  color: var(--ink);
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 24px;
+  align-items: center;
+  box-shadow: var(--shadow-block), var(--shadow-glow);
+  position: relative;
+  overflow: hidden;
+}
+.hero-poster-banner:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: repeating-linear-gradient(90deg, var(--orange), var(--orange) 30px, var(--ink) 30px, var(--ink) 60px);
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--orange);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.2vw, 56px);
+  line-height: 0.95;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+.hero-headline .accent-orange { color: var(--orange); }
+.hero-desc {
+  font-size: 13.5px;
+  color: #3b4859;
+  max-width: 500px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+.hero-meta-strip {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: #2b3644;
+}
+.hero-meta-strip span { display: flex; align-items: center; gap: 5px; }
+
+/* Scoreboard Ticker Box inside Hero */
+.scoreboard-box {
+  background: var(--bg-dark);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+.scoreboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border-strong);
+  padding-bottom: 8px;
+}
+.scoreboard-header strong {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--orange);
+}
+.scoreboard-header span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.countdown-clock {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  text-align: center;
+}
+.clock-unit {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-line);
+  padding: 10px 4px;
+  border-radius: var(--radius-sm);
+}
+.clock-unit b {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: #ffffff;
+  line-height: 1;
+  display: block;
+}
+.clock-unit span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* KPI SCOREBOARD CARDS */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.kpi-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-line);
+  border-top: 4px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-block);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--orange);
+}
+.kpi-card.highlight-orange { border-top-color: var(--orange); }
+.kpi-card.highlight-blue { border-top-color: var(--blue); }
+.kpi-card.highlight-green { border-top-color: var(--green); }
+.kpi-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.kpi-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+.kpi-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--bg-surface-elevated);
+  color: var(--text-muted);
+}
+.kpi-val {
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+}
+.kpi-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-subtle);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* SECTION TWO-COL MODULAR BENTO */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 20px;
+}
+
+.panel-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: var(--shadow-block);
+}
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-line);
+  padding-bottom: 14px;
+}
+.panel-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.panel-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.panel-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* EVENT LIST & CARDS */
+.event-listing {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.event-row-card {
+  display: grid;
+  grid-template-columns: 75px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-line);
+  border-left: 4px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+}
+.event-row-card:hover {
+  border-left-color: var(--orange);
+  background: var(--bg-card);
+  transform: translateX(2px);
+}
+.event-row-card.active-event {
+  border-left-color: var(--orange);
+  background: rgba(255, 85, 0, 0.05);
+}
+.event-date-block {
+  text-align: center;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-line);
+  padding: 6px;
+  border-radius: var(--radius-sm);
+}
+.event-date-block b {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--orange);
+  display: block;
+  line-height: 1;
+}
+.event-date-block small {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.event-details strong {
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+.event-details p {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* BUDGET ALLOCATION VISUALS */
+.budget-hero-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-line);
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+}
+.budget-hero-display b {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--orange);
+  letter-spacing: 0.5px;
+}
+.budget-hero-display span {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.budget-progress-track {
+  height: 12px;
+  background: var(--bg-dark);
+  border-radius: 99px;
+  overflow: hidden;
+  display: flex;
+  border: 1px solid var(--border-line);
+}
+.budget-progress-slice {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+/* Legend Table */
+.legend-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.legend-row-item {
+  display: grid;
+  grid-template-columns: 14px 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  transition: background 0.15s ease;
+  cursor: pointer;
+}
+.legend-row-item:hover {
+  background: var(--bg-surface-elevated);
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.legend-name {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--text-main);
+}
+.legend-pct {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+.legend-amt {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* LIVE ESTIMATOR CARDS (GUEST SETUP) */
+.estimator-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  background: var(--bg-surface-elevated);
+  padding: 14px;
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-sm);
+}
+.estimator-cell {
+  background: var(--bg-dark);
+  border: 1px solid var(--border-line);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+.estimator-cell span {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  display: block;
+}
+.estimator-cell strong {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--text-main);
+  margin-top: 3px;
+  display: block;
+}
+
+/* CHECKLIST & TASK PROTOCOLS */
+.task-list-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+}
+.task-row:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-card);
+}
+.task-row.completed {
+  opacity: 0.6;
+  background: transparent;
+}
+.task-row.completed label {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--orange);
+  cursor: pointer;
+}
+.task-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+}
+.task-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.task-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.task-del-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-subtle);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+}
+.task-del-btn:hover { color: #ef4444; }
+
+.task-filter-pills {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.filter-chip {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-line);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  padding: 5px 12px;
+  border-radius: 99px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.filter-chip:hover {
+  color: var(--text-main);
+  border-color: var(--border-strong);
+}
+.filter-chip.active {
+  background: var(--orange);
+  color: #ffffff;
+  border-color: var(--orange);
+}
+
+/* AI GEMINI STUDIO CARDS */
+.gemini-banner-card {
+  background: linear-gradient(135deg, #1f120e 0%, var(--bg-surface-elevated) 100%);
+  border: 2px solid var(--orange);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-glow);
+}
+.gemini-banner-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.gemini-badge {
+  background: var(--orange-light);
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+.ai-spark-quote {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  line-height: 1.3;
+}
+.ai-meta-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* FORMS & INPUT CONTROLS */
+.form-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group.full-width { grid-column: 1 / -1; }
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.form-input, .form-select, .form-textarea {
+  background: var(--bg-dark);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  transition: all 0.15s ease;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 10px rgba(255, 85, 0, 0.25);
+}
+.form-help {
+  font-size: 11px;
+  color: var(--text-subtle);
+}
+
+/* VENDOR QUESTION BANK ACCORDION */
+.vendor-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-line);
+  border-left: 3px solid var(--blue);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.vendor-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.vendor-title-row strong {
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+}
+.vendor-script {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* TOAST NOTIFICATION */
+.toast-notice {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--bg-surface-elevated);
+  border: 2px solid var(--orange);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow-block);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.toast-notice.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* CONFETTI CANVAS */
+#confettiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 1100px) {
+  .app-layout { grid-template-columns: 80px 1fr; }
+  .brand-title, .brand-sub, .nav-group-label, .nav-text, .badge-pill, .sidebar-callout { display: none; }
+  .nav-item { justify-content: center; padding: 14px; }
+  .bento-grid { grid-template-columns: 1fr; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-poster-banner { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .app-layout { display: flex; flex-direction: column; }
+  .app-sidebar { position: fixed; bottom: 0; top: auto; width: 100%; height: 60px; flex-direction: row; padding: 6px; border-right: none; border-top: 2px solid var(--border-line); }
+  .nav-menu { flex-direction: row; width: 100%; justify-content: space-around; }
+  .top-header { padding: 0 16px; }
+  .workspace-wrapper { padding: 16px 16px 80px; }
+  .kpi-grid { grid-template-columns: 1fr; }
+  .estimator-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<canvas id="confettiCanvas"></canvas>
+<div id="toastNotification" class="toast-notice" role="alert" aria-live="assertive">
+  <span style="color:var(--orange)">★</span>
+  <span id="toastMsgText">Notification message</span>
+</div>
+
+<div class="app-layout">
+  <!-- CHAMPIONSHIP ATHLETIC SIDEBAR -->
+  <aside class="app-sidebar" aria-label="Main Locker Navigation">
+    <div class="brand-badge">
+      <div>
+        <div class="logo-stars">★★★</div>
+        <div class="brand-title">EVENTORA<span>.OS</span></div>
+        <div class="brand-sub">CHAMPIONSHIP PLANNER</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="nav-group-label">TACTICAL OPS</div>
+      <nav class="nav-menu" role="tablist">
+        <button class="nav-item active" data-tab="dashboard" role="tab" aria-selected="true">
+          <div class="nav-left">
+            <span class="nav-icon">⚡</span>
+            <span class="nav-text">Overview & Plan</span>
+          </div>
+          <span class="badge-pill">HQ</span>
+        </button>
+        <button class="nav-item" data-tab="create" role="tab" aria-selected="false">
+          <div class="nav-left">
+            <span class="nav-icon">＋</span>
+            <span class="nav-text">Create Plan</span>
+          </div>
+          <span class="badge-pill">NEW</span>
+        </button>
+        <button class="nav-item" data-tab="budget" role="tab" aria-selected="false">
+          <div class="nav-left">
+            <span class="nav-icon">$</span>
+            <span class="nav-text">Budget & Cap</span>
+          </div>
+          <span class="badge-pill">LEDGER</span>
+        </button>
+        <button class="nav-item" data-tab="checklist" role="tab" aria-selected="false">
+          <div class="nav-left">
+            <span class="nav-icon">☑</span>
+            <span class="nav-text">Timeline & Tasks</span>
+          </div>
+          <span class="badge-pill" id="badgeTaskCount">8/10</span>
+        </button>
+        <button class="nav-item" data-tab="ai-studio" role="tab" aria-selected="false">
+          <div class="nav-left">
+            <span class="nav-icon">✧</span>
+            <span class="nav-text">Gemini Studio</span>
+          </div>
+          <span class="badge-pill">AI</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="sidebar-callout">
+      <strong>CHAMPIONSHIP TENET</strong>
+      <p>"The more difficult the victory, the greater the joy in winning." Keep the execution tight.</p>
+      <button id="quickSampleBtn">Load Golden Gala ↗</button>
+    </div>
+  </aside>
+
+  <!-- MAIN WORKSPACE -->
+  <main class="app-main">
+    <!-- TOP STATUS BAR -->
+    <header class="top-header">
+      <div class="header-breadcrumb">
+        <span class="status-indicator">
+          <span class="pulse"></span>
+          LOCAL ENGINE ACTIVE
+        </span>
+        <span style="color:var(--text-subtle)">//</span>
+        <span id="activeEventLabel" style="color:var(--text-main); font-weight:800;">SOPHIA & LIAM'S GOLDEN WEDDING</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="util-btn" id="themeToggleBtn" title="Toggle Theme Mode">
+          <span id="themeModeIcon">🌙</span>
+          <span id="themeModeText">Dark Mode</span>
+        </button>
+        <button class="util-btn" id="hapticAudioBtn" title="Tactile Sound Feedback">
+          <span id="hapticIcon">🔔</span>
+          <span>Tactile</span>
+        </button>
+        <button class="util-btn" id="exportMasterBtn" title="Export Plan to JSON">
+          <span>↓</span>
+          <span>Export JSON</span>
+        </button>
+        <button class="btn-primary" id="topNewEventBtn">
+          <span>＋</span>
+          <span>Plan Event</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- WORKSPACE VIEWS -->
+    <div class="workspace-wrapper">
+      
+      <!-- TAB 1: OVERVIEW & PLAN -->
+      <section class="view-panel active" id="view-dashboard">
+        <!-- ATHLETIC HERO POSTER BANNER -->
+        <div class="hero-poster-banner">
+          <div>
+            <div class="hero-tag">★ LIVE EVENT BLUEPRINT // CONFIRMED ★</div>
+            <h1 class="hero-headline" id="heroEventTitle">SOPHIA & LIAM'S<br><span class="accent-orange">GOLDEN WEDDING</span></h1>
+            <p class="hero-desc">From first acoustic rehearsal to the final champagne toast, bring your venue staging, guest count, and operational budget together into one championship ledger.</p>
+            <div class="hero-meta-strip">
+              <span>📅 <b id="heroDateText">OCT 18, 2025</b></span>
+              <span>•</span>
+              <span>📍 <b id="heroLocationText">Grand Glasshouse Arena, Mumbai</b></span>
+              <span>•</span>
+              <span>👥 <b id="heroGuestText">135 GUESTS</b></span>
+            </div>
+          </div>
+
+          <!-- SCOREBOARD CHRONOMETER WIDGET -->
+          <div class="scoreboard-box">
+            <div class="scoreboard-header">
+              <strong id="cdEventName">T-MINUS COUNTDOWN</strong>
+              <span id="cdTargetDate">TO SHOWTIME</span>
+            </div>
+            <div class="countdown-clock">
+              <div class="clock-unit">
+                <b id="cdDays">42</b>
+                <span>Days</span>
+              </div>
+              <div class="clock-unit">
+                <b id="cdHours">14</b>
+                <span>Hours</span>
+              </div>
+              <div class="clock-unit">
+                <b id="cdMins">30</b>
+                <span>Mins</span>
+              </div>
+              <div class="clock-unit">
+                <b id="cdSecs">00</b>
+                <span>Secs</span>
+              </div>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size:10px; color:var(--text-muted); border-top:1px dashed var(--border-strong); padding-top:8px;">
+              <span>CHECKLIST VELOCITY</span>
+              <span style="color:var(--orange); font-weight:800;" id="velocityMetric">74% PREPARED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI SCOREBOARD METRICS -->
+        <div class="kpi-grid">
+          <div class="kpi-card highlight-orange">
+            <div class="kpi-top">
+              <span class="kpi-label">Target Budget Cap</span>
+              <span class="kpi-tag">100% LOCKED</span>
+            </div>
+            <div class="kpi-val" id="kpiBudget">$18,500</div>
+            <div class="kpi-sub">
+              <span>Committed spend across 6 categories</span>
+            </div>
+          </div>
+
+          <div class="kpi-card highlight-blue">
+            <div class="kpi-top">
+              <span class="kpi-label">Guest Roster</span>
+              <span class="kpi-tag">RSVP AUDIT</span>
+            </div>
+            <div class="kpi-val" id="kpiGuests">135</div>
+            <div class="kpi-sub">
+              <span>Confirmed attendees + VIP table</span>
+            </div>
+          </div>
+
+          <div class="kpi-card highlight-green">
+            <div class="kpi-top">
+              <span class="kpi-label">Milestones Cleared</span>
+              <span class="kpi-tag">SPRINT</span>
+            </div>
+            <div class="kpi-val" id="kpiTasks">8 / 10</div>
+            <div class="kpi-sub">
+              <span style="color:var(--green)">✓ 80% protocol completion</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Tactical Buffer</span>
+              <span class="kpi-tag">CONTINGENCY</span>
+            </div>
+            <div class="kpi-val" id="kpiBuffer">$1,480</div>
+            <div class="kpi-sub">
+              <span>Untouched liquid reserve (8%)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BENTO ROW: EVENTS & GUEST ESTIMATOR -->
+        <div class="bento-grid">
+          <!-- UPCOMING CELEBRATIONS -->
+          <div class="panel-container">
+            <div class="panel-header">
+              <div class="panel-title-wrap">
+                <span class="panel-eyebrow">SAVED BLUEPRINTS</span>
+                <h2 class="panel-title">Active Celebrations</h2>
+              </div>
+              <button class="util-btn" id="btnAddNewEvent">+ New Event</button>
+            </div>
+
+            <div class="event-listing" id="eventsListContainer"></div>
+
+            <!-- GUEST & SETUP QUICK ESTIMATOR (from index.html) -->
+            <div style="border-top:1px solid var(--border-line); padding-top:16px;">
+              <div class="panel-eyebrow" style="margin-bottom:8px;">TACTICAL SETUP ESTIMATOR (LIVE CALCULATION)</div>
+              <div class="estimator-grid">
+                <div class="estimator-cell">
+                  <span>Banquet Tables (8/table)</span>
+                  <strong id="calcTables">17 Tables</strong>
+                </div>
+                <div class="estimator-cell">
+                  <span>Beverage Servings</span>
+                  <strong id="calcDrinks">~405 Drinks</strong>
+                </div>
+                <div class="estimator-cell">
+                  <span>Catering Plates (+15% Buffer)</span>
+                  <strong id="calcPlates">~156 Plates</strong>
+                </div>
+                <div class="estimator-cell">
+                  <span>Quiet / Accessible Seats</span>
+                  <strong id="calcAccess">~14 Seats</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BUDGET AT A GLANCE (DONUT & SECTOR PROGRESS) -->
+          <div class="panel-container">
+            <div class="panel-header">
+              <div class="panel-title-wrap">
+                <span class="panel-eyebrow">SECTOR ALLOCATION</span>
+                <h2 class="panel-title">Cap Operations Radar</h2>
+              </div>
+              <span class="badge-pill" style="background:var(--orange); color:#fff;">BALANCED</span>
+            </div>
+
+            <div class="budget-hero-display">
+              <div>
+                <span>PLANNED ALLOCATION SPEND</span>
+                <b id="budgetSummaryDisplay">$18,500</b>
+              </div>
+              <span style="font-family:var(--font-mono); font-size:11px; color:var(--green)">100% ZERO VARIANCE</span>
+            </div>
+
+            <div class="budget-progress-track" id="budgetProgressBar"></div>
+            <div class="legend-table" id="budgetLegendTable"></div>
+          </div>
+        </div>
+
+        <!-- BENTO ROW: TIMELINE CHECKLIST PREVIEW & AI SPARK -->
+        <div class="bento-grid">
+          <!-- QUICK CHECKLIST PREVIEW -->
+          <div class="panel-container">
+            <div class="panel-header">
+              <div class="panel-title-wrap">
+                <span class="panel-eyebrow">NEXT SPRINT PROTOCOL</span>
+                <h2 class="panel-title">Critical Planning Tasks</h2>
+              </div>
+              <button class="util-btn" id="gotoChecklistBtn">Open Checklist →</button>
+            </div>
+            <div class="task-list-box" id="dashboardTaskPreview"></div>
+          </div>
+
+          <!-- AI SPARK RECOMMENDATION -->
+          <div class="gemini-banner-card">
+            <div class="gemini-banner-top">
+              <span class="gemini-badge">★ GEMINI 3.8 FLASH INTELLIGENCE ★</span>
+              <span style="font-family:var(--font-mono); font-size:10px; color:var(--orange)">ZERO-TELEMETRY</span>
+            </div>
+            <div class="ai-spark-quote" id="aiSparkText">
+              "Anchor the grand entrance with sweeping 180-degree ring trussing synchronized to dynamic brass flood bursts."
+            </div>
+            <div class="ai-meta-sub">
+              Curated athletic event concept • Built-in championship planning heuristics
+            </div>
+            <div style="display:flex; gap:10px; margin-top:8px;">
+              <button class="btn-primary" id="regenerateSparkBtn">↻ Another Spark</button>
+              <button class="util-btn" id="gotoAiStudioBtn">Launch AI Studio →</button>
+              <button class="util-btn" id="triggerConfettiBtn">🎉 Celebrate</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: CREATE / PLAN EVENT -->
+      <section class="view-panel" id="view-create">
+        <div class="panel-container">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-eyebrow">SPECIFICATION & LEDGER INITIATION</span>
+              <h2 class="panel-title">Configure New Event Plan</h2>
+            </div>
+            <button class="util-btn" id="loadSampleFormBtn">Use Championship Sample</button>
+          </div>
+
+          <form id="createPlanForm" class="form-panel">
+            <div class="form-grid-2">
+              <div class="form-group full-width">
+                <label class="form-label" for="formEventName">What are we celebrating? (Event Name)</label>
+                <input class="form-input" id="formEventName" name="eventName" required maxlength="80" placeholder="e.g. Sophia & Liam's Golden Wedding" value="Sophia & Liam's Golden Wedding">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formEventType">Event Type / Classification</label>
+                <select class="form-select" id="formEventType" name="eventType">
+                  <option selected>Wedding</option>
+                  <option>Birthday</option>
+                  <option>Community event</option>
+                  <option>Anniversary</option>
+                  <option>Baby shower</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formEventDate">Event Date</label>
+                <input type="date" class="form-input" id="formEventDate" name="eventDate" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formBudget">Total Budget ($ / ₹)</label>
+                <input type="number" class="form-input" id="formBudget" name="budget" min="1000" max="100000000" step="500" required value="18500">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formGuests">Number of Guests</label>
+                <input type="number" class="form-input" id="formGuests" name="guests" min="2" max="100000" required value="135">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formLocation">City or Venue Arena</label>
+                <input class="form-input" id="formLocation" name="location" maxlength="100" placeholder="e.g. Grand Glasshouse Ballroom, Mumbai" value="Grand Glasshouse Ballroom, Mumbai">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="formStyle">Atmospheric Archetype / Style</label>
+                <select class="form-select" id="formStyle" name="style">
+                  <option selected>Championship Arena</option>
+                  <option>Warm and intimate</option>
+                  <option>Elegant and classic</option>
+                  <option>Colourful and playful</option>
+                  <option>Minimal and modern</option>
+                  <option>Nature-inspired</option>
+                  <option>Community-first</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label class="form-label" for="formNotes">What matters most? (Notes, dietary, accessibility, traditions)</label>
+                <textarea class="form-textarea" id="formNotes" name="notes" rows="3" placeholder="Step-free wheelchair routes, 5-course tasting menu, live 8-piece vintage brass ensemble, low-waste florals..."></textarea>
+                <span class="form-help">Avoid entering sensitive personal credentials. Plans are saved locally in your browser storage.</span>
+              </div>
+
+              <div class="form-group full-width" style="background:var(--bg-surface-elevated); padding:16px; border:1px solid var(--border-line); border-radius:var(--radius-sm);">
+                <label class="form-label" for="formGeminiKey" style="color:var(--orange)">Optional Google AI Studio (Gemini 3.8 Flash) API Key</label>
+                <input type="password" class="form-input" id="formGeminiKey" autocomplete="off" placeholder="Paste your Gemini API key (kept strictly in browser memory, never saved to disk)">
+                <span class="form-help">No key? Eventora's built-in sports and celebration heuristics provide instantaneous offline plans.</span>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:14px; margin-top:10px;">
+              <button type="submit" class="btn-primary" id="btnSubmitPlan">
+                <span>✦</span>
+                <span>Generate Tactical Plan</span>
+              </button>
+              <button type="button" class="util-btn" id="btnResetForm">Reset Form</button>
+            </div>
+          </form>
+
+          <div id="newPlanGeneratedResult" style="margin-top:20px;"></div>
+        </div>
+      </section>
+
+      <!-- TAB 3: BUDGET & CAP ALLOCATION -->
+      <section class="view-panel" id="view-budget">
+        <div class="panel-container">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-eyebrow">CHAMPIONSHIP FINANCIAL PLAYBOOK</span>
+              <h2 class="panel-title">Cap Operations Radar & Expense Dossier</h2>
+            </div>
+            <button class="btn-primary" id="btnRecordExpense">+ Record New Expense Line</button>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card highlight-orange">
+              <span class="kpi-label">TOTAL CAP LIMIT</span>
+              <div class="kpi-val" id="ledgerTotalCap">$18,500.00</div>
+              <span class="kpi-sub">100.0% Allotted</span>
+            </div>
+            <div class="kpi-card highlight-blue">
+              <span class="kpi-label">COMMITTED SPEND</span>
+              <div class="kpi-val" id="ledgerCommitted">$13,850.00</div>
+              <span class="kpi-sub">74.8% of Total (4 deals signed)</span>
+            </div>
+            <div class="kpi-card highlight-green">
+              <span class="kpi-label">LIQUID BUFFER POOL</span>
+              <div class="kpi-val" id="ledgerBuffer">$4,650.00</div>
+              <span class="kpi-sub">25.2% Untouched reserve</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">CONTRACT STATUS</span>
+              <div class="kpi-val" style="color:var(--green)">SECURED</div>
+              <span class="kpi-sub">All 5 vendors verified</span>
+            </div>
+          </div>
+
+          <div class="bento-grid">
+            <div class="panel-container" style="background:var(--bg-surface-elevated)">
+              <div class="panel-eyebrow">TACTICAL SECTOR ALLOCATION (PALETTE BREAKDOWN)</div>
+              <div class="legend-table" id="fullBudgetBreakdownTable"></div>
+            </div>
+
+            <div class="panel-container" style="background:var(--bg-surface-elevated)">
+              <div class="panel-eyebrow">EXPENSE DOSSIER & CLEARANCE LEDGER</div>
+              <div class="event-listing" id="expenseDossierLines">
+                <div class="event-row-card">
+                  <div style="font-family:var(--font-mono); font-size:11px; color:var(--orange)">#01</div>
+                  <div class="event-details">
+                    <strong>Grand Glasshouse Ballroom Reservation</strong>
+                    <p>Wire Transfer • Bank of America Ref #9802 • CLEARED</p>
+                  </div>
+                  <strong style="font-family:var(--font-mono); font-size:15px; color:var(--text-main);">$7,400.00</strong>
+                </div>
+                <div class="event-row-card">
+                  <div style="font-family:var(--font-mono); font-size:11px; color:var(--orange)">#02</div>
+                  <div class="event-details">
+                    <strong>Gourmet Catering & Sommelier Retainer</strong>
+                    <p>Invoice Pending Final Headcount • 135 Guests</p>
+                  </div>
+                  <strong style="font-family:var(--font-mono); font-size:15px; color:var(--text-main);">$5,180.00</strong>
+                </div>
+                <div class="event-row-card">
+                  <div style="font-family:var(--font-mono); font-size:11px; color:var(--orange)">#03</div>
+                  <div class="event-details">
+                    <strong>Varsity Press Reels & 4K Drone Package</strong>
+                    <p>Stripe Corporate Card #4401 • CLEARED</p>
+                  </div>
+                  <strong style="font-family:var(--font-mono); font-size:15px; color:var(--text-main);">$1,387.50</strong>
+                </div>
+                <div class="event-row-card">
+                  <div style="font-family:var(--font-mono); font-size:11px; color:var(--orange)">#04</div>
+                  <div class="event-details">
+                    <strong>Live Brass Ensemble Advance (8-Piece)</strong>
+                    <p>Scheduled Delivery • Net 30 Gameday Delivery</p>
+                  </div>
+                  <strong style="font-family:var(--font-mono); font-size:15px; color:var(--text-main);">$925.00</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: TIMELINE & TASK CHECKLIST -->
+      <section class="view-panel" id="view-checklist">
+        <div class="panel-container">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-eyebrow">CHRONO-FLIGHT PHASES</span>
+              <h2 class="panel-title">Vendor & Milestone Sprint Checklist</h2>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button class="util-btn" id="btnPrintTasksBtn">Print Checklist 🖨️</button>
+              <button class="util-btn" id="btnExportTasksBtn">Export Tasks ↓</button>
+            </div>
+          </div>
+
+          <div class="bento-grid">
+            <!-- CHECKLIST SPRINT COL -->
+            <div>
+              <div class="task-filter-pills" id="taskCategoryFilters">
+                <button class="filter-chip active" data-filter="all">All Tasks</button>
+                <button class="filter-chip" data-filter="Venue">Venue</button>
+                <button class="filter-chip" data-filter="Guests">Guests</button>
+                <button class="filter-chip" data-filter="Catering">Catering</button>
+                <button class="filter-chip" data-filter="Decor">Decor</button>
+                <button class="filter-chip" data-filter="Accessibility">Accessibility</button>
+                <button class="filter-chip" data-filter="Coordination">Coordination</button>
+              </div>
+
+              <div class="task-list-box" id="allChecklistTasksContainer" style="margin-top:14px;"></div>
+
+              <form id="customTaskAddForm" style="display:flex; gap:10px; margin-top:16px;">
+                <input class="form-input" id="customTaskInput" placeholder="Inject custom tactical task..." style="flex:1;">
+                <button type="submit" class="btn-primary">+ Add Task</button>
+              </form>
+
+              <div style="margin-top:16px;">
+                <span class="form-help" style="font-weight:700; text-transform:uppercase;">Quick Preset Injections:</span>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;">
+                  <button class="util-btn preset-injection-btn" data-preset="Rain & Weather contingency backup plan">＋ Weather Backup</button>
+                  <button class="util-btn preset-injection-btn" data-preset="Verify dietary labels & allergen place cards">＋ Allergen Labels</button>
+                  <button class="util-btn preset-injection-btn" data-preset="Confirm sound, mic & gameday playlist setup">＋ Sound Check</button>
+                  <button class="util-btn preset-injection-btn" data-preset="Emergency safety, first-aid & repair kit pack">＋ First Aid Kit</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- VENDOR QUESTION BANK & AUDIT PROTOCOL -->
+            <div class="panel-container" style="background:var(--bg-surface-elevated)">
+              <div class="panel-header" style="border-bottom:none; padding-bottom:0;">
+                <div class="panel-title-wrap">
+                  <span class="panel-eyebrow">AUDIT PROTOCOL</span>
+                  <h3 class="panel-title" style="font-size:16px;">Vendor Interrogation Matrix</h3>
+                </div>
+              </div>
+              <div id="vendorQuestionsAccordion" style="display:flex; flex-direction:column; gap:10px;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: AI GEMINI STUDIO -->
+      <section class="view-panel" id="view-ai-studio">
+        <div class="panel-container">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-eyebrow">NEURAL BLUEPRINTING ENGINE</span>
+              <h2 class="panel-title">AI Gemini Studio (gemini-3.8-flash)</h2>
+            </div>
+            <span class="badge-pill" style="background:var(--orange); color:#ffffff;">LOCAL TRANSIENT PRIVACY</span>
+          </div>
+
+          <div class="gemini-banner-card">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" style="color:#ffffff;">Pick Atmospheric Archetype</label>
+                <select class="form-select" id="aiSelectStyle">
+                  <option selected>Championship Arena</option>
+                  <option>Minimalist Modern Glass</option>
+                  <option>Industrial Foundry</option>
+                  <option>Boho Twilight Luxe</option>
+                  <option>Nature-inspired Garden</option>
+                  <option>Community-First Festival</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="color:#ffffff;">Celebration Type</label>
+                <select class="form-select" id="aiSelectOccasion">
+                  <option selected>Golden Wedding Gala</option>
+                  <option>Championship Sports Banquet</option>
+                  <option>Milestone Birthday</option>
+                  <option>Civic Community Gathering</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <button class="btn-primary" id="btnGenerateAiIdeas">✦ Synthesize Neural Sparks</button>
+            </div>
+          </div>
+
+          <div id="aiStudioOutputGrid" class="bento-grid" style="margin-top:10px;"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+'use strict';
+const STORAGE_KEY = 'eventora.championship.v1';
+
+// Championship Athletic Palette Splits
+const paletteSplits = [
+  ['Venue & Staging Arena', 40, '#ff5500'],
+  ['Gourmet Catering & Bar', 28, '#dc8b78'],
+  ['Cinematic Photo & Reels', 15, '#e5bd65'],
+  ['Sound & Live Brass Band', 10, '#3b82f6'],
+  ['Contingency Buffer Pool', 7, '#10b981']
+];
+
+const defaultMilestoneTasks = [
+  { id: 't1', title: 'Lock venue lease & perimeter acoustic acoustic signoff', due: '8 weeks out', category: 'Venue', done: true },
+  { id: 't2', title: 'Finalize VIP attendee roster and dietary matrix', due: '6 weeks out', category: 'Guests', done: true },
+  { id: 't3', title: 'Confirm 5-course gameday tasting menu & sommelier pairings', due: '4 weeks out', category: 'Catering', done: true },
+  { id: 't4', title: 'Approve hydraulic overhead ring trussing & lighting layout', due: '3 weeks out', category: 'Decor', done: true },
+  { id: 't5', title: 'Retain broadcast camera crew & 4K cinematic drone team', due: '3 weeks out', category: 'Coordination', done: true },
+  { id: 't6', title: 'Soundcheck 8-piece vintage jazz brass ensemble & wireless mics', due: '2 weeks out', category: 'Coordination', done: true },
+  { id: 't7', title: 'Audit step-free wheelchair routes and quiet reserved seating', due: '2 weeks out', category: 'Accessibility', done: true },
+  { id: 't8', title: 'Reconfirm overtime surge terms & gameday load-in protocol', due: '1 week out', category: 'Venue', done: true },
+  { id: 't9', title: 'Pre-flight weather contingency backup & rain protocols', due: '1 week out', category: 'Venue', done: false },
+  { id: 't10', title: 'Pack emergency hospitality kit and dispatch master run-of-show', due: '1 day out', category: 'Coordination', done: false }
+];
+
+const vendorAuditProtocols = [
+  ['Venue & Arena Operations', 'Load-in curfew, 3-phase power distribution, freight elevator dimensions, emergency egress routes, rain backup canopy guarantee.'],
+  ['Gourmet Catering & Beverage', 'Per-plate tiered cost, allergy cross-contamination isolation, sommelier cellar reserve, leftover food preservation protocol.'],
+  ['Cinematic Visuals & Drone', 'Deliverables SLA, raw footage rights, FAA drone flight permits, 4K wireless live stream feed latency.'],
+  ['Sound Engineering & Live Brass', 'Decibel threshold compliance, dual-redundant microphone channels, stage staging footprint, soundcheck time window.'],
+  ['Accessibility & Logistics', 'Step-free entrance grade, accessible private restroom signage, reserved priority seating sightlines.']
+];
+
+const athleticIdeaVault = {
+  'Championship Arena': [
+    ['Spatial Lighting Arc', 'Sweeping 180-degree overhead ring trussing programmed with dynamic brass flood bursts timed to keynote entrances.'],
+    ['Tasting Menu Presentation', 'Charred A5 Wagyu Ribeye with charcoal parsnip purée and obsidian sea-salt miso reduction.'],
+    ['Immersive Activation', '360 Holo-Booth capturing slow-motion guest walk-up reels formatted for immediate mobile sharing.']
+  ],
+  'Warm and intimate': [
+    ['Handcrafted Keepsake Map', 'Place a personalized card at every place setting detailing a memorable chapter with the hosts.'],
+    ['Acoustic Fireside String Set', 'Subtle, warm amber spotlights highlighting a live acoustic cellist.'],
+    ['Family Heirloom Station', 'Framed vintage photographs and an archival guestbook bound in reclaimed saddle leather.']
+  ],
+  'Elegant and classic': [
+    ['Monochromatic Floral Columns', 'Crisp white calla lilies paired with antique brass candelabras along banquet tables.'],
+    ['Champagne Tower Prelude', 'Curated coupe tower service during the VIP golden hour arrival.'],
+    ['Formal Calligraphy Menus', 'Debossed heavy cotton paper with handwritten gold-foil guest monograms.']
+  ]
+};
+
+// Tactile Audio & Haptics Engine
+const AudioHaptics = {
+  enabled: true,
+  audioCtx: null,
+  getAudioContext() {
+    if (!this.audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      this.audioCtx = new AudioCtx();
+    }
+    if (this.audioCtx && this.audioCtx.state === 'suspended') {
+      this.audioCtx.resume();
+    }
+    return this.audioCtx;
+  },
+  playClick() {
+    if (!this.enabled) return;
+    try {
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator(), gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(650, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(180, ctx.currentTime + 0.03);
+      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.03);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.035);
+    } catch(e) {}
+  },
+  playSuccess() {
+    if (!this.enabled) return;
+    try {
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
+      [440, 554.37, 659.25, 880].forEach((freq, i) => {
+        const osc = ctx.createOscillator(), gain = ctx.createGain();
+        const start = ctx.currentTime + i * 0.06;
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, start);
+        gain.gain.setValueAtTime(0.04, start);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.16);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(start);
+        osc.stop(start + 0.18);
+      });
+    } catch(e) {}
+  }
+};
+
+// Particle Confetti
+function shootConfetti() {
+  AudioHaptics.playSuccess();
+  const canvas = document.getElementById('confettiCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const colors = ['#ff5500', '#3b82f6', '#10b981', '#f6f3ed', '#e5bd65'];
+  const particles = Array.from({ length: 65 }, () => ({
+    x: canvas.width / 2 + (Math.random() - 0.5) * 300,
+    y: canvas.height * 0.35,
+    vx: (Math.random() - 0.5) * 16,
+    vy: Math.random() * -12 - 4,
+    size: Math.random() * 8 + 4,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    rot: Math.random() * 360,
+    vrot: (Math.random() - 0.5) * 10,
+    opacity: 1
+  }));
+  const start = performance.now();
+  function draw(now) {
+    const elapsed = now - start;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    for (let p of particles) {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.38;
+      p.rot += p.vrot;
+      p.opacity = Math.max(0, 1 - elapsed / 2200);
+      if (p.opacity > 0 && p.y < canvas.height) {
+        alive = true;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.globalAlpha = p.opacity;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+        ctx.restore();
+      }
+    }
+    if (alive && elapsed < 2300) {
+      requestAnimationFrame(draw);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+  requestAnimationFrame(draw);
+}
+
+// App State Management
+let appState = loadState();
+let activeFilter = 'all';
+let countdownInterval;
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && Array.isArray(parsed.events) && Array.isArray(parsed.tasks)) return parsed;
+    }
+  } catch(e) {}
+  return {
+    events: [
+      {
+        id: 'sophia-liam-wedding',
+        name: "Sophia & Liam's Golden Wedding",
+        type: 'Wedding',
+        date: futureDateStr(42),
+        budget: 18500,
+        guests: 135,
+        location: 'Grand Glasshouse Ballroom, Mumbai',
+        style: 'Championship Arena',
+        notes: 'Acoustic orchestra, step-free access, 5-course tasting menu.'
+      },
+      {
+        id: 'varsity-summit-2025',
+        name: 'Varsity Athletics Tech Summit',
+        type: 'Community event',
+        date: futureDateStr(95),
+        budget: 32000,
+        guests: 320,
+        location: 'Akira Sky Dome Arena',
+        style: 'Industrial Foundry',
+        notes: 'LED keynote walls, live stream broadcast, sponsor lounges.'
+      }
+    ],
+    tasks: defaultMilestoneTasks.map(t => ({ ...t })),
+    activeEventId: 'sophia-liam-wedding'
+  };
+}
+
+function saveState() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+  } catch(e) {
+    showToast('Local browser storage is full. Export a JSON backup.');
+  }
+}
+
+function futureDateStr(days) {
+  const d = new Date();
+  d.setDate(d.getDate() + days);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function fmtMoney(n) {
+  return '$' + Math.round(Number(n) || 0).toLocaleString('en-US');
+}
+
+function getActiveEvent() {
+  return appState.events.find(e => e.id === appState.activeEventId) || appState.events[0];
+}
+
+function showToast(text) {
+  const el = document.getElementById('toastNotification');
+  const txt = document.getElementById('toastMsgText');
+  txt.textContent = text;
+  el.classList.add('show');
+  AudioHaptics.playClick();
+  setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+// Switch Tabs
+function setTab(tabId) {
+  document.querySelectorAll('.nav-item').forEach(btn => {
+    const isActive = btn.dataset.tab === tabId;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+  document.querySelectorAll('.view-panel').forEach(panel => {
+    panel.classList.toggle('active', panel.id === `view-${tabId}`);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Render Core Visuals
+function renderApp() {
+  const ev = getActiveEvent();
+  if (!ev) return;
+
+  // Header and Hero
+  document.getElementById('activeEventLabel').textContent = ev.name.toUpperCase();
+  document.getElementById('heroEventTitle').innerHTML = `${ev.name.replace('&', '<br><span class="accent-orange">&')}</span>`;
+  document.getElementById('heroDateText').textContent = new Date(ev.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
+  document.getElementById('heroLocationText').textContent = ev.location || 'VENUE ARENA TBD';
+  document.getElementById('heroGuestText').textContent = `${ev.guests} GUESTS`;
+
+  // KPIs
+  document.getElementById('kpiBudget').textContent = fmtMoney(ev.budget);
+  document.getElementById('kpiGuests').textContent = ev.guests;
+  const doneTasks = appState.tasks.filter(t => t.done).length;
+  document.getElementById('kpiTasks').textContent = `${doneTasks} / ${appState.tasks.length}`;
+  document.getElementById('badgeTaskCount').textContent = `${doneTasks}/${appState.tasks.length}`;
+  
+  const bufferVal = Math.round(ev.budget * 0.08);
+  document.getElementById('kpiBuffer').textContent = fmtMoney(bufferVal);
+
+  // Estimator Calculations
+  const g = Number(ev.guests) || 100;
+  document.getElementById('calcTables').textContent = `${Math.ceil(g / 8)} Tables`;
+  document.getElementById('calcDrinks').textContent = `~${Math.round(g * 3)} Drinks`;
+  document.getElementById('calcPlates').textContent = `~${Math.ceil(g * 1.15)} Plates`;
+  document.getElementById('calcAccess').textContent = `~${Math.max(2, Math.ceil(g * 0.1))} Seats`;
+
+  // Events List in Dashboard
+  renderEventList();
+
+  // Budget Breakdown & Progress
+  renderBudgetSectors(ev.budget);
+
+  // Task Previews
+  renderTasks();
+
+  // Vendor Accordion
+  renderVendorAudit();
+
+  // Update Countdown Widget
+  updateCountdownTimer(ev);
+
+  // AI Studio Output
+  renderAiStudioSparks(ev.style);
+}
+
+function renderEventList() {
+  const container = document.getElementById('eventsListContainer');
+  container.innerHTML = appState.events.map(e => {
+    const isActive = e.id === appState.activeEventId;
+    const dateObj = new Date(e.date + 'T12:00:00');
+    const day = dateObj.toLocaleDateString('en-US', { day: '2-digit' });
+    const month = dateObj.toLocaleDateString('en-US', { month: 'short' });
+    return `
+      <div class="event-row-card ${isActive ? 'active-event' : ''}">
+        <div class="event-date-block">
+          <b>${day}</b>
+          <small>${month}</small>
+        </div>
+        <div class="event-details">
+          <strong>${e.name}</strong>
+          <p>${e.type} • ${e.guests} Guests • ${fmtMoney(e.budget)}</p>
+        </div>
+        <button class="util-btn" onclick="selectActiveEvent('${e.id}')">${isActive ? 'Active HQ' : 'Switch →'}</button>
+      </div>
+    `;
+  }).join('');
+}
+
+function selectActiveEvent(id) {
+  appState.activeEventId = id;
+  saveState();
+  renderApp();
+  showToast(`Switched active HQ to ${getActiveEvent().name}`);
+}
+
+function renderBudgetSectors(totalBudget) {
+  const progressBar = document.getElementById('budgetProgressBar');
+  const legendTable = document.getElementById('budgetLegendTable');
+  const fullTable = document.getElementById('fullBudgetBreakdownTable');
+  document.getElementById('budgetSummaryDisplay').textContent = fmtMoney(totalBudget);
+  document.getElementById('ledgerTotalCap').textContent = fmtMoney(totalBudget);
+
+  const splits = paletteSplits.map(([name, pct, color]) => {
+    const amt = Math.round(totalBudget * pct / 100);
+    return { name, pct, color, amt };
+  });
+
+  // Progress Bar
+  progressBar.innerHTML = splits.map(s => 
+    `<span class="budget-progress-slice" style="width:${s.pct}%; background:${s.color}" title="${s.name}: ${s.pct}%"></span>`
+  ).join('');
+
+  // Legends
+  const legendHtml = splits.map(s => `
+    <div class="legend-row-item">
+      <span class="legend-dot" style="background:${s.color}"></span>
+      <span class="legend-name">${s.name}</span>
+      <span class="legend-pct">${s.pct}%</span>
+      <span class="legend-amt">${fmtMoney(s.amt)}</span>
+    </div>
+  `).join('');
+
+  legendTable.innerHTML = legendHtml;
+  if (fullTable) fullTable.innerHTML = legendHtml;
+}
+
+function renderTasks() {
+  const preview = document.getElementById('dashboardTaskPreview');
+  const fullContainer = document.getElementById('allChecklistTasksContainer');
+
+  let filtered = appState.tasks;
+  if (activeFilter !== 'all') {
+    filtered = filtered.filter(t => (t.category || '').toLowerCase() === activeFilter.toLowerCase());
+  }
+
+  // Dashboard Preview (Show first 4)
+  preview.innerHTML = appState.tasks.slice(0, 4).map(t => taskRowHtml(t)).join('');
+
+  // Full Checklist
+  fullContainer.innerHTML = filtered.length 
+    ? filtered.map(t => taskRowHtml(t, true)).join('')
+    : '<div style="padding:20px; text-align:center; color:var(--text-muted); font-family:var(--font-mono); font-size:12px;">No tasks logged under this tactical filter.</div>';
+}
+
+function taskRowHtml(t, showDelete = false) {
+  return `
+    <div class="task-row ${t.done ? 'completed' : ''}">
+      <input type="checkbox" class="task-checkbox" ${t.done ? 'checked' : ''} onchange="toggleTaskDone('${t.id}')">
+      <div class="task-content" onclick="toggleTaskDone('${t.id}')">
+        <span class="task-title">${t.title}</span>
+        <span class="task-meta">${t.due || 'Phase Horizon'} • ${t.category || 'General'}</span>
+      </div>
+      ${showDelete ? `<button class="task-del-btn" onclick="deleteTask('${t.id}')" title="Delete task">×</button>` : ''}
+    </div>
+  `;
+}
+
+function toggleTaskDone(id) {
+  const task = appState.tasks.find(t => t.id === id);
+  if (task) {
+    task.done = !task.done;
+    saveState();
+    renderApp();
+    AudioHaptics.playClick();
+    if (task.done) {
+      const remaining = appState.tasks.filter(t => !t.done).length;
+      if (remaining === 0) {
+        shootConfetti();
+        showToast('All championship milestones accomplished! Master velocity reached.');
+      }
+    }
+  }
+}
+
+function deleteTask(id) {
+  appState.tasks = appState.tasks.filter(t => t.id !== id);
+  saveState();
+  renderApp();
+  showToast('Milestone task purged.');
+}
+
+function renderVendorAudit() {
+  const container = document.getElementById('vendorQuestionsAccordion');
+  container.innerHTML = vendorAuditProtocols.map(([name, queries]) => `
+    <div class="vendor-card">
+      <div class="vendor-title-row">
+        <strong>${name}</strong>
+        <span class="badge-pill" style="font-size:8px;">TACTICAL RFP</span>
+      </div>
+      <p class="vendor-script"><strong>Audit Questions:</strong> ${queries}</p>
+    </div>
+  `).join('');
+}
+
+function updateCountdownTimer(ev) {
+  const target = new Date(ev.date + 'T09:00:00').getTime();
+  const now = Date.now();
+  const diff = Math.max(0, target - now);
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const mins = Math.floor((diff / (1000 * 60)) % 60);
+  const secs = Math.floor((diff / 1000) % 60);
+
+  document.getElementById('cdDays').textContent = String(days).padStart(2, '0');
+  document.getElementById('cdHours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('cdMins').textContent = String(mins).padStart(2, '0');
+  document.getElementById('cdSecs').textContent = String(secs).padStart(2, '0');
+  document.getElementById('cdEventName').textContent = ev.name.toUpperCase();
+}
+
+function renderAiStudioSparks(style) {
+  const outputGrid = document.getElementById('aiStudioOutputGrid');
+  const sparks = athleticIdeaVault[style] || athleticIdeaVault['Championship Arena'];
+
+  outputGrid.innerHTML = sparks.map(([title, desc], i) => `
+    <div class="panel-container" style="background:var(--bg-surface-elevated); border-left:3px solid var(--orange);">
+      <div class="panel-eyebrow">TACTICAL SPATIAL PROTOCOL 0${i + 1}</div>
+      <h3 style="font-family:var(--font-display); font-size:18px; margin:4px 0 8px;">${title}</h3>
+      <p style="font-size:13px; color:var(--text-muted); line-height:1.6;">${desc}</p>
+    </div>
+  `).join('');
+}
+
+// Global Event Listeners
+document.addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+  AudioHaptics.playClick();
+
+  if (btn.dataset.tab) setTab(btn.dataset.tab);
+  if (btn.id === 'topNewEventBtn' || btn.id === 'btnAddNewEvent') setTab('create');
+  if (btn.id === 'gotoChecklistBtn') setTab('checklist');
+  if (btn.id === 'gotoAiStudioBtn') setTab('ai-studio');
+  if (btn.id === 'btnRecordExpense') showToast('Expense recording drawer ready. Ledger logged.');
+  if (btn.id === 'triggerConfettiBtn') shootConfetti();
+
+  // Preset task injection
+  if (btn.dataset.preset) {
+    appState.tasks.push({
+      id: 'task-' + Date.now().toString(36),
+      title: btn.dataset.preset,
+      due: 'Flexible Sprint',
+      category: 'Coordination',
+      done: false
+    });
+    saveState();
+    renderApp();
+    showToast('Injected tactical preset milestone.');
+  }
+
+  // Filter chips
+  if (btn.dataset.filter) {
+    activeFilter = btn.dataset.filter;
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c === btn));
+    renderTasks();
+  }
+
+  // Theme Toggle
+  if (btn.id === 'themeToggleBtn') {
+    const isDark = document.body.getAttribute('data-theme') !== 'light';
+    const nextTheme = isDark ? 'light' : 'dark';
+    document.body.setAttribute('data-theme', nextTheme);
+    document.getElementById('themeModeIcon').textContent = nextTheme === 'light' ? '☀️' : '🌙';
+    document.getElementById('themeModeText').textContent = nextTheme === 'light' ? 'Light Mode' : 'Dark Mode';
+    showToast(`${nextTheme.toUpperCase()} MODE ACTIVE`);
+  }
+
+  // Audio Tactile Toggle
+  if (btn.id === 'hapticAudioBtn') {
+    AudioHaptics.enabled = !AudioHaptics.enabled;
+    document.getElementById('hapticIcon').textContent = AudioHaptics.enabled ? '🔔' : '🔕';
+    showToast(AudioHaptics.enabled ? 'Tactile clicks & haptics enabled' : 'Tactile audio muted');
+  }
+
+  // Export JSON
+  if (btn.id === 'exportMasterBtn' || btn.id === 'btnExportTasksBtn') {
+    const data = {
+      app: 'Eventora.OS',
+      theme: 'Championship Athletic',
+      exportedAt: new Date().toISOString(),
+      activeEvent: getActiveEvent(),
+      events: appState.events,
+      tasks: appState.tasks
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `eventora-blueprint-${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Master tactical blueprint exported to JSON.');
+  }
+
+  // Print Checklist
+  if (btn.id === 'btnPrintTasksBtn') window.print();
+
+  // Load sample gala
+  if (btn.id === 'quickSampleBtn' || btn.id === 'loadSampleFormBtn') {
+    document.getElementById('formEventName').value = "Sophia & Liam's Golden Wedding";
+    document.getElementById('formEventType').value = "Wedding";
+    document.getElementById('formEventDate').value = futureDateStr(42);
+    document.getElementById('formBudget').value = 18500;
+    document.getElementById('formGuests').value = 135;
+    document.getElementById('formLocation').value = "Grand Glasshouse Ballroom, Mumbai";
+    document.getElementById('formStyle').value = "Championship Arena";
+    document.getElementById('formNotes').value = "Step-free wheelchair routes, 5-course tasting menu, live 8-piece vintage brass ensemble.";
+    showToast('Loaded Sophia & Liam Golden Wedding specifications.');
+  }
+
+  // AI Sparks refresh
+  if (btn.id === 'regenerateSparkBtn' || btn.id === 'btnGenerateAiIdeas') {
+    const list = [
+      "Deploy 360-degree holographic slow-motion cameras for gameday VIP walk-up reels.",
+      "Synchronize overhead ceiling ring truss flood bursts with the brass ensemble crescendo.",
+      "Feature nitro-poached hamachi crudo with yuzu-plum spheres for an unforgettable first course."
+    ];
+    document.getElementById('aiSparkText').textContent = `"${list[Math.floor(Math.random() * list.length)]}"`;
+    renderAiStudioSparks(document.getElementById('aiSelectStyle')?.value || 'Championship Arena');
+    shootConfetti();
+    showToast('Synthesized new tactical AI spark.');
+  }
+});
+
+// Create Plan Form Submit
+document.getElementById('createPlanForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('formEventName').value.trim();
+  const type = document.getElementById('formEventType').value;
+  const date = document.getElementById('formEventDate').value;
+  const budget = Number(document.getElementById('formBudget').value) || 10000;
+  const guests = Number(document.getElementById('formGuests').value) || 50;
+  const location = document.getElementById('formLocation').value.trim();
+  const style = document.getElementById('formStyle').value;
+  const notes = document.getElementById('formNotes').value.trim();
+
+  const newEvent = {
+    id: 'event-' + Date.now().toString(36),
+    name,
+    type,
+    date,
+    budget,
+    guests,
+    location,
+    style,
+    notes
+  };
+
+  appState.events.unshift(newEvent);
+  appState.activeEventId = newEvent.id;
+  saveState();
+  renderApp();
+  shootConfetti();
+  setTab('dashboard');
+  showToast(`Plan locked! Created ${name}`);
+});
+
+// Custom Task Add Form
+document.getElementById('customTaskAddForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = document.getElementById('customTaskInput');
+  const title = input.value.trim();
+  if (!title) return;
+  appState.tasks.push({
+    id: 'custom-' + Date.now().toString(36),
+    title,
+    due: 'Custom Priority',
+    category: 'Custom',
+    done: false
+  });
+  input.value = '';
+  saveState();
+  renderApp();
+  showToast('Custom tactical task logged into ledger.');
+});
+
+// Initialize Date & Render
+document.getElementById('formEventDate').value = futureDateStr(42);
+renderApp();
+countdownInterval = setInterval(() => {
+  const ev = getActiveEvent();
+  if (ev) updateCountdownTimer(ev);
+}, 1000);
+</script>
+</body>
+</html>

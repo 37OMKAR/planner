@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Space+Grotesk:wght@400;700&amp;family=Chivo:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-lowest":"#0f0e0c","secondary-fixed":"#dbe3f3","surface-tint":"#ffb59c","secondary-fixed-dim":"#bfc7d6","on-surface-variant":"#e5beb2","on-background":"#e7e1dd","surface":"#151311","primary":"#ffb59c","on-tertiary-fixed-variant":"#004883","on-primary":"#5c1900","secondary":"#bfc7d6","surface-bright":"#3b3936","on-error":"#690005","surface-container-high":"#2c2a27","secondary-container":"#3f4754","on-secondary-container":"#aeb5c5","on-tertiary-fixed":"#001c39","surface-container-highest":"#373432","error":"#ffb4ab","on-primary-fixed":"#390c00","on-secondary-fixed":"#141c27","background":"#151311","primary-fixed":"#ffdbcf","error-container":"#93000a","on-tertiary-container":"#002a51","on-surface":"#e7e1dd","on-primary-container":"#511500","outline-variant":"#5c4037","surface-container":"#211f1d","inverse-surface":"#e7e1dd","outline":"#ac897e","tertiary-fixed":"#d4e3ff","inverse-primary":"#aa3600","on-primary-fixed-variant":"#822700","tertiary":"#a4c9ff","on-secondary-fixed-variant":"#3f4754","primary-container":"#ff5708","surface-dim":"#151311","on-tertiary":"#00315d","primary-fixed-dim":"#ffb59c","on-secondary":"#29313d","surface-container-low":"#1d1b19","on-error-container":"#ffdad6","tertiary-fixed-dim":"#a4c9ff","tertiary-container":"#4d93e5","surface-variant":"#373432","inverse-on-surface":"#32302e"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin":"1rem","gutter":"1rem","margin-tablet":"2rem","space-md":"1rem","space-xs":"0.25rem","space-lg":"1.5rem","space-sm":"0.5rem","margin-desktop":"3rem","space-xl":"2.5rem","gutter-desktop":"1.5rem"},fontFamily:{"display-hero-mobile":["Anton"],"title-scoreboard":["Space Grotesk"],"body-lg":["Chivo"],"headline-sm":["Anton"],"body-sm":["Chivo"],"headline-lg":["Anton"],"headline-lg-mobile":["Anton"],"label-badge":["Space Grotesk"],"label-stat":["Anton"],"body-md":["Chivo"],"headline-md":["Anton"],"display-hero":["Anton"]},fontSize:{"display-hero-mobile":["48px",{lineHeight:"52px",letterSpacing:"0.04em",fontWeight:"400"}],"title-scoreboard":["20px",{lineHeight:"24px",letterSpacing:"0.08em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"headline-sm":["24px",{lineHeight:"28px",letterSpacing:"0.02em",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-lg":["48px",{lineHeight:"52px",letterSpacing:"0.02em",fontWeight:"400"}],"headline-lg-mobile":["32px",{lineHeight:"36px",letterSpacing:"0.02em",fontWeight:"400"}],"label-badge":["12px",{lineHeight:"16px",letterSpacing:"0.12em",fontWeight:"700"}],"label-stat":["36px",{lineHeight:"40px",letterSpacing:"0.02em",fontWeight:"400"}],"body-md":["15px",{lineHeight:"24px",fontWeight:"400"}],"headline-md":["32px",{lineHeight:"36px",letterSpacing:"0.02em",fontWeight:"400"}],"display-hero":["80px",{lineHeight:"84px",letterSpacing:"0.04em",fontWeight:"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-low border-r border-outline-variant/30 flex flex-col justify-between z-50"><div class="flex flex-col"><div class="px-space-lg pt-space-lg pb-space-md border-b border-outline-variant/20"><div class="flex items-center gap-space-xs text-primary-container mb-space-xs"><span class="material-symbols-outlined text-[14px]">star</span><span class="material-symbols-outlined text-[14px]">star</span><span class="material-symbols-outlined text-[14px]">star</span></div><div class="flex items-center justify-between"><span class="font-headline-sm text-headline-sm tracking-wider uppercase text-on-surface">EVENTORA.OS</span><span class="font-label-badge text-label-badge px-space-xs py-0.5 bg-surface-container-highest text-primary font-bold uppercase rounded">PRO</span></div><div class="mt-space-md p-space-sm bg-surface-container border border-outline-variant/40 rounded"><div class="font-label-badge text-[10px] uppercase text-on-surface-variant flex items-center gap-1 mb-1"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>ACTIVE CELEBRATION</div><p class="font-title-scoreboard text-body-sm text-on-surface font-bold truncate">Sophia &amp; Liam's Golden Wedding</p></div></div><nav class="flex flex-col py-space-md px-space-sm gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold border-l-4 border-on-primary-container"><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="overview-and-plan" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">grid_view</span>Overview &amp; Plan</a><a aria-current="page" class="flex items-center px-space-md py-space-sm rounded transition-colors uppercase tracking-wider bg-primary-container text-on-primary-container font-bold border-l-4 border-on-primary-container" data-path="create-plan" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">add_circle</span>Create Plan</a><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="budget-and-cap" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">account_balance_wallet</span>Budget &amp; Cap</a><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="timeline-and-tasks" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">event_upcoming</span>Timeline &amp; Tasks</a><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="gemini-studio" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">auto_awesome</span>Gemini Studio</a></nav></div><div class="p-space-md"><div class="p-space-md bg-surface-container-highest border border-primary-container/40 rounded"><div class="flex items-center gap-space-xs text-primary-container font-label-badge text-label-badge uppercase tracking-wider mb-space-xs"><span class="material-symbols-outlined text-[16px]">military_tech</span>Championship Tenet</div><p class="font-body-sm text-body-sm text-on-surface-variant italic leading-snug">“Flawless execution is built in the drills of preparation.”</p><div class="mt-space-sm pt-space-xs border-t border-outline-variant/30 flex justify-between items-center"><span class="font-label-badge text-[10px] uppercase text-on-surface-variant">TACTICAL DISCIPLINE</span><span class="material-symbols-outlined text-primary-container text-[14px]">verified</span></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-container border border-outline-variant/50 rounded"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="font-label-badge text-label-badge uppercase text-on-surface tracking-wider">Local Engine Active</span></div><div class="flex items-center gap-space-xs text-on-surface-variant font-title-scoreboard text-body-sm uppercase"><span class="material-symbols-outlined text-[16px]">stadium</span><span class="hover:text-on-surface cursor-pointer">Events</span><span class="text-outline">/</span><span class="text-on-surface font-bold">Golden Wedding #248</span></div></div><div class="flex items-center gap-space-md"><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" title="Toggle Dark Mode" type="button"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" title="Tactile Audio Feedback" type="button"><span class="material-symbols-outlined text-[20px]">volume_up</span></button><button class="flex items-center gap-space-xs px-space-sm py-1.5 border border-outline-variant text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-title-scoreboard text-label-badge uppercase rounded" type="button"><span class="material-symbols-outlined text-[16px]">download</span>Export JSON</button><button class="flex items-center gap-space-xs px-space-md py-2 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wide hover:brightness-110 active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_#000000] transition-all rounded-none" type="button"><span class="material-symbols-outlined text-[20px]">add</span>+ Plan Event</button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-background min-h-screen px-gutter-desktop py-space-xl"><div class="flex flex-col w-full gap-space-lg">
+<!-- TOP HEADER BANNER (Championship Scoreboard Strip) -->
+<div class="relative bg-surface-container-lowest p-space-lg shadow-xl overflow-hidden">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md relative z-10">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-badge text-label-badge px-space-sm py-0.5 bg-primary-container text-on-primary-container font-bold uppercase tracking-widest shadow-[2px_2px_0px_#000000]">
+            MISSION INTAKE // 004-REV
+          </span>
+<span class="text-tertiary font-title-scoreboard text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">bolt</span> CALIBRATION ACTIVE
+          </span>
+<span class="font-label-badge text-label-badge px-space-xs py-0.5 bg-surface-container-highest text-secondary uppercase">
+            REGIONAL DIV. 01
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg uppercase text-on-surface tracking-wider leading-none mt-space-xs">
+          CALIBRATE EVENT PLAYBOOK
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Configure financial ceiling, headcount roster, spatial atmospheric tone, and gameday execution parameters. Built for relentless precision.
+        </p>
+</div>
+<!-- Quick T-Minus Live Tag -->
+<div class="bg-surface-container p-space-sm flex items-center gap-space-md self-start lg:self-auto shadow-[3px_3px_0px_#000000]">
+<div class="w-10 h-10 bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm text-headline-sm font-bold">
+          42
+        </div>
+<div class="flex flex-col">
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase tracking-wider">PROJECTED GAMEDAY</span>
+<span class="font-title-scoreboard text-body-sm font-bold text-on-surface uppercase" id="headerTMinus">DEC 02, 2026 // T-MINUS 42D</span>
+</div>
+</div>
+</div>
+<!-- Decorative background slash marks and ghost watermarks -->
+<div class="absolute right-[-20px] top-[-30px] opacity-10 pointer-events-none select-none font-headline-lg text-[160px] text-primary-container uppercase">
+      PLAY
+    </div>
+</div>
+<!-- MAIN 2-COLUMN TACTICAL LAYOUT -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: PRIMARY INTAKE FORM (8 Cols on Desktop ~ 65%) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- SECTION 1: EVENT TITLE & ARCHETYPE PILLS -->
+<div class="bg-surface-container p-space-lg shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary-container">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-title-scoreboard text-body-sm uppercase font-bold text-on-surface tracking-wider">01 // EVENT IDENTITY &amp; CALLSIGN</span>
+</div>
+<span class="font-label-badge text-[11px] text-secondary font-bold uppercase tracking-widest bg-surface-container-highest px-space-xs py-0.5">MANDATORY SPEC</span>
+</div>
+<!-- Celebration Title Input -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-title-scoreboard text-label-badge uppercase tracking-wider text-on-surface-variant flex items-center gap-1">
+            CELEBRATION TITLE <span class="text-primary-container font-bold">*</span>
+</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest text-on-surface font-title-scoreboard text-body-lg px-space-md py-space-sm rounded-none focus:outline-none focus:bg-surface-container-high transition-colors" id="eventTitleInput" placeholder="e.g., Sophia &amp; Liam's Golden Wedding" type="text" value="Sophia &amp; Liam's Golden 50th Championship Gala"/>
+<div class="absolute right-3 top-3.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+</div>
+</div>
+</div>
+<!-- Event Type Archetype Grid (Championship Badges) -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-title-scoreboard text-label-badge uppercase tracking-wider text-on-surface-variant">
+            CELEBRATION ARCHETYPE
+          </label>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-space-xs" id="archetypePills">
+<button class="archetype-btn p-space-sm text-left flex flex-col justify-between h-20 transition-all bg-primary-container text-on-primary-container shadow-[2px_2px_0px_#000000]" data-archetype="wedding" type="button">
+<span class="font-label-badge text-[10px] uppercase font-bold">TYPE // 01</span>
+<span class="font-title-scoreboard text-body-sm font-bold uppercase leading-tight">Golden Wedding</span>
+</button>
+<button class="archetype-btn p-space-sm text-left flex flex-col justify-between h-20 transition-all bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest" data-archetype="summit" type="button">
+<span class="font-label-badge text-[10px] uppercase font-bold">TYPE // 02</span>
+<span class="font-title-scoreboard text-body-sm font-bold uppercase leading-tight">Varsity Tech Summit</span>
+</button>
+<button class="archetype-btn p-space-sm text-left flex flex-col justify-between h-20 transition-all bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest" data-archetype="gala" type="button">
+<span class="font-label-badge text-[10px] uppercase font-bold">TYPE // 03</span>
+<span class="font-title-scoreboard text-body-sm font-bold uppercase leading-tight">Championship Gala</span>
+</button>
+<button class="archetype-btn p-space-sm text-left flex flex-col justify-between h-20 transition-all bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest" data-archetype="banquet" type="button">
+<span class="font-label-badge text-[10px] uppercase font-bold">TYPE // 04</span>
+<span class="font-title-scoreboard text-body-sm font-bold uppercase leading-tight">Athletic Banquet</span>
+</button>
+<button class="archetype-btn p-space-sm text-left flex flex-col justify-between h-20 transition-all bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest" data-archetype="community" type="button">
+<span class="font-label-badge text-[10px] uppercase font-bold">TYPE // 05</span>
+<span class="font-title-scoreboard text-body-sm font-bold uppercase leading-tight">Community Assembly</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SECTION 2: NUMERICAL CALIBRATION MATRIX (Budget, Headcount, Date, Venue) -->
+<div class="bg-surface-container p-space-lg shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary-container">
+<span class="material-symbols-outlined text-[18px]">sports_score</span>
+<span class="font-title-scoreboard text-body-sm uppercase font-bold text-on-surface tracking-wider">02 // FINANCIAL CEILING &amp; FIELD ROSTER</span>
+</div>
+<span class="font-label-badge text-[11px] text-tertiary font-bold uppercase tracking-widest bg-surface-container-highest px-space-xs py-0.5">DYNAMIC CALC</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Target Spend Cap ($USD) -->
+<div class="bg-surface-container-low p-space-md flex flex-col gap-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-title-scoreboard text-label-badge uppercase tracking-wider text-on-surface-variant">
+                TARGET BUDGET CAP ($USD)
+              </label>
+<span class="font-label-badge text-[10px] text-primary uppercase font-bold">HARD LOCK</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-primary-container font-bold">$</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm px-space-sm py-1 rounded-none focus:outline-none text-left tracking-wider" id="budgetInput" step="5000" type="number" value="75000"/>
+</div>
+<div class="flex gap-space-xs mt-space-xs">
+<button class="px-space-sm py-1 bg-surface-container-high text-on-surface font-title-scoreboard text-body-sm hover:bg-surface-bright text-xs" onclick="adjustBudget(5000)" type="button">+ $5K</button>
+<button class="px-space-sm py-1 bg-surface-container-high text-on-surface font-title-scoreboard text-body-sm hover:bg-surface-bright text-xs" onclick="adjustBudget(20000)" type="button">+ $20K</button>
+<button class="px-space-sm py-1 bg-surface-container-high text-on-surface-variant font-title-scoreboard text-body-sm hover:bg-surface-bright text-xs" onclick="adjustBudget(-10000)" type="button">- $10K</button>
+</div>
+</div>
+<!-- Target Headcount -->
+<div class="bg-surface-container-low p-space-md flex flex-col gap-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-title-scoreboard text-label-badge uppercase tracking-wider text-on-surface-variant">
+                FIELD HEADCOUNT (GUESTS)
+              </label>
+<span class="font-label-badge text-[10px] text-tertiary uppercase font-bold">ROSTER CAPACITY</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[24px]">groups</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-headline-sm text-headline-sm px-space-sm py-1 rounded-none focus:outline-none text-left tracking-wider" id="headcountInput" step="5" type="number" value="135"/>
+</div>
+<div class="flex gap-space-xs mt-space-xs">
+<button class="px-space-sm py-1 bg-surface-container-high text-on-surface font-title-scoreboard text-body-sm hover:bg-surface-bright text-xs" onclick="adjustHeadcount(10)" type="button">+ 10 Pax</button>
+<button class="px-space-sm py-1 bg-surface-container-high text-on-surface font-title-scoreboard text-body-sm hover:bg-surface-bright text-xs" onclick="adjustHeadcount(50)" type="button">+ 50 Pax</button>
+<button class="px-space-sm py-1 bg-surface-container-high text-on-surface-variant font-title-scoreboard text-body-sm hover:bg-surface-bright text-xs" onclick="adjustHeadcount(-15)" type="button">- 15 Pax</button>
+</div>
+</div>
+<!-- Event Date & T-Minus Preview -->
+<div class="bg-surface-container-low p-space-md flex flex-col gap-space-xs">
+<label class="font-title-scoreboard text-label-badge uppercase tracking-wider text-on-surface-variant flex justify-between items-center">
+<span>TARGET CALENDAR DATE</span>
+<span class="text-primary-container font-bold">DEC 02, 2026</span>
+</label>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">calendar_today</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-title-scoreboard text-body-md px-space-sm py-space-xs rounded-none focus:outline-none" id="eventDateInput" type="date" value="2026-12-02"/>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+              Auto-calibrated countdown lock is set for Q4 prime season.
+            </p>
+</div>
+<!-- City & Staging Venue -->
+<div class="bg-surface-container-low p-space-md flex flex-col gap-space-xs">
+<label class="font-title-scoreboard text-label-badge uppercase tracking-wider text-on-surface-variant flex justify-between items-center">
+<span>STAGING ARENA / LOCATION</span>
+<span class="text-tertiary font-bold">MUMBAI HQ</span>
+</label>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">location_on</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-title-scoreboard text-body-md px-space-sm py-space-xs rounded-none focus:outline-none" id="venueInput" type="text" value="Grand Glasshouse Ballroom, Mumbai Harbour"/>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant mt-1">Indoor footprint: 8,400 sq.ft | High clearance</p>
+</div>
+</div>
+</div>
+<!-- SECTION 3: ATMOSPHERIC ARCHETYPE (Vintage Aesthetic Cards) -->
+<div class="bg-surface-container p-space-lg shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary-container">
+<span class="material-symbols-outlined text-[18px]">palette</span>
+<span class="font-title-scoreboard text-body-sm uppercase font-bold text-on-surface tracking-wider">03 // ATMOSPHERIC MOOD &amp; ARENA VIBE</span>
+</div>
+<span class="font-label-badge text-[11px] text-secondary font-bold uppercase tracking-widest bg-surface-container-highest px-space-xs py-0.5">ACOUSTIC &amp; LIGHTING</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-space-sm" id="vibeCards">
+<!-- Card 1: Championship Arena (Selected) -->
+<div class="vibe-card p-space-md cursor-pointer transition-all bg-primary-container text-on-primary-container shadow-[3px_3px_0px_#000000] flex flex-col justify-between h-44" data-vibe="championship">
+<div class="flex justify-between items-start">
+<span class="font-label-badge text-[10px] uppercase font-bold">VIBE // 01</span>
+<span class="material-symbols-outlined text-[18px]">military_tech</span>
+</div>
+<div class="flex flex-col">
+<div class="font-title-scoreboard text-body-lg font-bold uppercase leading-tight mb-1">CHAMPIONSHIP ARENA</div>
+<p class="font-body-sm text-[12px] opacity-90 leading-snug">High voltage, bold spotlighting, dramatic fanfare entrances, dynamic scoreboard displays.</p>
+</div>
+<div class="font-label-badge text-[10px] uppercase font-bold mt-2 tracking-widest text-on-primary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> ACTIVE CHOICE
+            </div>
+</div>
+<!-- Card 2: Minimalist Slate -->
+<div class="vibe-card p-space-md cursor-pointer transition-all bg-surface-container-low text-on-surface hover:bg-surface-container-high flex flex-col justify-between h-44" data-vibe="minimalist">
+<div class="flex justify-between items-start text-on-surface-variant">
+<span class="font-label-badge text-[10px] uppercase font-bold">VIBE // 02</span>
+<span class="material-symbols-outlined text-[18px]">architecture</span>
+</div>
+<div class="flex flex-col">
+<div class="font-title-scoreboard text-body-lg font-bold uppercase leading-tight mb-1 text-on-surface">MINIMALIST SLATE</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant leading-snug">Monochrome staging, restrained architectural floral blocks, pure acoustics, gallery elegance.</p>
+</div>
+<div class="font-label-badge text-[10px] uppercase font-bold mt-2 tracking-widest text-on-surface-variant">
+              SELECT PROFILE
+            </div>
+</div>
+<!-- Card 3: Industrial Foundry -->
+<div class="vibe-card p-space-md cursor-pointer transition-all bg-surface-container-low text-on-surface hover:bg-surface-container-high flex flex-col justify-between h-44" data-vibe="industrial">
+<div class="flex justify-between items-start text-on-surface-variant">
+<span class="font-label-badge text-[10px] uppercase font-bold">VIBE // 03</span>
+<span class="material-symbols-outlined text-[18px]">factory</span>
+</div>
+<div class="flex flex-col">
+<div class="font-title-scoreboard text-body-lg font-bold uppercase leading-tight mb-1 text-on-surface">INDUSTRIAL FOUNDRY</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant leading-snug">Raw steel accents, exposed truss lighting, artisanal mixology bars, deep bass resonance.</p>
+</div>
+<div class="font-label-badge text-[10px] uppercase font-bold mt-2 tracking-widest text-on-surface-variant">
+              SELECT PROFILE
+            </div>
+</div>
+<!-- Card 4: Boho Twilight Luxe -->
+<div class="vibe-card p-space-md cursor-pointer transition-all bg-surface-container-low text-on-surface hover:bg-surface-container-high flex flex-col justify-between h-44" data-vibe="boho">
+<div class="flex justify-between items-start text-on-surface-variant">
+<span class="font-label-badge text-[10px] uppercase font-bold">VIBE // 04</span>
+<span class="material-symbols-outlined text-[18px]">wb_twilight</span>
+</div>
+<div class="flex flex-col">
+<div class="font-title-scoreboard text-body-lg font-bold uppercase leading-tight mb-1 text-on-surface">BOHO TWILIGHT LUXE</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant leading-snug">Warm amber candle grids, hanging botanical arches, string quartets, relaxed heritage dining.</p>
+</div>
+<div class="font-label-badge text-[10px] uppercase font-bold mt-2 tracking-widest text-on-surface-variant">
+              SELECT PROFILE
+            </div>
+</div>
+</div>
+</div>
+<!-- SECTION 4: STRATEGIC TENETS & SPECIAL DIRECTIVES -->
+<div class="bg-surface-container p-space-lg shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary-container">
+<span class="material-symbols-outlined text-[18px]">assignment_turned_in</span>
+<span class="font-title-scoreboard text-body-sm uppercase font-bold text-on-surface tracking-wider">04 // STRATEGIC DIRECTIVES &amp; GAMEDAY RULES</span>
+</div>
+<span class="font-label-badge text-[11px] text-on-surface-variant font-bold uppercase tracking-widest">TACTICAL NOTES</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-title-scoreboard text-label-badge uppercase tracking-wider text-on-surface-variant">
+            SPECIAL DIRECTIVES &amp; EXECUTION CONSTRAINTS
+          </label>
+<textarea class="w-full bg-surface-container-lowest text-on-surface font-body-md text-body-md p-space-md rounded-none focus:outline-none focus:bg-surface-container-high transition-colors leading-relaxed" id="directivesInput" placeholder="Specify dietary restrictions (e.g. 18% vegan), sound decibel curfew (11:00 PM), VIP arrival motorcade route, acoustic stage clearance, and live recording rig constraints..." rows="4">1. High-priority champagne toast synchronized with 50-year retrospective archival film.
+2. 22 guests require strict gluten-free/plant-based culinary pairings.
+3. Audio level curfew: 92 dB limit strictly enforced after 22:30 IST by venue bylaws.
+4. Professional 4-camera livestream rig with satellite backup link in staging room B.</textarea>
+</div>
+<!-- Checkbox Directives Strip -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm pt-space-xs">
+<label class="flex items-center gap-space-sm bg-surface-container-low p-space-sm cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-4 h-4 rounded-none accent-primary-container" type="checkbox"/>
+<span class="font-title-scoreboard text-[12px] uppercase font-bold text-on-surface">Lock In Hard Cap Buffer</span>
+</label>
+<label class="flex items-center gap-space-sm bg-surface-container-low p-space-sm cursor-pointer hover:bg-surface-container-high transition-colors">
+<input checked="" class="w-4 h-4 rounded-none accent-primary-container" type="checkbox"/>
+<span class="font-title-scoreboard text-[12px] uppercase font-bold text-on-surface">Automate Vendor RFPs</span>
+</label>
+<label class="flex items-center gap-space-sm bg-surface-container-low p-space-sm cursor-pointer hover:bg-surface-container-high transition-colors">
+<input class="w-4 h-4 rounded-none accent-primary-container" type="checkbox"/>
+<span class="font-title-scoreboard text-[12px] uppercase font-bold text-on-surface">Real-Time Mobile Check-in</span>
+</label>
+</div>
+</div>
+<!-- FORM ACTION BUTTONS (Varsity Athletic Buttons) -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-md pt-space-sm pb-space-lg">
+<button class="flex-1 px-space-lg py-space-md bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wider text-center shadow-[4px_4px_0px_#000000] hover:brightness-110 active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center justify-center gap-space-sm" id="btnGeneratePlaybook" type="button">
+<span class="material-symbols-outlined text-[24px]">flag</span>
+          ★ GENERATE CHAMPIONSHIP PLAYBOOK
+        </button>
+<button class="px-space-md py-space-md bg-surface-container-high text-on-surface font-title-scoreboard text-body-sm font-bold uppercase tracking-wider hover:bg-surface-bright transition-colors flex items-center justify-center gap-space-xs shadow-[2px_2px_0px_#000000]" id="btnSampleBlueprint" type="button">
+<span class="material-symbols-outlined text-[18px]">history_edu</span>
+          LOAD ATHLETIC PRESET
+        </button>
+<button class="px-space-md py-space-md bg-surface-container-lowest text-on-surface-variant font-title-scoreboard text-body-sm uppercase hover:text-error transition-colors flex items-center justify-center gap-space-xs" id="btnResetSpec" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+          RESET SPEC
+        </button>
+</div>
+</div>
+<!-- RIGHT COLUMN: LIVE CALIBRATION RADAR & STATISTICAL PREVIEW (4 Cols on Desktop ~ 35%) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md sticky top-20">
+<!-- CARD 1: BLUEPRINT READINESS METER (Scoreboard Widget) -->
+<div class="bg-surface-container-lowest p-space-lg shadow-xl flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-widest text-primary-container font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+            RADAR TELEMETRY
+          </span>
+<span class="font-title-scoreboard text-body-sm text-tertiary font-bold uppercase">STATUS: DRAFTING</span>
+</div>
+<div class="flex items-baseline justify-between mt-space-xs">
+<div class="flex flex-col">
+<span class="font-label-badge text-[11px] uppercase tracking-wider text-on-surface-variant">SPEC READINESS SCORE</span>
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight" id="readinessScoreText">84%</span>
+</div>
+<div class="text-right">
+<span class="font-label-badge text-[10px] text-tertiary uppercase font-bold">READY TO DEPLOY</span>
+<div class="font-title-scoreboard text-body-sm font-bold text-on-surface uppercase">GRADE: A+ VARSITY</div>
+</div>
+</div>
+<!-- Solid Progress Track -->
+<div class="w-full bg-surface-container h-3.5 flex">
+<div class="bg-primary-container h-full transition-all duration-500 shadow-[1px_0px_0px_#000000]" id="readinessBar" style="width: 84%;"></div>
+</div>
+<!-- Readiness Checklist -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between font-title-scoreboard text-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_box</span> Date &amp; Venue Anchor
+            </span>
+<span class="text-primary font-bold">VERIFIED</span>
+</div>
+<div class="flex items-center justify-between font-title-scoreboard text-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_box</span> Budget Allocation Model
+            </span>
+<span class="text-primary font-bold">BALANCED</span>
+</div>
+<div class="flex items-center justify-between font-title-scoreboard text-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[16px]">check_box</span> Headcount Roster Caps
+            </span>
+<span class="text-primary font-bold">LOCKED</span>
+</div>
+<div class="flex items-center justify-between font-title-scoreboard text-body-sm">
+<span class="text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline text-[16px]">check_box_outline_blank</span> VIP Arrival Protocol Matrix
+            </span>
+<span class="text-outline uppercase text-[11px] font-bold">AWAITING</span>
+</div>
+</div>
+</div>
+<!-- CARD 2: REAL-TIME TACTICAL ESTIMATOR (Scoreboard Metric Tiles) -->
+<div class="bg-surface-container p-space-lg shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary-container">
+<span class="material-symbols-outlined text-[18px]">calculate</span>
+<span class="font-title-scoreboard text-body-sm uppercase font-bold text-on-surface tracking-wider">TACTICAL LOGISTICS ESTIMATE</span>
+</div>
+<span class="font-label-badge text-[10px] text-tertiary uppercase font-bold">REAL-TIME MATH</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Stat 1: Banquet Tables -->
+<div class="bg-surface-container-low p-space-md flex flex-col justify-between">
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase font-bold">BANQUET TABLES</span>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-headline-md text-headline-md font-bold text-on-surface" id="tablesStat">17</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant uppercase">ROUNDS</span>
+</div>
+<span class="font-body-sm text-[11px] text-secondary">Based on 8 pax per table</span>
+</div>
+<!-- Stat 2: Beverage Servings -->
+<div class="bg-surface-container-low p-space-md flex flex-col justify-between">
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase font-bold">BEVERAGE RUN</span>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-headline-md text-headline-md font-bold text-primary-container" id="drinksStat">405</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant uppercase">UNITS</span>
+</div>
+<span class="font-body-sm text-[11px] text-secondary">Avg 3 craft pours / guest</span>
+</div>
+<!-- Stat 3: Catering Buffer -->
+<div class="bg-surface-container-low p-space-md flex flex-col justify-between">
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase font-bold">PLATED PORTIONS</span>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-headline-md text-headline-md font-bold text-on-surface" id="portionsStat">156</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant uppercase">PLATES</span>
+</div>
+<span class="font-body-sm text-[11px] text-secondary">+15% tactical overage buffer</span>
+</div>
+<!-- Stat 4: Accessible & Staff Seats -->
+<div class="bg-surface-container-low p-space-md flex flex-col justify-between">
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase font-bold">ACCESSIBLE SEATS</span>
+<div class="flex items-baseline gap-1 my-1">
+<span class="font-headline-md text-headline-md font-bold text-tertiary" id="accessibleStat">14</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant uppercase">TIER 1</span>
+</div>
+<span class="font-body-sm text-[11px] text-secondary">10% reserved priority</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-sm flex items-center justify-between text-on-surface-variant font-title-scoreboard text-body-sm">
+<span class="uppercase text-[11px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary-container">tune</span>
+            Cost per Attendee:
+          </span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="costPerHead">$555.55</span>
+</div>
+</div>
+<!-- CARD 3: TARGET CAP ALLOCATION BREAKDOWN (Color Blocking & SVG Bar) -->
+<div class="bg-surface-container p-space-lg shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary-container">
+<span class="material-symbols-outlined text-[18px]">pie_chart</span>
+<span class="font-title-scoreboard text-body-sm uppercase font-bold text-on-surface tracking-wider">CAP SPLIT DRILLDOWN</span>
+</div>
+<span class="font-title-scoreboard text-body-sm text-on-surface font-bold" id="budgetTotalPreview">$75,000 TOTAL</span>
+</div>
+<!-- Visual Multi-segment Bar -->
+<div class="w-full h-4 flex overflow-hidden shadow-inner">
+<div class="bg-primary-container h-full" style="width: 40%;" title="Venue &amp; Staging: 40%"></div>
+<div class="bg-secondary-container h-full" style="width: 28%;" title="Gourmet Catering: 28%"></div>
+<div class="bg-tertiary-container h-full" style="width: 15%;" title="Cinematic Media: 15%"></div>
+<div class="bg-surface-bright h-full" style="width: 10%;" title="Sound &amp; Staging: 10%"></div>
+<div class="bg-outline h-full" style="width: 7%;" title="Reserve Buffer: 7%"></div>
+</div>
+<!-- Breakdown List -->
+<div class="flex flex-col gap-space-xs font-title-scoreboard text-body-sm">
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-primary-container"></span>
+<span class="text-on-surface uppercase text-xs">Venue &amp; Atmospheric Staging</span>
+</div>
+<span class="text-on-surface font-bold text-xs" id="splitVenue">$30,000 (40%)</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-secondary-container"></span>
+<span class="text-on-surface uppercase text-xs">Gourmet Catering &amp; Beverage</span>
+</div>
+<span class="text-on-surface font-bold text-xs" id="splitCatering">$21,000 (28%)</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-tertiary-container"></span>
+<span class="text-on-surface uppercase text-xs">Cinematic Media &amp; Archival</span>
+</div>
+<span class="text-on-surface font-bold text-xs" id="splitMedia">$11,250 (15%)</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-surface-bright"></span>
+<span class="text-on-surface uppercase text-xs">Sound Rig &amp; Live Lighting</span>
+</div>
+<span class="text-on-surface font-bold text-xs" id="splitSound">$7,500 (10%)</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-outline"></span>
+<span class="text-on-surface uppercase text-xs">Tactical Contingency Reserve</span>
+</div>
+<span class="text-primary font-bold text-xs" id="splitBuffer">$5,250 (7%)</span>
+</div>
+</div>
+<!-- Commemorative Ticket Bottom Stamp -->
+<div class="mt-space-xs p-space-sm bg-surface-container-highest flex items-center justify-between border-t-2 border-dashed border-outline-variant/40">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-primary-container">airplane_ticket</span>
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">TICKET REF: #PLN-8849-GLD</span>
+</div>
+<span class="font-label-badge text-[10px] text-tertiary uppercase font-bold">CERTIFIED SPEC</span>
+</div>
+</div>
+</div>
+</div>
+<!-- EMBEDDED MODAL / NOTIFICATION TOAST SIMULATION FOR GENERATION -->
+<div class="fixed bottom-8 right-8 bg-surface-container-lowest text-on-surface p-space-md shadow-2xl z-50 flex items-center gap-space-md transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none" id="playbookToast">
+<div class="w-10 h-10 bg-primary-container text-on-primary-container flex items-center justify-center font-headline-sm">
+      ★
+    </div>
+<div class="flex flex-col">
+<div class="font-title-scoreboard text-body-sm font-bold uppercase text-on-surface">PLAYBOOK GENERATED!</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant">Sophia &amp; Liam's Golden Wedding blueprint is calibrated and saved.</p>
+</div>
+</div>
+</div>
+<script>
+  // Tactical Math & Interactivity Logic
+  const budgetInput = document.getElementById('budgetInput');
+  const headcountInput = document.getElementById('headcountInput');
+  const eventDateInput = document.getElementById('eventDateInput');
+  const headerTMinus = document.getElementById('headerTMinus');
+  
+  // Stats Elements
+  const tablesStat = document.getElementById('tablesStat');
+  const drinksStat = document.getElementById('drinksStat');
+  const portionsStat = document.getElementById('portionsStat');
+  const accessibleStat = document.getElementById('accessibleStat');
+  const costPerHead = document.getElementById('costPerHead');
+  
+  // Budget breakdown displays
+  const budgetTotalPreview = document.getElementById('budgetTotalPreview');
+  const splitVenue = document.getElementById('splitVenue');
+  const splitCatering = document.getElementById('splitCatering');
+  const splitMedia = document.getElementById('splitMedia');
+  const splitSound = document.getElementById('splitSound');
+  const splitBuffer = document.getElementById('splitBuffer');
+
+  function updateCalculations() {
+    const budget = parseFloat(budgetInput.value) || 0;
+    const headcount = parseInt(headcountInput.value) || 0;
+
+    // Headcount derived calculations
+    const tables = Math.ceil(headcount / 8);
+    const drinks = headcount * 3;
+    const portions = Math.ceil(headcount * 1.15);
+    const accessible = Math.ceil(headcount * 0.10);
+    const costGuest = headcount > 0 ? (budget / headcount).toFixed(2) : '0.00';
+
+    tablesStat.textContent = tables;
+    drinksStat.textContent = drinks;
+    portionsStat.textContent = portions;
+    accessibleStat.textContent = accessible;
+    costPerHead.textContent = '$' + costGuest;
+
+    // Budget split updates (40%, 28%, 15%, 10%, 7%)
+    budgetTotalPreview.textContent = '$' + budget.toLocaleString() + ' TOTAL';
+    splitVenue.textContent = '$' + Math.round(budget * 0.40).toLocaleString() + ' (40%)';
+    splitCatering.textContent = '$' + Math.round(budget * 0.28).toLocaleString() + ' (28%)';
+    splitMedia.textContent = '$' + Math.round(budget * 0.15).toLocaleString() + ' (15%)';
+    splitSound.textContent = '$' + Math.round(budget * 0.10).toLocaleString() + ' (10%)';
+    splitBuffer.textContent = '$' + Math.round(budget * 0.07).toLocaleString() + ' (7%)';
+  }
+
+  function adjustBudget(amount) {
+    let current = parseFloat(budgetInput.value) || 0;
+    current = Math.max(5000, current + amount);
+    budgetInput.value = current;
+    updateCalculations();
+  }
+
+  function adjustHeadcount(amount) {
+    let current = parseInt(headcountInput.value) || 0;
+    current = Math.max(10, current + amount);
+    headcountInput.value = current;
+    updateCalculations();
+  }
+
+  // Update on user input
+  budgetInput.addEventListener('input', updateCalculations);
+  headcountInput.addEventListener('input', updateCalculations);
+
+  // Date countdown listener
+  eventDateInput.addEventListener('change', function() {
+    const selectedDate = new Date(this.value);
+    const today = new Date();
+    const diffTime = selectedDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (!isNaN(diffDays)) {
+      const options = { month: 'short', day: '2-digit', year: 'numeric' };
+      const formatted = selectedDate.toLocaleDateString('en-US', options).toUpperCase();
+      headerTMinus.textContent = `${formatted} // T-MINUS ${diffDays > 0 ? diffDays : 0}D`;
+    }
+  });
+
+  // Archetype Pills selection
+  const archetypeButtons = document.querySelectorAll('.archetype-btn');
+  archetypeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      archetypeButtons.forEach(b => {
+        b.className = 'archetype-btn p-space-sm text-left flex flex-col justify-between h-20 transition-all bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest';
+      });
+      btn.className = 'archetype-btn p-space-sm text-left flex flex-col justify-between h-20 transition-all bg-primary-container text-on-primary-container shadow-[2px_2px_0px_#000000]';
+    });
+  });
+
+  // Vibe Cards selection
+  const vibeCards = document.querySelectorAll('.vibe-card');
+  vibeCards.forEach(card => {
+    card.addEventListener('click', () => {
+      vibeCards.forEach(c => {
+        c.className = 'vibe-card p-space-md cursor-pointer transition-all bg-surface-container-low text-on-surface hover:bg-surface-container-high flex flex-col justify-between h-44';
+        const indicator = c.querySelector('.tracking-widest:last-child');
+        if (indicator) {
+          indicator.textContent = 'SELECT PROFILE';
+          indicator.className = 'font-label-badge text-[10px] uppercase font-bold mt-2 tracking-widest text-on-surface-variant';
+        }
+      });
+      card.className = 'vibe-card p-space-md cursor-pointer transition-all bg-primary-container text-on-primary-container shadow-[3px_3px_0px_#000000] flex flex-col justify-between h-44';
+      const activeIndicator = card.querySelector('.tracking-widest:last-child');
+      if (activeIndicator) {
+        activeIndicator.innerHTML = '<span class="material-symbols-outlined text-[14px]">check_circle</span> ACTIVE CHOICE';
+        activeIndicator.className = 'font-label-badge text-[10px] uppercase font-bold mt-2 tracking-widest text-on-primary-container flex items-center gap-1';
+      }
+    });
+  });
+
+  // Generate Playbook Action (Displays Notification Toast)
+  const btnGenerate = document.getElementById('btnGeneratePlaybook');
+  const toast = document.getElementById('playbookToast');
+  btnGenerate.addEventListener('click', () => {
+    toast.classList.remove('translate-y-32', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-32', 'opacity-0');
+    }, 3800);
+  });
+
+  // Load Athletic Preset Button
+  document.getElementById('btnSampleBlueprint').addEventListener('click', () => {
+    document.getElementById('eventTitleInput').value = "Varsity Tech Championship Invitational";
+    budgetInput.value = 120000;
+    headcountInput.value = 280;
+    document.getElementById('venueInput').value = "National Fieldhouse Arena, Sector 4";
+    updateCalculations();
+  });
+
+  // Reset Button
+  document.getElementById('btnResetSpec').addEventListener('click', () => {
+    document.getElementById('eventTitleInput').value = "Sophia & Liam's Golden 50th Championship Gala";
+    budgetInput.value = 75000;
+    headcountInput.value = 135;
+    document.getElementById('venueInput').value = "Grand Glasshouse Ballroom, Mumbai Harbour";
+    updateCalculations();
+  });
+
+  // Initialize
+  updateCalculations();
+</script></main></div></body></html>

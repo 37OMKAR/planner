@@ -1,0 +1,68 @@
+[
+  {
+    "index": 1,
+    "id": "a0dd82cf58f04fe28122285e3408c70a",
+    "title": "Eventora.OS \u2014 Championship Athletic Planner",
+    "deviceType": "DESKTOP",
+    "dimensions": "2560x3426",
+    "htmlFile": "screen_1_Eventora_OS___Championship_Athletic_Plan_a0dd82cf.html",
+    "htmlBytes": 74570,
+    "imageFile": "screen_1_Eventora_OS___Championship_Athletic_Plan_a0dd82cf.png",
+    "imageBytes": 103333
+  },
+  {
+    "index": 2,
+    "id": "eb58a96e16ad4cbbb2b168bcb26578ec",
+    "title": "Eventora.OS \u2014 Gemini Studio",
+    "deviceType": "DESKTOP",
+    "dimensions": "2560x3486",
+    "htmlFile": "screen_2_Eventora_OS___Gemini_Studio_eb58a96e.html",
+    "htmlBytes": 41190,
+    "imageFile": "screen_2_Eventora_OS___Gemini_Studio_eb58a96e.png",
+    "imageBytes": 141252
+  },
+  {
+    "index": 3,
+    "id": "aba1f52e4f574974a31e74518874dc38",
+    "title": "Eventora.OS \u2014 Timeline & Tasks",
+    "deviceType": "DESKTOP",
+    "dimensions": "2560x4080",
+    "htmlFile": "screen_3_Eventora_OS___Timeline___Tasks_aba1f52e.html",
+    "htmlBytes": 43010,
+    "imageFile": "screen_3_Eventora_OS___Timeline___Tasks_aba1f52e.png",
+    "imageBytes": 92868
+  },
+  {
+    "index": 4,
+    "id": "5e1b5b267dd74cbab9ad3fff702fa308",
+    "title": "Eventora.OS \u2014 Budget & Cap",
+    "deviceType": "DESKTOP",
+    "dimensions": "2560x3554",
+    "htmlFile": "screen_4_Eventora_OS___Budget___Cap_5e1b5b26.html",
+    "htmlBytes": 37818,
+    "imageFile": "screen_4_Eventora_OS___Budget___Cap_5e1b5b26.png",
+    "imageBytes": 114466
+  },
+  {
+    "index": 5,
+    "id": "094c25740fd64789bc85dd6ab858a258",
+    "title": "Eventora.OS \u2014 Create Plan",
+    "deviceType": "DESKTOP",
+    "dimensions": "2560x3420",
+    "htmlFile": "screen_5_Eventora_OS___Create_Plan_094c2574.html",
+    "htmlBytes": 49068,
+    "imageFile": "screen_5_Eventora_OS___Create_Plan_094c2574.png",
+    "imageBytes": 115727
+  },
+  {
+    "index": 6,
+    "id": "c640f21920d3449fbb4da3744083f40d",
+    "title": "Eventora \u2014 AI Event Planner Mobile App",
+    "deviceType": "MOBILE",
+    "dimensions": "780x1768",
+    "htmlFile": "screen_6_Eventora___AI_Event_Planner_Mobile_App_c640f219.html",
+    "htmlBytes": 49647,
+    "imageFile": "screen_6_Eventora___AI_Event_Planner_Mobile_App_c640f219.png",
+    "imageBytes": 63101
+  }
+]

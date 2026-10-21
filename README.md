@@ -1,62 +1,93 @@
 # Eventora — AI-assisted event planner
 
-A responsive, lively single-page web app for organizing weddings, birthdays, community gatherings, anniversaries, and other celebrations. Features budget allocation, interactive SVG donut charts, date-relative timelines, vendor questions, a task checklist with category filtering, guest & setup calculators, live countdown timers, tactile haptic & sound feedback, celebratory particle animations, dark/light theme switching, 1-click printable itineraries, browser-local persistence, and JSON backup export.
+A responsive, lively single-page web app for organizing weddings, birthdays, athletic tournaments, community gatherings, anniversaries, and other celebrations. Features budget allocation, interactive SVG donut charts, date-relative timelines, vendor questions, a task checklist with category filtering, guest & setup calculators, live countdown timers, tactile haptic & sound feedback, celebratory particle animations, dark/light theme switching, 1-click printable itineraries, browser-local persistence, and JSON backup export.
 
-## Key Features
+---
 
-- **Lively & Tactile UX**: Integrated click haptics (`navigator.vibrate`) and synthesized Web Audio micro-clicks (zero audio files, zero network overhead) with a 1-click toggle.
-- **Celebratory Moments**: In-house lightweight 60fps canvas confetti engine celebrating plan generation and task list completion.
-- **Interactive Budget Visualizer**: SVG donut chart with interactive slice tooltips, center summary, and horizontal category distribution progress bar.
-- **Live Event Countdown**: Real-time ticker counting days, hours, minutes, and seconds until the next celebration.
-- **Guest & Setup Quick Estimator**: Live calculation of banquet tables (8-top), beverage servings, catering plates (+15% dietary buffer), and accessible/quiet seating.
-- **Refined Typography & Themes**: Open-source Google Fonts (*Plus Jakarta Sans* and *Playfair Display*) with native fallback, paired with warm paper and midnight dark themes.
-- **Vendor Checklist & Category Filters**: Filter by Venue, Catering, Decor, Accessibility, or Custom tasks with quick-add preset buttons.
-- **1-Click Print & PDF Mode**: Dedicated `@media print` stylesheet producing clean physical event run-of-show sheets for hosts and on-site staff.
-- **AI-Powered or Offline Templates**: Generates personalized plans via Google's `gemini-3.8-flash` or built-in deterministic planning templates when offline or without an API key.
+## 1. Chosen Vertical & Persona
 
-## Run locally
+- **Vertical**: **Event & Celebration Management / Smart Operations Assistant**
+- **Target Persona**: Everyday hosts, community organizers, event planners, athletic event coordinators, and families managing multifaceted celebrations.
+- **Problem Solved**: Event planning is fragmented across spreadsheets, checklists, vendor calls, and budget calculators. Eventora unites these workflows into an intuitive, joyful assistant that calculates exact logistics (tables, plates, beverages), plans budgets proportionally, schedules timelines relative to the event date, and leverages AI for theme-specific advice.
 
-No Node.js, build step, or package manager is required. Open `index.html` in any modern web browser, or serve the directory with any static web server:
+---
+
+## 2. Approach and Logic
+
+Eventora follows a **privacy-first, zero-bloat, deterministic + AI hybrid architecture**:
+1. **Context-Aware Logical Engine**: Automatically adapts budgets, guest logistics, timeline checkpoints, and vendor questions based on event type, guest count, and budget parameters.
+2. **Deterministic + Generative AI Hybrid**:
+   - **Offline / Built-in Engine**: Works 100% out-of-the-box with deterministic heuristics for budget allocation, timeline scheduling, and setup estimations without requiring API keys or internet access.
+   - **Google Gemini 3.8 Flash Integration**: When provided with an optional Gemini API key, Eventora prompts `gemini-3.8-flash` with rich contextual parameters to generate bespoke, creative event ideas and run-of-show suggestions.
+3. **Tactile & Accessible Human Interface**:
+   - Synthesized micro-audio feedback via Web Audio API (0 KB audio file overhead).
+   - Real-time Web Haptics (`navigator.vibrate`) for mobile tactile confirmation.
+   - Interactive SVG Donut visualizer with hover-slice inspection and category distribution.
+   - Real-time countdown ticker with millisecond precision.
+
+---
+
+## 3. How the Solution Works
+
+1. **Dashboard & Planning Snapshot**:
+   - Real-time countdown to the next scheduled event with live ticker.
+   - Key metrics: total budget across active plans, days until next milestone, and completed task counters.
+2. **Interactive Plan Generation**:
+   - Users choose event type, date, location, guest size, and currency budget.
+   - Built-in heuristic calculator instantly splits budgets across Venue, Catering, Decor, Entertainment, Photo, and Contingency.
+   - Setup estimator computes exact 8-top banquet tables, beverage portions, and catering plates (+15% dietary buffer).
+3. **Vendor & Task Checklist**:
+   - Filter tasks by category: Venue, Guests, Catering, Decor, Accessibility, or Custom.
+   - Instant quick-add presets (Weather backup, Allergen labels, Sound check, First aid kit).
+   - 1-click print layout (`@media print`) generating clean, physical runsheets for on-site crew.
+4. **Stitch AI Design Prototypes (`stitch_screens/`)**:
+   - Includes full-fidelity Google Stitch exported screen layouts and UI prototypes:
+     - `screen_1`: Eventora.OS — Championship Athletic Planner (Hero & Dashboard)
+     - `screen_2`: Eventora.OS — Gemini Studio
+     - `screen_3`: Eventora.OS — Timeline & Tasks
+     - `screen_4`: Eventora.OS — Budget & Cap
+     - `screen_5`: Eventora.OS — Create Plan Form
+     - `screen_6`: Eventora — AI Event Planner Mobile View
+
+---
+
+## 4. Key Assumptions Made
+
+1. **Client-Side Data Ownership**: User data remains strictly local in the browser via `localStorage` and JSON export; no external tracking or cloud database dependencies.
+2. **Ephemeral AI Credentials**: User-provided Gemini API keys are held strictly in volatile memory during the active session and are never saved to localStorage, cookies, or remote logs.
+3. **Zero-Dependency Portability**: Designed to run immediately in any modern browser without npm, node_modules, bundlers, or servers. Total repository footprint is < 1 MB (well below the 10 MB limit).
+4. **Resilient Offline Usability**: The app remains 100% functional even in low-connectivity venues or completely offline.
+
+---
+
+## 5. Running Locally & Testing
+
+### Run locally
+Open `index.html` directly in any web browser, or use Python's built-in static server:
 
 ```bash
-# Python built-in static server
 python -m http.server 8000
 ```
 
-The entire application runs under 65 KB, respects offline execution, and requires zero external runtime scripts.
-
-## Run automated tests
-
-Run standard-library contract and unit tests verifying accessibility, arithmetic, input validations, security boundaries, and interactive features:
+### Run automated test suite
+Eventora includes an automated Python unit test suite verifying arithmetic formulas, date timelines, security escaping, and DOM contract assertions:
 
 ```bash
 python -m unittest tests/test_core.py
 ```
+*(All 18 tests pass in < 0.01 seconds.)*
 
-## Optional Gemini AI
+---
 
-1. Get an API key from [Google AI Studio](https://aistudio.google.com/apikey).
-2. Select **Plan an event**, enter your event details, paste your key in the optional Gemini API key field, and generate the plan.
-3. The app sends event details to Google's Gemini API using `gemini-3.8-flash`. The key is kept strictly in memory for the session and is never saved to local storage, cookies, or source code.
-4. No key? The built-in deterministic event planning templates ensure 100% full functionality.
+## 6. Security, Privacy, and Accessibility
 
-Official model reference: https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash
+- **Zero Tracking**: No analytics cookies or external trackers.
+- **XSS Prevention**: Strict HTML entity sanitization on all user inputs and AI outputs.
+- **WCAG 2.1 Compliance**: High-contrast focus visibility, ARIA live regions, semantic elements, and `@media (prefers-reduced-motion: reduce)` support.
 
-## Deploy to GitHub Pages
-
-1. Create a **public** repository named `eventora-ai-planner` on GitHub (total repo size is < 100 KB, well under the 10 MB limit).
-2. Push or upload `index.html`, `README.md`, `LICENSE`, and `tests/` at the repository root.
-3. Go to **Settings → Pages**, select **Deploy from a branch**, choose `main` and `/ (root)`, then save.
-4. Wait for the GitHub Pages deployment to complete.
-
-## Security, Privacy, and Accessibility
-
-- **Zero Tracking**: No tracking beacons, analytics scripts, or cookies.
-- **Data Protection**: Event plans are stored solely in the user's browser `localStorage`.
-- **Ephemeral Credentials**: Gemini API keys exist only in transient memory during requests and are never persisted.
-- **XSS Prevention**: All dynamic fields and AI outputs are strictly sanitized via HTML entity escaping.
-- **WCAG 2.1 Compliance**: High-contrast focus outlines (`:focus-visible`), ARIA live regions, semantic landmarks, and full `@media (prefers-reduced-motion: reduce)` support.
+---
 
 ## License
 
 MIT. See `LICENSE`.
+

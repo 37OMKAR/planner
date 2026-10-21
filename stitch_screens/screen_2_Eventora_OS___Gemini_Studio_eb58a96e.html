@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Space+Grotesk:wght@400;700&amp;family=Chivo:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-lowest":"#0f0e0c","secondary-fixed":"#dbe3f3","surface-tint":"#ffb59c","secondary-fixed-dim":"#bfc7d6","on-surface-variant":"#e5beb2","on-background":"#e7e1dd","surface":"#151311","primary":"#ffb59c","on-tertiary-fixed-variant":"#004883","on-primary":"#5c1900","secondary":"#bfc7d6","surface-bright":"#3b3936","on-error":"#690005","surface-container-high":"#2c2a27","secondary-container":"#3f4754","on-secondary-container":"#aeb5c5","on-tertiary-fixed":"#001c39","surface-container-highest":"#373432","error":"#ffb4ab","on-primary-fixed":"#390c00","on-secondary-fixed":"#141c27","background":"#151311","primary-fixed":"#ffdbcf","error-container":"#93000a","on-tertiary-container":"#002a51","on-surface":"#e7e1dd","on-primary-container":"#511500","outline-variant":"#5c4037","surface-container":"#211f1d","inverse-surface":"#e7e1dd","outline":"#ac897e","tertiary-fixed":"#d4e3ff","inverse-primary":"#aa3600","on-primary-fixed-variant":"#822700","tertiary":"#a4c9ff","on-secondary-fixed-variant":"#3f4754","primary-container":"#ff5708","surface-dim":"#151311","on-tertiary":"#00315d","primary-fixed-dim":"#ffb59c","on-secondary":"#29313d","surface-container-low":"#1d1b19","on-error-container":"#ffdad6","tertiary-fixed-dim":"#a4c9ff","tertiary-container":"#4d93e5","surface-variant":"#373432","inverse-on-surface":"#32302e"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin":"1rem","gutter":"1rem","margin-tablet":"2rem","space-md":"1rem","space-xs":"0.25rem","space-lg":"1.5rem","space-sm":"0.5rem","margin-desktop":"3rem","space-xl":"2.5rem","gutter-desktop":"1.5rem"},fontFamily:{"display-hero-mobile":["Anton"],"title-scoreboard":["Space Grotesk"],"body-lg":["Chivo"],"headline-sm":["Anton"],"body-sm":["Chivo"],"headline-lg":["Anton"],"headline-lg-mobile":["Anton"],"label-badge":["Space Grotesk"],"label-stat":["Anton"],"body-md":["Chivo"],"headline-md":["Anton"],"display-hero":["Anton"]},fontSize:{"display-hero-mobile":["48px",{lineHeight:"52px",letterSpacing:"0.04em",fontWeight:"400"}],"title-scoreboard":["20px",{lineHeight:"24px",letterSpacing:"0.08em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"headline-sm":["24px",{lineHeight:"28px",letterSpacing:"0.02em",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-lg":["48px",{lineHeight:"52px",letterSpacing:"0.02em",fontWeight:"400"}],"headline-lg-mobile":["32px",{lineHeight:"36px",letterSpacing:"0.02em",fontWeight:"400"}],"label-badge":["12px",{lineHeight:"16px",letterSpacing:"0.12em",fontWeight:"700"}],"label-stat":["36px",{lineHeight:"40px",letterSpacing:"0.02em",fontWeight:"400"}],"body-md":["15px",{lineHeight:"24px",fontWeight:"400"}],"headline-md":["32px",{lineHeight:"36px",letterSpacing:"0.02em",fontWeight:"400"}],"display-hero":["80px",{lineHeight:"84px",letterSpacing:"0.04em",fontWeight:"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-low border-r border-outline-variant/30 flex flex-col justify-between z-50"><div class="flex flex-col"><div class="px-space-lg pt-space-lg pb-space-md border-b border-outline-variant/20"><div class="flex items-center gap-space-xs text-primary-container mb-space-xs"><span class="material-symbols-outlined text-[14px]">star</span><span class="material-symbols-outlined text-[14px]">star</span><span class="material-symbols-outlined text-[14px]">star</span></div><div class="flex items-center justify-between"><span class="font-headline-sm text-headline-sm tracking-wider uppercase text-on-surface">EVENTORA.OS</span><span class="font-label-badge text-label-badge px-space-xs py-0.5 bg-surface-container-highest text-primary font-bold uppercase rounded">PRO</span></div><div class="mt-space-md p-space-sm bg-surface-container border border-outline-variant/40 rounded"><div class="font-label-badge text-[10px] uppercase text-on-surface-variant flex items-center gap-1 mb-1"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>ACTIVE CELEBRATION</div><p class="font-title-scoreboard text-body-sm text-on-surface font-bold truncate">Sophia &amp; Liam's Golden Wedding</p></div></div><nav class="flex flex-col py-space-md px-space-sm gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold border-l-4 border-on-primary-container"><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="overview-and-plan" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">grid_view</span>Overview &amp; Plan</a><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="create-plan" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">add_circle</span>Create Plan</a><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="budget-and-cap" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">account_balance_wallet</span>Budget &amp; Cap</a><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="timeline-and-tasks" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">event_upcoming</span>Timeline &amp; Tasks</a><a aria-current="page" class="flex items-center px-space-md py-space-sm rounded transition-colors uppercase tracking-wider bg-primary-container text-on-primary-container font-bold border-l-4 border-on-primary-container" data-path="gemini-studio" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">auto_awesome</span>Gemini Studio</a></nav></div><div class="p-space-md"><div class="p-space-md bg-surface-container-highest border border-primary-container/40 rounded"><div class="flex items-center gap-space-xs text-primary-container font-label-badge text-label-badge uppercase tracking-wider mb-space-xs"><span class="material-symbols-outlined text-[16px]">military_tech</span>Championship Tenet</div><p class="font-body-sm text-body-sm text-on-surface-variant italic leading-snug">“Flawless execution is built in the drills of preparation.”</p><div class="mt-space-sm pt-space-xs border-t border-outline-variant/30 flex justify-between items-center"><span class="font-label-badge text-[10px] uppercase text-on-surface-variant">TACTICAL DISCIPLINE</span><span class="material-symbols-outlined text-primary-container text-[14px]">verified</span></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-container border border-outline-variant/50 rounded"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="font-label-badge text-label-badge uppercase text-on-surface tracking-wider">Local Engine Active</span></div><div class="flex items-center gap-space-xs text-on-surface-variant font-title-scoreboard text-body-sm uppercase"><span class="material-symbols-outlined text-[16px]">stadium</span><span class="hover:text-on-surface cursor-pointer">Events</span><span class="text-outline">/</span><span class="text-on-surface font-bold">Golden Wedding #248</span></div></div><div class="flex items-center gap-space-md"><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" title="Toggle Dark Mode" type="button"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" title="Tactile Audio Feedback" type="button"><span class="material-symbols-outlined text-[20px]">volume_up</span></button><button class="flex items-center gap-space-xs px-space-sm py-1.5 border border-outline-variant text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-title-scoreboard text-label-badge uppercase rounded" type="button"><span class="material-symbols-outlined text-[16px]">download</span>Export JSON</button><button class="flex items-center gap-space-xs px-space-md py-2 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wide hover:brightness-110 active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_#000000] transition-all rounded-none" type="button"><span class="material-symbols-outlined text-[20px]">add</span>+ Plan Event</button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-background min-h-screen px-gutter-desktop py-space-xl"><div class="flex flex-col w-full gap-space-lg">
+<!-- Top Gameday Header Banner Block -->
+<div class="relative bg-surface-container-low p-space-lg shadow-xl overflow-hidden">
+<div class="absolute -right-10 -bottom-10 opacity-5 select-none pointer-events-none">
+<span class="font-display-hero text-display-hero uppercase tracking-tighter text-on-surface">PLAYBOOK</span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md relative z-10">
+<div class="flex flex-col gap-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="flex items-center gap-1 px-space-sm py-0.5 bg-primary-container text-on-primary-container font-label-badge text-label-badge uppercase tracking-wider font-bold">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+<span>ENGINE: GEMINI 3.8 FLASH // STABLE</span>
+</div>
+<div class="flex items-center gap-0.5 text-primary-container px-space-xs">
+<span class="material-symbols-outlined text-[13px]">star</span>
+<span class="material-symbols-outlined text-[13px]">star</span>
+<span class="material-symbols-outlined text-[13px]">star</span>
+</div>
+<span class="font-label-badge text-[11px] text-on-surface-variant uppercase tracking-widest bg-surface-container-high px-space-xs py-0.5">V-2026.04</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg uppercase text-on-surface tracking-tight mt-1">
+          CHAMPIONSHIP AI STUDIO
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Zero-telemetry local neural blueprinting for high-impact celebrations, stadium setups, and varsity-grade hospitality. Precision-tuned for championship execution.
+        </p>
+</div>
+<!-- Telemetry Strip -->
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-space-xs bg-surface-container-highest p-space-sm self-start lg:self-center">
+<div class="flex flex-col px-space-sm py-1 bg-surface-container">
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase tracking-wider">LATENCY</span>
+<span class="font-title-scoreboard text-title-scoreboard text-tertiary">184MS</span>
+</div>
+<div class="flex flex-col px-space-sm py-1 bg-surface-container">
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase tracking-wider">SEC PROTOCOL</span>
+<span class="font-title-scoreboard text-body-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span> ON-CHIP
+          </span>
+</div>
+<div class="flex flex-col px-space-sm py-1 bg-surface-container">
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase tracking-wider">DAILY QUOTA</span>
+<span class="font-title-scoreboard text-title-scoreboard text-on-surface">942 / <span class="text-on-surface-variant text-body-sm">1,000</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Tactical Credentials & Archetype Allocation Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-start">
+<!-- Left Column: Transient Key & Generation Settings -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Transient API Module -->
+<div class="bg-surface-container p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-primary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">key</span> SESSION CREDENTIALS
+          </span>
+<span class="px-space-xs py-0.5 bg-tertiary-container/20 text-tertiary font-label-badge text-[10px] uppercase font-bold tracking-widest flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span> READY • TRANSIENT
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          In-memory inference context. Key wipes automatically on browser tab teardown.
+        </p>
+<div class="relative mt-1">
+<input class="w-full bg-surface-container-lowest text-on-surface font-title-scoreboard text-body-sm px-space-sm py-2 tracking-widest focus:outline-none focus:ring-1 focus:ring-primary-container select-all" readonly="" type="password" value="AIzaSyB8x0Qp9902X_G49KmP9L03vA11zQ8"/>
+<button class="absolute right-2 top-2 text-on-surface-variant hover:text-primary-container transition-colors" title="Mask Key" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant text-[11px] font-title-scoreboard pt-space-xs">
+<span>REGION: US-EAST4</span>
+<span>CONTEXT EXP: 28:44m</span>
+</div>
+</div>
+<!-- Quick Toggles Card -->
+<div class="bg-surface-container-low p-space-md shadow-md flex flex-col gap-space-sm">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">TACTICAL MODIFIERS</span>
+<div class="flex flex-col gap-space-xs">
+<label class="flex items-center justify-between p-space-sm bg-surface-container cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-title-scoreboard text-body-sm text-on-surface">VIP BANQUET PROTOCOL</span>
+<input checked="" class="w-4 h-4 rounded-none accent-primary-container cursor-pointer" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-space-sm bg-surface-container cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-title-scoreboard text-body-sm text-on-surface">BROADCAST AV MATRIX LOCK</span>
+<input checked="" class="w-4 h-4 rounded-none accent-primary-container cursor-pointer" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-space-sm bg-surface-container cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-title-scoreboard text-body-sm text-on-surface">LEVERAGED VENDOR CLAUSES</span>
+<input checked="" class="w-4 h-4 rounded-none accent-primary-container cursor-pointer" type="checkbox"/>
+</label>
+</div>
+<button class="w-full mt-space-xs py-space-md bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wide hover:brightness-110 active:translate-x-0.5 active:translate-y-0.5 transition-all shadow-[4px_4px_0px_#000000] flex items-center justify-center gap-space-sm" id="btn-generate" type="button">
+<span class="material-symbols-outlined text-[24px]">electric_bolt</span>
+<span>GENERATE TAILORED PLAYBOOK</span>
+</button>
+</div>
+<!-- Commemorative Athletic Quote Widget -->
+<div class="bg-primary/10 p-space-md shadow-md relative overflow-hidden">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-badge text-[10px] uppercase tracking-widest text-primary font-bold">LOCKER ROOM STANDARD</span>
+<span class="text-primary font-title-scoreboard text-[11px]">§ 09-GAME</span>
+</div>
+<p class="font-title-scoreboard text-body-sm text-on-surface uppercase tracking-wide leading-relaxed font-bold">
+          “THE MORE DIFFICULT THE VICTORY, THE GREATER THE JOY IN WINNING.”
+        </p>
+<div class="mt-space-sm flex items-center gap-2 text-on-surface-variant font-label-badge text-[11px] uppercase">
+<span class="w-2 h-0.5 bg-primary"></span>
+<span>CHAMPIONSHIP MINDSET ARCHIVE</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Atmospheric Style Archetypes 2x2 Grid -->
+<div class="lg:col-span-8 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface">ATMOSPHERIC STYLE ARCHETYPES</span>
+<span class="font-label-badge text-[11px] bg-surface-container-high px-space-xs py-0.5 text-on-surface-variant uppercase">SELECT 1</span>
+</div>
+<span class="font-label-badge text-label-badge text-primary-container tracking-wider uppercase hidden sm:inline">CURRENTLY ENGAGED: ARENA</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md" id="archetype-grid">
+<!-- Active Archetype: Championship Arena -->
+<div class="archetype-card cursor-pointer p-space-md bg-surface-container-highest shadow-xl relative transition-transform hover:-translate-y-0.5" data-archetype="arena">
+<div class="absolute top-0 right-0 bg-primary-container text-on-primary-container font-label-badge text-[10px] font-bold px-space-sm py-1 uppercase tracking-widest">
+            ACTIVE ARCHETYPE
+          </div>
+<div class="flex items-center gap-space-xs text-primary-container mb-space-xs pt-1">
+<span class="material-symbols-outlined text-[20px]">stadium</span>
+<span class="font-label-badge text-[11px] uppercase tracking-widest font-bold">VARSITY PRIMETIME</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface leading-tight">
+            CHAMPIONSHIP ARENA
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs leading-normal">
+            Heavy graphic contrast, brass flare fixtures, suspended scoreboard rings, and pulse-raising crowd energy. Built for iconic scale.
+          </p>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 bg-primary-container inline-block" title="#ff5708 Safety Orange"></span>
+<span class="w-3.5 h-3.5 bg-tertiary-container inline-block" title="#4d93e5 Arena Sky"></span>
+<span class="w-3.5 h-3.5 bg-surface-container-lowest inline-block" title="#0f0e0c Midnight Base"></span>
+<span class="w-3.5 h-3.5 bg-on-background inline-block" title="#e7e1dd Vintage Cream"></span>
+</div>
+<span class="font-title-scoreboard text-[11px] text-primary uppercase font-bold tracking-wider">SELECTED • HIGH GAIN</span>
+</div>
+</div>
+<!-- Archetype: Minimalist Glass -->
+<div class="archetype-card cursor-pointer p-space-md bg-surface-container shadow-md hover:bg-surface-container-high transition-transform hover:-translate-y-0.5" data-archetype="minimalist">
+<div class="flex items-center gap-space-xs text-on-surface-variant mb-space-xs">
+<span class="material-symbols-outlined text-[20px]">blur_on</span>
+<span class="font-label-badge text-[11px] uppercase tracking-widest">ARCHITECTURAL LUXE</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface leading-tight">
+            MINIMALIST GLASS
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs leading-normal">
+            Clean linear architectural lines, frosted slate panels, quiet luxury materials, soft directional acoustics, and deliberate void space.
+          </p>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 bg-secondary-fixed inline-block"></span>
+<span class="w-3.5 h-3.5 bg-secondary-container inline-block"></span>
+<span class="w-3.5 h-3.5 bg-surface-bright inline-block"></span>
+</div>
+<span class="font-title-scoreboard text-[11px] text-on-surface-variant uppercase tracking-wider">SELECT ARCHETYPE</span>
+</div>
+</div>
+<!-- Archetype: Industrial Foundry -->
+<div class="archetype-card cursor-pointer p-space-md bg-surface-container shadow-md hover:bg-surface-container-high transition-transform hover:-translate-y-0.5" data-archetype="foundry">
+<div class="flex items-center gap-space-xs text-on-surface-variant mb-space-xs">
+<span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>
+<span class="font-label-badge text-[11px] uppercase tracking-widest">RAW TACTICAL</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface leading-tight">
+            INDUSTRIAL FOUNDRY
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs leading-normal">
+            Raw graphite blocks, polished steel rivets, exposed electrical conduit grids, and amber warning lighting. Tactile industrial power.
+          </p>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 bg-surface-bright inline-block"></span>
+<span class="w-3.5 h-3.5 bg-primary-container inline-block"></span>
+<span class="w-3.5 h-3.5 bg-outline-variant inline-block"></span>
+</div>
+<span class="font-title-scoreboard text-[11px] text-on-surface-variant uppercase tracking-wider">SELECT ARCHETYPE</span>
+</div>
+</div>
+<!-- Archetype: Boho Twilight Luxe -->
+<div class="archetype-card cursor-pointer p-space-md bg-surface-container shadow-md hover:bg-surface-container-high transition-transform hover:-translate-y-0.5" data-archetype="twilight">
+<div class="flex items-center gap-space-xs text-on-surface-variant mb-space-xs">
+<span class="material-symbols-outlined text-[20px]">nights_stay</span>
+<span class="font-label-badge text-[11px] uppercase tracking-widest">ORGANIC NOIR</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface leading-tight">
+            BOHO TWILIGHT LUXE
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs leading-normal">
+            Low-slung amber firelight, textured terracotta weaves, velvet dusk drapes, botanical monoliths, and candle-lit acoustic lounges.
+          </p>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-3.5 h-3.5 bg-outline inline-block"></span>
+<span class="w-3.5 h-3.5 bg-outline-variant inline-block"></span>
+<span class="w-3.5 h-3.5 bg-surface-container-highest inline-block"></span>
+</div>
+<span class="font-title-scoreboard text-[11px] text-on-surface-variant uppercase tracking-wider">SELECT ARCHETYPE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Generated Playbook Dossier (Multi-Column Layout) -->
+<div class="flex flex-col gap-space-md mt-space-sm">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-xs">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs font-label-badge text-label-badge uppercase tracking-widest text-primary-container">
+<span class="material-symbols-outlined text-[16px]">folder_special</span>
+<span>OUTPUT DOSSIER • CELEBRATION DOSSIER #248</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg uppercase text-on-surface leading-none mt-1">
+          GENERATED TACTICAL PLAYBOOK
+        </h2>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-space-sm py-1 bg-surface-container text-on-surface font-title-scoreboard text-body-sm uppercase flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span> LIVE INGEST ACTIVE
+        </span>
+<span class="px-space-sm py-1 bg-surface-container-high text-on-surface-variant font-label-badge text-label-badge uppercase">CONFIDENCE: 98.4%</span>
+</div>
+</div>
+<!-- 3-Column Playbook Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-stretch">
+<!-- Module 1: Spatial & Lighting Concept (Span 4) -->
+<div class="lg:col-span-4 bg-surface-container p-space-md shadow-lg flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">light_mode</span> SPATIAL RIGGING &amp; LIGHTING
+            </span>
+<span class="font-title-scoreboard text-[11px] text-on-surface-variant">RIG-SEC-01</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface leading-none">
+            CENTER COURT GRAND ARC
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            A 180-degree suspended circular ring truss centered over the couple's elevated grand table. Dynamic high-output flood bursts synchronize with the golden entrance score.
+          </p>
+<!-- SVG Visual Chart of Lighting Grid Setup -->
+<div class="bg-surface-container-lowest p-space-sm relative overflow-hidden my-space-xs">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-badge text-[10px] text-on-surface-variant uppercase">LUMEN COVERAGE DISPERSION</span>
+<span class="font-title-scoreboard text-[10px] text-primary">120K LUMENS PEAK</span>
+</div>
+<svg class="w-full h-20 text-primary-container stroke-current fill-none" viewbox="0 0 300 90">
+<circle class="text-tertiary" cx="150" cy="85" r="70" stroke-dasharray="4,4" stroke-width="2"></circle>
+<circle cx="150" cy="85" r="45" stroke-width="3"></circle>
+<circle class="fill-primary-container text-primary-container" cx="150" cy="85" r="20" stroke-width="2"></circle>
+<line class="text-on-surface-variant" stroke-width="1.5" x1="150" x2="90" y1="85" y2="25"></line>
+<line class="text-on-surface-variant" stroke-width="1.5" x1="150" x2="210" y1="85" y2="25"></line>
+<circle class="fill-primary text-primary" cx="90" cy="25" r="4"></circle>
+<circle class="fill-primary text-primary" cx="210" cy="25" r="4"></circle>
+</svg>
+<div class="flex justify-between text-[10px] font-title-scoreboard text-on-surface-variant mt-1">
+<span>0° STAGE WEST</span>
+<span>180° RIG APEX</span>
+<span>360° STAGE EAST</span>
+</div>
+</div>
+<!-- Color Array Matrix -->
+<div class="flex flex-col gap-1.5 pt-space-xs">
+<span class="font-label-badge text-[10px] uppercase tracking-wider text-on-surface-variant">DYNAMIC LUMINESCENCE PALETTE</span>
+<div class="grid grid-cols-3 gap-space-xs">
+<div class="p-space-xs bg-surface-container-high flex flex-col items-center">
+<span class="w-full h-3 bg-[#ff5708] mb-1"></span>
+<span class="font-title-scoreboard text-[11px] text-on-surface">#FF5708</span>
+<span class="font-label-badge text-[9px] text-on-surface-variant">SAFETY ORANGE</span>
+</div>
+<div class="p-space-xs bg-surface-container-high flex flex-col items-center">
+<span class="w-full h-3 bg-[#85C0F9] mb-1"></span>
+<span class="font-title-scoreboard text-[11px] text-on-surface">#85C0F9</span>
+<span class="font-label-badge text-[9px] text-on-surface-variant">SKY FROST</span>
+</div>
+<div class="p-space-xs bg-surface-container-high flex flex-col items-center">
+<span class="w-full h-3 bg-[#0D1520] mb-1"></span>
+<span class="font-title-scoreboard text-[11px] text-on-surface">#0D1520</span>
+<span class="font-label-badge text-[9px] text-on-surface-variant">MIDNIGHT</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md p-space-sm bg-surface-container-lowest flex items-center justify-between">
+<span class="font-label-badge text-[11px] text-on-surface uppercase">AUDIO-REACTIVE CUES</span>
+<span class="font-title-scoreboard text-body-sm text-primary font-bold">12 PRESETS LOADED</span>
+</div>
+</div>
+<!-- Module 2: Molecular 4-Course VIP Banquet (Span 4) -->
+<div class="lg:col-span-4 bg-surface-container p-space-md shadow-lg flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-primary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">restaurant</span> VIP CULINARY MANIFEST
+            </span>
+<span class="font-title-scoreboard text-[11px] text-on-surface-variant">CHEF RUN #04</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface leading-none">
+            MOLECULAR BANQUET DRILL
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Chef-curated 4-stage synchronization aligned with speaker transitions. Ultra high-velocity plated service.
+          </p>
+<!-- Tasting Menu Stack -->
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<div class="p-space-sm bg-surface-container-high flex items-start gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-primary-container leading-none">01</span>
+<div class="flex flex-col">
+<span class="font-title-scoreboard text-body-sm text-on-surface font-bold uppercase">NITRO HAMACHI CRUDO</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Yuzu pearls, smoked sea dulse, frozen white radish snow</span>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-high flex items-start gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-primary-container leading-none">02</span>
+<div class="flex flex-col">
+<span class="font-title-scoreboard text-body-sm text-on-surface font-bold uppercase">CHARRED A5 WAGYU RIBEYE</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Black garlic demiglace, trumpet royale, charred leek puree</span>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-high flex items-start gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-primary-container leading-none">03</span>
+<div class="flex flex-col">
+<span class="font-title-scoreboard text-body-sm text-on-surface font-bold uppercase">HIBISCUS-GINGER INTERMEZZO</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Palate cleanser served inside blown crystalline sugar globes</span>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-high flex items-start gap-space-sm">
+<span class="font-headline-sm text-headline-sm text-primary-container leading-none">04</span>
+<div class="flex flex-col">
+<span class="font-title-scoreboard text-body-sm text-on-surface font-bold uppercase">OBSIDIAN MISO TART</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Valrhona 72% ganache, smoked sea salt flakes, edible 24k leaf</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md p-space-sm bg-surface-container-lowest flex items-center justify-between">
+<span class="font-label-badge text-[11px] text-on-surface uppercase">ALLERGEN MATRIX</span>
+<span class="font-title-scoreboard text-body-sm text-tertiary">ZERO CONFLICT FLAGS</span>
+</div>
+</div>
+<!-- Module 3: Activations & Vendor Negotiation Leverage (Span 4) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Immersive Activations Card -->
+<div class="bg-surface-container p-space-md shadow-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">view_in_ar</span> IMMERSIVE ACTIVATIONS
+            </span>
+<span class="font-label-badge text-[10px] bg-surface-container-high px-space-xs py-0.5 text-on-surface-variant">FIELD PROVEN</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-sm bg-surface-container-lowest">
+<span class="font-title-scoreboard text-body-sm uppercase text-primary-container font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">all_inclusive</span> 360° HOLO-STAGE GATEWAY
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Entrance tunnel with holographic replay projections of Sophia &amp; Liam's 50-year archive footage.
+              </p>
+</div>
+<div class="p-space-sm bg-surface-container-lowest">
+<span class="font-title-scoreboard text-body-sm uppercase text-tertiary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">csv</span> BIOMETRIC MIXOLOGY BAR
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Guests place palms on brass sensory pads; AI dispenses bespoke signature mocktails tuned to heart rate.
+              </p>
+</div>
+</div>
+</div>
+<!-- AV Vendor Negotiation Leverage Script -->
+<div class="bg-surface-container-highest p-space-md shadow-lg flex flex-col justify-between flex-1">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-badge text-[10px] uppercase tracking-wider text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">shield_with_heart</span> RFP LEVERAGE CLAUSE
+              </span>
+<span class="font-title-scoreboard text-[11px] text-on-surface-variant">§ 14.B SLA RIDER</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm uppercase text-on-surface">
+              AV PENALTY INDEMNITY
+            </h4>
+<div class="bg-surface-container-lowest p-space-sm text-[12px] font-mono text-on-surface-variant leading-relaxed select-all">
+              “Any unexcused wireless microphone frequency dropout exceeding 3.0 seconds during primary toast sequences shall invoke an automatic 22% invoice rebate against line-item 04-AUDIO.”
+            </div>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between">
+<span class="font-label-badge text-[10px] uppercase text-on-surface-variant">LEGAL STRENGTH: TIGHT</span>
+<button class="px-space-sm py-1 bg-surface-container text-primary font-title-scoreboard text-[11px] uppercase tracking-wider hover:bg-surface-container-high transition-colors flex items-center gap-1" id="btn-copy-clause" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span>COPY SCRIPT</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Master Export & Synchronization Dock -->
+<div class="bg-surface-container-low p-space-md shadow-xl flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container flex items-center justify-center font-display-hero text-headline-md font-bold">
+        G
+      </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-scoreboard text-body-sm font-bold text-on-surface uppercase tracking-wide">EXPORT MASTER JSON PLAYBOOK</span>
+<span class="font-label-badge text-[10px] bg-primary/20 text-primary px-space-xs font-bold uppercase">SCHEMA V3.2</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Complete structural sync bundle containing rigging loads, run of show cues, and vendor riders.
+        </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm w-full md:w-auto justify-end">
+<button class="flex-1 md:flex-initial px-space-md py-2.5 bg-surface-container text-on-surface font-title-scoreboard text-body-sm uppercase tracking-wider hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xs" onclick="alert('Tactical Dossier dispatched to Spooler.');" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span>PRINT TACTICAL DOSSIER</span>
+</button>
+<button class="flex-1 md:flex-initial px-space-lg py-2.5 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wide hover:brightness-110 active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_#000000] transition-all flex items-center justify-center gap-space-xs" id="btn-sync" type="button">
+<span>SYNC TO EVENTORA ENGINE</span>
+<span class="material-symbols-outlined text-[20px]">north_east</span>
+</button>
+</div>
+</div>
+<!-- Interactive State Controller -->
+<script>
+    (function() {
+      // Archetype Selector Interaction
+      const cards = document.querySelectorAll('.archetype-card');
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          cards.forEach(c => {
+            c.classList.remove('bg-surface-container-highest');
+            c.classList.add('bg-surface-container');
+            const tag = c.querySelector('.active-tag');
+            if (tag) tag.remove();
+            const footerText = c.querySelector('.pt-space-sm span:last-child');
+            if (footerText) {
+              footerText.textContent = 'SELECT ARCHETYPE';
+              footerText.classList.remove('text-primary');
+              footerText.classList.add('text-on-surface-variant');
+            }
+          });
+
+          card.classList.remove('bg-surface-container');
+          card.classList.add('bg-surface-container-highest');
+
+          const newTag = document.createElement('div');
+          newTag.className = 'active-tag absolute top-0 right-0 bg-primary-container text-on-primary-container font-label-badge text-[10px] font-bold px-space-sm py-1 uppercase tracking-widest';
+          newTag.textContent = 'ACTIVE ARCHETYPE';
+          card.appendChild(newTag);
+
+          const footerText = card.querySelector('.pt-space-sm span:last-child');
+          if (footerText) {
+            footerText.textContent = 'SELECTED • HIGH GAIN';
+            footerText.classList.remove('text-on-surface-variant');
+            footerText.classList.add('text-primary');
+          }
+        });
+      });
+
+      // Copy Clause Behavior
+      const copyBtn = document.getElementById('btn-copy-clause');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          const text = "Any unexcused wireless microphone frequency dropout exceeding 3.0 seconds during primary toast sequences shall invoke an automatic 22% invoice rebate against line-item 04-AUDIO.";
+          navigator.clipboard?.writeText(text).then(() => {
+            const original = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span><span>COPIED!</span>';
+            setTimeout(() => { copyBtn.innerHTML = original; }, 2000);
+          });
+        });
+      }
+
+      // Generate Playbook Feedback
+      const generateBtn = document.getElementById('btn-generate');
+      if (generateBtn) {
+        generateBtn.addEventListener('click', () => {
+          const original = generateBtn.innerHTML;
+          generateBtn.innerHTML = '<span class="material-symbols-outlined text-[24px] animate-spin">refresh</span><span>SYNTHESIZING PLAYBOOK...</span>';
+          setTimeout(() => {
+            generateBtn.innerHTML = '<span class="material-symbols-outlined text-[24px]">done_all</span><span>PLAYBOOK RE-COMPILED!</span>';
+            setTimeout(() => { generateBtn.innerHTML = original; }, 2500);
+          }, 1200);
+        });
+      }
+
+      // Master Sync Feedback
+      const syncBtn = document.getElementById('btn-sync');
+      if (syncBtn) {
+        syncBtn.addEventListener('click', () => {
+          const original = syncBtn.innerHTML;
+          syncBtn.innerHTML = '<span>TRANSMITTING...</span><span class="material-symbols-outlined text-[20px] animate-pulse">cloud_upload</span>';
+          setTimeout(() => {
+            syncBtn.innerHTML = '<span>SYNCHRONIZED (200 OK)</span><span class="material-symbols-outlined text-[20px]">check_circle</span>';
+            setTimeout(() => { syncBtn.innerHTML = original; }, 2000);
+          }, 900);
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>

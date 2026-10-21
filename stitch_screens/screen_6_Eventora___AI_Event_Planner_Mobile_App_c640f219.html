@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-[#111822]" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Eventora — AI-Assisted Event Planner</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Oswald (Bold Condensed Display) + Plus Jakarta Sans (Modern Clean UI) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#FF5500',
+              slate: '#111822',
+              navy: '#182230',
+              cream: '#F4EFEB',
+              sky: '#60A5FA',
+              gold: '#8C8156',
+              mint: '#10B981',
+              darkcard: '#1F2B3E'
+            }
+          },
+          fontFamily: {
+            display: ['Oswald', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="typography">
+    .font-condensed {
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+    .tracking-ultra-tight {
+      letter-spacing: -0.04em;
+    }
+  </style>
+<style data-purpose="layout-and-scroll">
+    /* iOS Momentum Scrolling & safe area */
+    body {
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .bento-border {
+      border: 3px solid #111822;
+    }
+  </style>
+</head>
+<body class="text-slate-100 font-sans min-h-screen bg-[#0d141d] flex flex-col items-center">
+<!-- BEGIN: MobileDeviceWrapper -->
+<!-- Constrains layout to typical mobile frame while looking great on tablet/desktop as well -->
+<div class="w-full max-w-md min-h-screen bg-[#111822] flex flex-col relative pb-28 shadow-2xl overflow-x-hidden border-x border-slate-800">
+<!-- BEGIN: TopBar -->
+<header class="sticky top-0 z-40 bg-[#111822] border-b-2 border-slate-800 px-4 pt-3 pb-2.5 flex items-center justify-between" data-purpose="app-header">
+<div class="flex items-center gap-2">
+<div class="bg-brand-orange text-black font-condensed font-bold text-xs px-2 py-0.5 rounded-sm tracking-wider">
+          ★★★
+        </div>
+<div>
+<h1 class="font-condensed text-2xl font-bold tracking-tight text-white leading-none">
+            EVENTORA<span class="text-brand-orange">.OS</span>
+</h1>
+<p class="text-[10px] text-slate-400 font-semibold tracking-wider uppercase">Championship Event Planner</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-[#1F2B3E] text-brand-sky border border-brand-sky/30 text-[10px] font-bold px-2 py-0.5 rounded tracking-wide">
+          LOCAL ENGINE
+        </span>
+<button aria-label="Create or switch event" class="bg-brand-orange hover:bg-orange-600 active:scale-95 text-white font-condensed font-bold text-sm px-2.5 py-1 rounded shadow transition" id="open-new-event-btn">
+          + NEW
+        </button>
+</div>
+</header>
+<!-- END: TopBar -->
+<!-- BEGIN: NavigationTabs -->
+<nav class="bg-[#182230] border-b-2 border-slate-800 px-2 py-2 overflow-x-auto no-scrollbar" data-purpose="section-navigation">
+<div class="flex space-x-1.5 min-w-max">
+<button class="tab-btn active bg-brand-orange text-white font-condensed text-sm tracking-wide px-3 py-1.5 rounded uppercase font-bold transition flex items-center gap-1.5" data-tab="tab-overview">
+<span>⚡</span> Overview &amp; Plan
+        </button>
+<button class="tab-btn bg-[#111822] text-slate-300 hover:text-white font-condensed text-sm tracking-wide px-3 py-1.5 rounded uppercase font-bold transition flex items-center gap-1.5" data-tab="tab-budget">
+<span>$</span> Budget
+        </button>
+<button class="tab-btn bg-[#111822] text-slate-300 hover:text-white font-condensed text-sm tracking-wide px-3 py-1.5 rounded uppercase font-bold transition flex items-center gap-1.5" data-tab="tab-timeline">
+<span>⏱</span> Timeline
+        </button>
+<button class="tab-btn bg-[#111822] text-slate-300 hover:text-white font-condensed text-sm tracking-wide px-3 py-1.5 rounded uppercase font-bold transition flex items-center gap-1.5" data-tab="tab-ai">
+<span>✨</span> Gemini AI
+        </button>
+<button class="tab-btn bg-[#111822] text-slate-300 hover:text-white font-condensed text-sm tracking-wide px-3 py-1.5 rounded uppercase font-bold transition flex items-center gap-1.5" data-tab="tab-export">
+<span>💾</span> Export/Save
+        </button>
+</div>
+</nav>
+<!-- END: NavigationTabs -->
+<!-- Main Content Tab Containers -->
+<main class="flex-1 p-3.5 space-y-4">
+<!-- BEGIN: TabOverview -->
+<section class="tab-pane space-y-4 block" data-purpose="overview-bento-grid" id="tab-overview">
+<!-- Hero Modular Poster Card (Image 1 & 2 inspired) -->
+<div class="relative bg-brand-cream text-black rounded-lg overflow-hidden border-4 border-[#111822] shadow-[4px_4px_0px_0px_#FF5500]">
+<!-- Corner Badges -->
+<div class="bg-brand-orange text-white font-condensed text-xs font-bold px-3 py-1 flex justify-between items-center tracking-wider">
+<span>LIVE EVENT BLUEPRINT</span>
+<span class="bg-black text-white text-[10px] px-2 py-0.2 rounded font-mono" id="overview-badge-tag">CONFIRMED</span>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex items-start justify-between">
+<div>
+<span class="inline-block bg-[#111822] text-brand-sky font-condensed text-xs px-2 py-0.5 rounded font-bold uppercase tracking-wider mb-1" id="overview-category">
+                  WEDDING CELEBRATION
+                </span>
+<h2 class="font-condensed text-4xl sm:text-5xl font-bold leading-none tracking-ultra-tight text-[#111822]" id="overview-title">
+                  SOPHIA &amp; LIAM'S GOLDEN WEDDING
+                </h2>
+</div>
+</div>
+<!-- Bento Stats Sub-grid (Image 2 sports schedule aesthetic) -->
+<div class="grid grid-cols-3 gap-2 pt-1 font-condensed">
+<!-- Block 1: Countdown -->
+<div class="bg-[#111822] text-white p-2.5 rounded flex flex-col justify-between">
+<span class="text-[10px] text-brand-orange font-bold tracking-widest uppercase">COUNTDOWN</span>
+<div class="mt-1">
+<span class="text-2xl font-bold leading-none" id="overview-countdown">38</span>
+<span class="text-[11px] block text-slate-300">DAYS TO GO</span>
+</div>
+</div>
+<!-- Block 2: Target Guests -->
+<div class="bg-brand-sky text-[#111822] p-2.5 rounded flex flex-col justify-between">
+<span class="text-[10px] text-slate-900 font-bold tracking-widest uppercase">ATTENDEES</span>
+<div class="mt-1">
+<span class="text-2xl font-bold leading-none" id="overview-guests">135</span>
+<span class="text-[11px] block font-semibold">GUESTS RSVP</span>
+</div>
+</div>
+<!-- Block 3: Total Budget -->
+<div class="bg-brand-orange text-white p-2.5 rounded flex flex-col justify-between">
+<span class="text-[10px] text-yellow-200 font-bold tracking-widest uppercase">TOTAL CAP</span>
+<div class="mt-1">
+<span class="text-2xl font-bold leading-none" id="overview-budget">$18.5K</span>
+<span class="text-[11px] block font-semibold">TARGET BUDGET</span>
+</div>
+</div>
+</div>
+<!-- Date & Location Bar -->
+<div class="flex items-center justify-between text-xs font-semibold text-slate-800 border-t-2 border-slate-300 pt-2">
+<span class="flex items-center gap-1 font-mono" id="overview-date">
+                📅 AUG 21, 2025
+              </span>
+<span class="bg-white border border-slate-400 px-2 py-0.5 rounded text-[11px] font-bold">
+                74% READY
+              </span>
+</div>
+</div>
+</div>
+<!-- Quick Summary Modular Cards -->
+<div class="grid grid-cols-2 gap-3 font-condensed">
+<!-- Big Stat Card 1 -->
+<div class="bg-[#182230] border-2 border-slate-700 p-3 rounded-lg flex flex-col justify-between">
+<div class="flex items-center justify-between text-xs text-brand-sky font-bold">
+<span>ACTIVE TASKS</span>
+<span>★★</span>
+</div>
+<div class="my-2">
+<div class="text-3xl font-bold text-white leading-none" id="overview-task-stats">5 / 8</div>
+<div class="text-xs text-slate-400 uppercase mt-0.5 font-sans font-medium">Milestones Completed</div>
+</div>
+<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-brand-orange h-full rounded-full transition-all duration-300" id="overview-task-progress-bar" style="width: 62.5%"></div>
+</div>
+</div>
+<!-- Big Stat Card 2 -->
+<div class="bg-[#182230] border-2 border-slate-700 p-3 rounded-lg flex flex-col justify-between">
+<div class="flex items-center justify-between text-xs text-brand-orange font-bold">
+<span>BUDGET UTILIZED</span>
+<span>$$</span>
+</div>
+<div class="my-2">
+<div class="text-3xl font-bold text-white leading-none" id="overview-budget-allocated">$18,500</div>
+<div class="text-xs text-slate-400 uppercase mt-0.5 font-sans font-medium">100% Allocated</div>
+</div>
+<span class="text-[10px] text-brand-mint font-sans font-bold flex items-center gap-1">
+              ✓ Balanced Zero Variance
+            </span>
+</div>
+</div>
+<!-- High-Priority Alert Banner -->
+<div class="bg-[#8C8156]/20 border-l-4 border-yellow-500 p-3 rounded text-sm text-yellow-200 flex items-center justify-between">
+<div>
+<p class="font-bold font-condensed uppercase tracking-wider text-white">Next Priority Deadline</p>
+<p class="text-xs text-yellow-100/90 font-medium">Catering final headcount locked in 12 days.</p>
+</div>
+<button class="bg-yellow-500 text-black font-condensed font-bold text-xs px-2.5 py-1 rounded" onclick="switchTab('tab-timeline')">
+            VIEW
+          </button>
+</div>
+<!-- Quick Switcher Preset Drawer Trigger -->
+<div class="p-3 bg-[#1F2B3E] rounded-lg border border-slate-700 flex items-center justify-between">
+<div class="text-xs">
+<p class="font-bold text-white uppercase font-condensed tracking-wider">Quick Template Presets</p>
+<p class="text-slate-400">Load sample plans instantly</p>
+</div>
+<div class="flex gap-1.5">
+<button class="bg-[#111822] hover:bg-brand-orange hover:text-white text-xs font-condensed px-2 py-1 rounded border border-slate-600 transition font-bold" onclick="loadTemplate('wedding')">
+              WEDDING
+            </button>
+<button class="bg-[#111822] hover:bg-brand-orange hover:text-white text-xs font-condensed px-2 py-1 rounded border border-slate-600 transition font-bold" onclick="loadTemplate('birthday')">
+              BIRTHDAY
+            </button>
+<button class="bg-[#111822] hover:bg-brand-orange hover:text-white text-xs font-condensed px-2 py-1 rounded border border-slate-600 transition font-bold" onclick="loadTemplate('summit')">
+              SUMMIT
+            </button>
+</div>
+</div>
+</section>
+<!-- END: TabOverview -->
+<!-- BEGIN: TabBudget -->
+<section class="tab-pane space-y-4 hidden" data-purpose="budget-manager" id="tab-budget">
+<!-- Header summary block -->
+<div class="bg-brand-orange text-white p-3 rounded-lg border-2 border-black flex justify-between items-center font-condensed">
+<div>
+<span class="text-xs tracking-wider uppercase text-yellow-200">TOTAL CEILING</span>
+<div class="text-3xl font-bold leading-none" id="budget-ceiling-display">$18,500</div>
+</div>
+<div class="text-right">
+<span class="text-xs tracking-wider uppercase text-yellow-200">BALANCE STATUS</span>
+<div class="text-base font-bold text-white bg-black/30 px-2 py-0.5 rounded font-sans" id="budget-balance-status">
+              $0 Remaining
+            </div>
+</div>
+</div>
+<!-- Allocation Category Sliders -->
+<div class="bg-[#182230] rounded-lg p-3.5 border-2 border-slate-800 space-y-4" data-purpose="budget-categories">
+<div class="flex justify-between items-center border-b border-slate-700 pb-2">
+<h3 class="font-condensed text-lg font-bold uppercase tracking-wide text-white">Category Allocation Matrix</h3>
+<span class="text-[11px] text-slate-400 font-mono">ADJUST %</span>
+</div>
+<!-- Category 1: Venue -->
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-200">1. Venue &amp; Rentals</span>
+<span class="text-brand-orange font-mono" id="val-venue">$7,400 (40%)</span>
+</div>
+<input class="budget-slider w-full accent-[#FF5500]" data-category="venue" max="100" min="0" type="range" value="40"/>
+</div>
+<!-- Category 2: Food & Beverage -->
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-200">2. Food &amp; Catering</span>
+<span class="text-brand-sky font-mono" id="val-food">$5,550 (30%)</span>
+</div>
+<input class="budget-slider w-full accent-[#60A5FA]" data-category="food" max="100" min="0" type="range" value="30"/>
+</div>
+<!-- Category 3: Photo & Video -->
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-200">3. Media &amp; Photography</span>
+<span class="text-yellow-400 font-mono" id="val-photo">$2,775 (15%)</span>
+</div>
+<input class="budget-slider w-full accent-[#EAB308]" data-category="photo" max="100" min="0" type="range" value="15"/>
+</div>
+<!-- Category 4: Entertainment & Sound -->
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-200">4. Sound, DJ &amp; Decor</span>
+<span class="text-green-400 font-mono" id="val-entertainment">$1,850 (10%)</span>
+</div>
+<input class="budget-slider w-full accent-[#10B981]" data-category="entertainment" max="100" min="0" type="range" value="10"/>
+</div>
+<!-- Category 5: Contingency Buffer -->
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-200">5. Contingency Buffer</span>
+<span class="text-purple-400 font-mono" id="val-buffer">$925 (5%)</span>
+</div>
+<input class="budget-slider w-full accent-[#A855F7]" data-category="buffer" max="100" min="0" type="range" value="5"/>
+</div>
+</div>
+<!-- Cost Per Guest Highlight -->
+<div class="grid grid-cols-2 gap-2 text-center font-condensed">
+<div class="bg-brand-cream text-black p-2.5 rounded border-2 border-black">
+<span class="text-[10px] font-bold text-slate-600 block uppercase">Cost Per Guest</span>
+<span class="text-2xl font-bold leading-tight" id="cost-per-guest">$137.03</span>
+</div>
+<div class="bg-brand-sky text-black p-2.5 rounded border-2 border-black">
+<span class="text-[10px] font-bold text-slate-800 block uppercase">Max Food/Beverage per Guest</span>
+<span class="text-2xl font-bold leading-tight" id="food-per-guest">$41.11</span>
+</div>
+</div>
+<!-- Pro Tip Box -->
+<div class="p-3 bg-[#1F2B3E] rounded border-l-4 border-brand-orange text-xs text-slate-300">
+<span class="font-bold text-brand-orange uppercase">Pro Strategy:</span> Always preserve a minimum of 5% contingency buffer for last minute overtime audio permits or guest table expansions.
+        </div>
+</section>
+<!-- END: TabBudget -->
+<!-- BEGIN: TabTimeline -->
+<section class="tab-pane space-y-4 hidden" data-purpose="timeline-and-tasks" id="tab-timeline">
+<!-- Header status -->
+<div class="flex items-center justify-between bg-[#182230] p-3 rounded-lg border border-slate-700">
+<div>
+<h3 class="font-condensed text-xl font-bold uppercase tracking-tight text-white">Execution Timeline</h3>
+<p class="text-xs text-slate-400 font-medium">Tick tasks as completed</p>
+</div>
+<button class="bg-brand-sky hover:bg-blue-400 active:scale-95 text-black font-condensed font-bold text-xs px-2.5 py-1 rounded" id="add-task-btn">
+            + ADD TASK
+          </button>
+</div>
+<!-- Task Checklist Container -->
+<div class="space-y-2.5" data-purpose="tasks-list" id="timeline-list">
+<!-- Dynamically populated or static starter list -->
+</div>
+<!-- Vendor Questions Sheet Accordion -->
+<div class="mt-4 pt-3 border-t-2 border-slate-800" data-purpose="vendor-questions-sheet">
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-condensed text-base font-bold uppercase tracking-wider text-brand-orange">
+              ★ Vendor Negotiation Battle-Cards
+            </h4>
+<span class="text-[10px] text-slate-400 font-mono">TAP TO COPY</span>
+</div>
+<div class="space-y-2 text-xs">
+<!-- Caterer Accordion Card -->
+<div class="bg-[#182230] p-2.5 rounded border border-slate-700">
+<div class="flex justify-between items-center cursor-pointer" onclick="toggleDetails('vendor-q1')">
+<span class="font-bold text-white font-condensed uppercase tracking-wide">🍲 Caterer &amp; Bar Questions</span>
+<span class="text-slate-400 text-xs">▼</span>
+</div>
+<div class="mt-2 text-slate-300 space-y-1.5 border-t border-slate-700/60 pt-2 hidden" id="vendor-q1">
+<div class="flex items-start justify-between bg-black/30 p-1.5 rounded">
+<span>"Are staff service charges &amp; cake-cutting included in per-plate price?"</span>
+<button class="text-brand-orange hover:text-white font-bold text-[10px] ml-2" onclick="copyText('Are staff service charges and cake-cutting fees included in per-plate price?')">COPY</button>
+</div>
+<div class="flex items-start justify-between bg-black/30 p-1.5 rounded">
+<span>"What is the hard-cutoff deadline for dietary and guest variances?"</span>
+<button class="text-brand-orange hover:text-white font-bold text-[10px] ml-2" onclick="copyText('What is the hard-cutoff deadline for dietary and final guest headcount variances?')">COPY</button>
+</div>
+</div>
+</div>
+<!-- Venue Accordion Card -->
+<div class="bg-[#182230] p-2.5 rounded border border-slate-700">
+<div class="flex justify-between items-center cursor-pointer" onclick="toggleDetails('vendor-q2')">
+<span class="font-bold text-white font-condensed uppercase tracking-wide">🏛 Venue Manager Questions</span>
+<span class="text-slate-400 text-xs">▼</span>
+</div>
+<div class="mt-2 text-slate-300 space-y-1.5 border-t border-slate-700/60 pt-2 hidden" id="vendor-q2">
+<div class="flex items-start justify-between bg-black/30 p-1.5 rounded">
+<span>"What is the exact loading dock access time for DJ and florist?"</span>
+<button class="text-brand-orange hover:text-white font-bold text-[10px] ml-2" onclick="copyText('What is the exact loading dock access time for DJ and outside florist setup?')">COPY</button>
+</div>
+<div class="flex items-start justify-between bg-black/30 p-1.5 rounded">
+<span>"Is there an auxiliary power circuit dedicated to the audio rig?"</span>
+<button class="text-brand-orange hover:text-white font-bold text-[10px] ml-2" onclick="copyText('Is there an auxiliary power circuit dedicated to the audio and lighting rig?')">COPY</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: TabTimeline -->
+<!-- BEGIN: TabAI -->
+<section class="tab-pane space-y-4 hidden" data-purpose="gemini-ai-studio" id="tab-ai">
+<!-- Gemini Banner Header -->
+<div class="bg-gradient-to-r from-blue-900 to-indigo-900 border-2 border-brand-sky p-3.5 rounded-lg text-white">
+<div class="flex items-center justify-between">
+<span class="bg-brand-sky text-black font-condensed font-bold text-xs px-2 py-0.5 rounded uppercase">
+              POWERED BY GEMINI-2.5-FLASH
+            </span>
+<span class="text-xs text-sky-200 font-mono">CLIENT-DIRECT</span>
+</div>
+<h3 class="font-condensed text-2xl font-bold tracking-tight mt-1.5 text-white">
+            AI CREATIVE CONSULTANT &amp; CHECKLIST GENERATOR
+          </h3>
+<p class="text-xs text-blue-200 mt-1">
+            Generate theme concepts, signature drink names, run-of-show schedules, or crisis plans.
+          </p>
+</div>
+<!-- API Key and Config Box -->
+<div class="bg-[#182230] p-3 rounded-lg border border-slate-700 space-y-2.5">
+<div class="flex items-center justify-between">
+<label class="text-xs font-bold text-slate-200 uppercase font-condensed tracking-wider" for="gemini-api-key">
+              Optional Google Gemini API Key
+            </label>
+<span class="text-[10px] text-brand-orange font-bold font-mono">STORED IN SESSION ONLY</span>
+</div>
+<input class="w-full bg-[#111822] text-xs font-mono text-white border border-slate-600 rounded p-2 focus:ring-1 focus:ring-brand-sky" id="gemini-api-key" placeholder="AIzaSy... (leave blank to use Smart Offline Mode)" type="password"/>
+<p class="text-[11px] text-slate-400">
+            Direct browser API call. Never stored on any remote server. If left empty, Eventora uses our curated offline template engine!
+          </p>
+</div>
+<!-- Quick AI Prompt Selectors -->
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-300 uppercase font-condensed tracking-wider">
+            Choose Generation Objective:
+          </label>
+<div class="grid grid-cols-2 gap-2 text-xs font-condensed font-bold">
+<button class="ai-prompt-btn p-2 bg-[#182230] border border-slate-700 hover:border-brand-sky text-left rounded transition" onclick="setPromptGoal('cocktails')">
+              🍸 3 Signature Cocktails &amp; Names
+            </button>
+<button class="ai-prompt-btn p-2 bg-[#182230] border border-slate-700 hover:border-brand-sky text-left rounded transition" onclick="setPromptGoal('runofshow')">
+              ⏱ Day-of Master Schedule
+            </button>
+<button class="ai-prompt-btn p-2 bg-[#182230] border border-slate-700 hover:border-brand-sky text-left rounded transition" onclick="setPromptGoal('crisis')">
+              ☔ Rain &amp; Vendor Delay Contingency
+            </button>
+<button class="ai-prompt-btn p-2 bg-[#182230] border border-slate-700 hover:border-brand-sky text-left rounded transition" onclick="setPromptGoal('icebreakers')">
+              🎤 4 Interactive Crowd Moments
+            </button>
+</div>
+<textarea class="w-full bg-[#111822] text-xs text-white border border-slate-700 rounded p-2 mt-2 focus:ring-1 focus:ring-brand-orange" id="ai-custom-prompt" placeholder="Or type custom prompt: e.g. 'Suggest a 90s retro hip-hop playlist layout and aesthetic floral styling'..." rows="2"></textarea>
+</div>
+<!-- Action Button -->
+<button class="w-full py-3 bg-brand-orange hover:bg-orange-600 active:scale-[0.98] text-white font-condensed text-base font-bold tracking-wider rounded uppercase transition flex items-center justify-center gap-2 shadow-lg" id="run-ai-btn" onclick="generateAIResponse()">
+<span class="hidden animate-spin" id="ai-spinner">⟳</span>
+<span id="ai-btn-text">⚡ GENERATE WITH GEMINI / LOCAL AI</span>
+</button>
+<!-- AI Output Display Box -->
+<div class="bg-brand-cream text-[#111822] p-3.5 rounded-lg border-2 border-[#111822] min-h-[140px] text-xs space-y-2 hidden shadow-[3px_3px_0px_0px_#60A5FA]" id="ai-output-container">
+<div class="flex items-center justify-between border-b-2 border-slate-300 pb-1.5">
+<span class="font-condensed font-bold text-sm tracking-wide uppercase text-brand-orange">
+              ✦ Eventora Intelligence Output
+            </span>
+<button class="text-[10px] font-bold bg-[#111822] text-white px-2 py-0.5 rounded hover:bg-brand-orange transition" onclick="copyAIResult()">
+              COPY RESULT
+            </button>
+</div>
+<div class="whitespace-pre-line font-sans text-xs leading-relaxed text-slate-900 font-medium pt-1" id="ai-output-text">
+<!-- Output injected here -->
+</div>
+</div>
+</section>
+<!-- END: TabAI -->
+<!-- BEGIN: TabExport -->
+<section class="tab-pane space-y-4 hidden" data-purpose="export-and-storage" id="tab-export">
+<div class="bg-[#182230] p-4 rounded-lg border-2 border-slate-700 space-y-3">
+<div class="border-b border-slate-700 pb-2">
+<h3 class="font-condensed text-2xl font-bold uppercase text-white">Client-Side Persistence</h3>
+<p class="text-xs text-slate-400">Zero database setup required. 100% saved in browser storage.</p>
+</div>
+<div class="grid grid-cols-2 gap-2 text-xs font-condensed font-bold pt-1">
+<button class="p-2.5 bg-brand-orange text-white rounded hover:bg-orange-600 transition flex items-center justify-center gap-1.5" onclick="exportJSONBackup()">
+<span>📥</span> EXPORT JSON BACKUP
+            </button>
+<label class="p-2.5 bg-brand-sky text-black rounded hover:bg-blue-400 cursor-pointer text-center flex items-center justify-center gap-1.5">
+<span>📤</span> IMPORT BACKUP
+              <input accept=".json" class="hidden" id="import-json-input" onchange="importJSONBackup(event)" type="file"/>
+</label>
+</div>
+<button class="w-full py-2.5 bg-[#1F2B3E] hover:bg-slate-700 text-white font-condensed font-bold text-xs uppercase tracking-wider rounded border border-slate-600 flex items-center justify-center gap-2" onclick="printRunOfShow()">
+            🖨 Print / Save PDF Run-of-Show
+          </button>
+</div>
+<!-- Technical Diagnostics Bento Box -->
+<div class="bg-[#111822] border border-slate-800 rounded p-3 text-[11px] font-mono text-slate-400 space-y-1">
+<div class="flex justify-between">
+<span>STORAGE KEY:</span>
+<span class="text-brand-sky">eventora_plan_v1</span>
+</div>
+<div class="flex justify-between">
+<span>CLIENT OS TARGET:</span>
+<span class="text-white">Mobile Web / iOS Safari PWA</span>
+</div>
+<div class="flex justify-between">
+<span>ENGINE:</span>
+<span class="text-brand-orange">Single-File Zero Dependency</span>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full py-2 bg-red-950/60 hover:bg-red-900 text-red-300 font-condensed text-xs uppercase tracking-wider rounded border border-red-800 transition" onclick="resetDefaultData()">
+            ⚠️ Reset to Factory Demo State
+          </button>
+</div>
+</section>
+<!-- END: TabExport -->
+</main>
+<!-- BEGIN: QuickCreationModal -->
+<div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-3" data-purpose="modal-overlay" id="new-event-modal">
+<div class="bg-[#182230] border-2 border-brand-orange w-full max-w-sm rounded-t-xl sm:rounded-xl p-4 space-y-3.5 shadow-2xl">
+<div class="flex items-center justify-between border-b border-slate-700 pb-2">
+<h3 class="font-condensed text-xl font-bold uppercase text-white tracking-wide">
+            Plan a New Championship Event
+          </h3>
+<button class="text-slate-400 hover:text-white text-lg font-bold" onclick="toggleModal(false)">✕</button>
+</div>
+<form class="space-y-2.5 text-xs" id="new-event-form" onsubmit="handleCreateEvent(event)">
+<div>
+<label class="block font-condensed font-bold text-slate-300 uppercase mb-1">Event Name</label>
+<input class="w-full bg-[#111822] text-white rounded p-2 border border-slate-700 text-xs" id="form-name" placeholder="e.g. Neo Tokyo Gala 2025" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block font-condensed font-bold text-slate-300 uppercase mb-1">Category</label>
+<select class="w-full bg-[#111822] text-white rounded p-2 border border-slate-700 text-xs" id="form-category">
+<option value="Wedding Celebration">Wedding</option>
+<option value="Milestone Birthday">Birthday</option>
+<option value="Community Festival">Community Festival</option>
+<option value="Founders Summit">Corporate Summit</option>
+<option value="Private Dinner">Private Dinner</option>
+</select>
+</div>
+<div>
+<label class="block font-condensed font-bold text-slate-300 uppercase mb-1">Target Date</label>
+<input class="w-full bg-[#111822] text-white rounded p-2 border border-slate-700 text-xs" id="form-date" required="" type="date"/>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block font-condensed font-bold text-slate-300 uppercase mb-1">Guest Headcount</label>
+<input class="w-full bg-[#111822] text-white rounded p-2 border border-slate-700 text-xs" id="form-guests" max="5000" min="5" type="number" value="100"/>
+</div>
+<div>
+<label class="block font-condensed font-bold text-slate-300 uppercase mb-1">Total Budget ($)</label>
+<input class="w-full bg-[#111822] text-white rounded p-2 border border-slate-700 text-xs" id="form-budget" step="500" type="number" value="15000"/>
+</div>
+</div>
+<div class="pt-2 flex gap-2">
+<button class="flex-1 py-2 bg-[#111822] text-slate-300 font-condensed font-bold rounded uppercase" onclick="toggleModal(false)" type="button">
+              Cancel
+            </button>
+<button class="flex-1 py-2 bg-brand-orange hover:bg-orange-600 text-white font-condensed font-bold rounded uppercase" type="submit">
+              Build Plan
+            </button>
+</div>
+</form>
+</div>
+</div>
+<!-- END: QuickCreationModal -->
+<!-- BEGIN: QuickToast -->
+<div class="fixed bottom-16 left-1/2 -translate-x-1/2 bg-brand-orange text-white font-condensed font-bold text-xs uppercase px-4 py-2 rounded shadow-2xl z-50 pointer-events-none opacity-0 transition-opacity duration-200" id="toast">
+      Action Completed
+    </div>
+<!-- END: QuickToast -->
+<!-- BEGIN: BottomStickyBar -->
+<div class="fixed bottom-0 w-full max-w-md bg-[#111822]/95 backdrop-blur-md border-t-2 border-slate-800 px-4 py-2.5 flex items-center justify-between text-xs z-30" data-purpose="footer-status-bar">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-condensed font-bold uppercase text-white truncate max-w-[190px]" id="footer-event-name">
+          Sophia &amp; Liam's Wedding
+        </span>
+</div>
+<div class="flex items-center gap-1.5 font-condensed">
+<button class="bg-[#1F2B3E] hover:bg-slate-700 text-brand-sky font-bold px-2 py-1 rounded text-xs" onclick="switchTab('tab-ai')">
+          AI ASSIST
+        </button>
+<button class="bg-brand-orange hover:bg-orange-600 text-white font-bold px-2.5 py-1 rounded text-xs" onclick="switchTab('tab-budget')">
+          BUDGET: 100%
+        </button>
+</div>
+</div>
+<!-- END: BottomStickyBar -->
+</div>
+<!-- END: MobileDeviceWrapper -->
+<!-- BEGIN: ApplicationLogic -->
+<script data-purpose="app-core-script">
+    // Default initial mock state
+    const DEFAULT_DATA = {
+      name: "SOPHIA & LIAM'S GOLDEN WEDDING",
+      category: "WEDDING CELEBRATION",
+      badgeTag: "CONFIRMED",
+      date: "2025-08-21",
+      guests: 135,
+      budget: 18500,
+      allocations: {
+        venue: 40,
+        food: 30,
+        photo: 15,
+        entertainment: 10,
+        buffer: 5
+      },
+      tasks: [
+        { id: 1, text: "Lock in Venue and Deposit", deadline: "3 Mos Out", done: true },
+        { id: 2, text: "Hire Photographer & Cinematographer", deadline: "2 Mos Out", done: true },
+        { id: 3, text: "Sample Catering & Cake Tasting", deadline: "1 Mo Out", done: true },
+        { id: 4, text: "Send Formal Digital RSVP Invitations", deadline: "45 Days Out", done: true },
+        { id: 5, text: "Finalize Audio & DJ Playlist", deadline: "30 Days Out", done: true },
+        { id: 6, text: "Final Headcount To Caterer", deadline: "14 Days Out", done: false },
+        { id: 7, text: "Seating Chart & Name Placecards", deadline: "7 Days Out", done: false },
+        { id: 8, text: "Vendor Arrival & Rehearsal (8:00 AM)", deadline: "Day Of", done: false }
+      ]
+    };
+
+    // Load active event state from localStorage or fallback
+    let currentEvent = {};
+
+    function initApp() {
+      const stored = localStorage.getItem('eventora_plan_v1');
+      if (stored) {
+        try {
+          currentEvent = JSON.parse(stored);
+        } catch (e) {
+          currentEvent = JSON.parse(JSON.stringify(DEFAULT_DATA));
+        }
+      } else {
+        currentEvent = JSON.parse(JSON.stringify(DEFAULT_DATA));
+      }
+      renderOverview();
+      renderBudget();
+      renderTimeline();
+      setupEventListeners();
+    }
+
+    function saveState() {
+      localStorage.setItem('eventora_plan_v1', JSON.stringify(currentEvent));
+    }
+
+    // Render Overview Bento & Stats
+    function renderOverview() {
+      document.getElementById('overview-title').innerText = currentEvent.name;
+      document.getElementById('overview-category').innerText = currentEvent.category;
+      document.getElementById('overview-badge-tag').innerText = currentEvent.badgeTag || "CONFIRMED";
+      document.getElementById('overview-guests').innerText = currentEvent.guests;
+      document.getElementById('overview-budget').innerText = `$${(currentEvent.budget / 1000).toFixed(1)}K`;
+      document.getElementById('footer-event-name').innerText = currentEvent.name;
+      
+      // Calculate Countdown
+      const targetDate = new Date(currentEvent.date);
+      const today = new Date();
+      const diffTime = targetDate - today;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById('overview-countdown').innerText = diffDays > 0 ? diffDays : 0;
+      
+      // Format Date
+      if (currentEvent.date) {
+        const d = new Date(currentEvent.date);
+        const options = { month: 'short', day: 'numeric', year: 'numeric' };
+        document.getElementById('overview-date').innerText = `📅 ${d.toLocaleDateString('en-US', options).toUpperCase()}`;
+      }
+
+      // Tasks progress
+      const totalTasks = currentEvent.tasks.length;
+      const doneTasks = currentEvent.tasks.filter(t => t.done).length;
+      const percent = totalTasks > 0 ? Math.round((doneTasks / totalTasks) * 100) : 0;
+      
+      document.getElementById('overview-task-stats').innerText = `${doneTasks} / ${totalTasks}`;
+      document.getElementById('overview-task-progress-bar').style.width = `${percent}%`;
+      document.getElementById('overview-budget-allocated').innerText = `$${currentEvent.budget.toLocaleString()}`;
+    }
+
+    // Render Budget Tab & Percentages
+    function renderBudget() {
+      const total = currentEvent.budget;
+      document.getElementById('budget-ceiling-display').innerText = `$${total.toLocaleString()}`;
+      
+      const alloc = currentEvent.allocations;
+      const venueCost = Math.round((alloc.venue / 100) * total);
+      const foodCost = Math.round((alloc.food / 100) * total);
+      const photoCost = Math.round((alloc.photo / 100) * total);
+      const entCost = Math.round((alloc.entertainment / 100) * total);
+      const bufCost = Math.round((alloc.buffer / 100) * total);
+
+      document.getElementById('val-venue').innerText = `$${venueCost.toLocaleString()} (${alloc.venue}%)`;
+      document.getElementById('val-food').innerText = `$${foodCost.toLocaleString()} (${alloc.food}%)`;
+      document.getElementById('val-photo').innerText = `$${photoCost.toLocaleString()} (${alloc.photo}%)`;
+      document.getElementById('val-entertainment').innerText = `$${entCost.toLocaleString()} (${alloc.entertainment}%)`;
+      document.getElementById('val-buffer').innerText = `$${bufCost.toLocaleString()} (${alloc.buffer}%)`;
+
+      const sumPercent = alloc.venue + alloc.food + alloc.photo + alloc.entertainment + alloc.buffer;
+      const statusEl = document.getElementById('budget-balance-status');
+      
+      if (sumPercent === 100) {
+        statusEl.innerText = "✓ 100% BALANCED";
+        statusEl.className = "text-base font-bold text-emerald-400 bg-black/40 px-2 py-0.5 rounded font-sans";
+      } else {
+        const diff = 100 - sumPercent;
+        statusEl.innerText = `${diff > 0 ? '+' : ''}${diff}% VARIANCE`;
+        statusEl.className = "text-base font-bold text-amber-400 bg-black/40 px-2 py-0.5 rounded font-sans";
+      }
+
+      // Guest Math
+      const perGuest = (total / (currentEvent.guests || 1)).toFixed(2);
+      const foodPerGuest = (foodCost / (currentEvent.guests || 1)).toFixed(2);
+      document.getElementById('cost-per-guest').innerText = `$${perGuest}`;
+      document.getElementById('food-per-guest').innerText = `$${foodPerGuest}`;
+    }
+
+    // Render Timeline & Interactive Task Checkboxes
+    function renderTimeline() {
+      const container = document.getElementById('timeline-list');
+      container.innerHTML = '';
+
+      currentEvent.tasks.forEach((task) => {
+        const item = document.createElement('div');
+        item.className = `p-2.5 rounded-lg border flex items-center justify-between transition ${
+          task.done ? 'bg-[#141b24] border-slate-800 opacity-60' : 'bg-[#182230] border-slate-700'
+        }`;
+        
+        item.innerHTML = `
+          <div class="flex items-center gap-2.5 flex-1 pr-2">
+            <input type="checkbox" ${task.done ? 'checked' : ''} onchange="toggleTask(${task.id})" class="rounded text-brand-orange focus:ring-brand-orange bg-[#111822] border-slate-600 h-4 w-4">
+            <div class="${task.done ? 'line-through text-slate-400' : 'text-slate-100 font-semibold'} text-xs">
+              <p class="leading-snug">${task.text}</p>
+              <span class="text-[10px] text-brand-sky font-mono font-bold">${task.deadline}</span>
+            </div>
+          </div>
+          <button onclick="deleteTask(${task.id})" class="text-slate-500 hover:text-red-400 text-xs px-1">✕</button>
+        `;
+        container.appendChild(item);
+      });
+
+      renderOverview();
+    }
+
+    function toggleTask(id) {
+      const task = currentEvent.tasks.find(t => t.id === id);
+      if (task) {
+        task.done = !task.done;
+        saveState();
+        renderTimeline();
+      }
+    }
+
+    function deleteTask(id) {
+      currentEvent.tasks = currentEvent.tasks.filter(t => t.id !== id);
+      saveState();
+      renderTimeline();
+      showToast("Task Removed");
+    }
+
+    // Quick Task Adder
+    document.getElementById('add-task-btn').addEventListener('click', () => {
+      const text = prompt("Enter task title / milestone:");
+      if (!text) return;
+      const deadline = prompt("Enter timeframe (e.g. '2 Weeks Out', 'Day Of'):", "Next Week") || "Upcoming";
+      
+      const newTask = {
+        id: Date.now(),
+        text: text.trim(),
+        deadline: deadline.trim(),
+        done: false
+      };
+      currentEvent.tasks.push(newTask);
+      saveState();
+      renderTimeline();
+      showToast("Milestone Added!");
+    });
+
+    // Tab Switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-orange', 'text-white');
+        btn.classList.add('bg-[#111822]', 'text-slate-300');
+      });
+
+      const activePane = document.getElementById(tabId);
+      if (activePane) activePane.classList.remove('hidden');
+
+      const targetBtn = document.querySelector(`[data-tab="${tabId}"]`);
+      if (targetBtn) {
+        targetBtn.classList.remove('bg-[#111822]', 'text-slate-300');
+        targetBtn.classList.add('bg-brand-orange', 'text-white');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Budget Sliders Event Binding
+    function setupEventListeners() {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab')));
+      });
+
+      document.querySelectorAll('.budget-slider').forEach(slider => {
+        slider.addEventListener('input', (e) => {
+          const cat = e.target.getAttribute('data-category');
+          currentEvent.allocations[cat] = parseInt(e.target.value, 10);
+          saveState();
+          renderBudget();
+        });
+      });
+
+      document.getElementById('open-new-event-btn').addEventListener('click', () => toggleModal(true));
+    }
+
+    function toggleModal(show) {
+      const modal = document.getElementById('new-event-modal');
+      if (show) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    function handleCreateEvent(e) {
+      e.preventDefault();
+      const name = document.getElementById('form-name').value.toUpperCase();
+      const category = document.getElementById('form-category').value.toUpperCase();
+      const date = document.getElementById('form-date').value;
+      const guests = parseInt(document.getElementById('form-guests').value, 10) || 100;
+      const budget = parseInt(document.getElementById('form-budget').value, 10) || 10000;
+
+      currentEvent = {
+        name,
+        category,
+        badgeTag: "BLUEPRINT",
+        date,
+        guests,
+        budget,
+        allocations: { venue: 40, food: 30, photo: 15, entertainment: 10, buffer: 5 },
+        tasks: [
+          { id: 1, text: `Confirm ${category} reservation`, deadline: "Immediate", done: false },
+          { id: 2, text: "Build attendee roster", deadline: "3 Weeks Out", done: false },
+          { id: 3, text: "Lock in Catering and Refreshments", deadline: "2 Weeks Out", done: false },
+          { id: 4, text: "Day-of sound check and run-down", deadline: "Day Of", done: false }
+        ]
+      };
+
+      saveState();
+      initApp();
+      toggleModal(false);
+      showToast("New Event Created!");
+      switchTab('tab-overview');
+    }
+
+    // Template Pre-sets
+    function loadTemplate(type) {
+      if (type === 'wedding') {
+        currentEvent = JSON.parse(JSON.stringify(DEFAULT_DATA));
+      } else if (type === 'birthday') {
+        currentEvent = {
+          name: "LEO'S 30TH NEON RETRO BIRTHDAY",
+          category: "MILESTONE BIRTHDAY",
+          badgeTag: "HIGH-ENERGY",
+          date: "2025-10-15",
+          guests: 75,
+          budget: 6500,
+          allocations: { venue: 35, food: 35, photo: 10, entertainment: 15, buffer: 5 },
+          tasks: [
+            { id: 1, text: "Book Rooftop Arcade Bar", deadline: "1 Mo Out", done: true },
+            { id: 2, text: "Order Custom Retro Neon Cake", deadline: "2 Wks Out", done: true },
+            { id: 3, text: "DJ Synthwave Playlist Curated", deadline: "1 Wk Out", done: false },
+            { id: 4, text: "Photobooth Props & Disposable Cameras", deadline: "3 Days Out", done: false }
+          ]
+        };
+      } else if (type === 'summit') {
+        currentEvent = {
+          name: "PACIFIC FOUNDERS SUMMIT 2025",
+          category: "CORPORATE SUMMIT",
+          badgeTag: "OFFICIAL",
+          date: "2025-11-04",
+          guests: 320,
+          budget: 45000,
+          allocations: { venue: 45, food: 25, photo: 10, entertainment: 15, buffer: 5 },
+          tasks: [
+            { id: 1, text: "Auditorium & Fiber Internet Contract", deadline: "3 Mos Out", done: true },
+            { id: 2, text: "Keynote Speaker Travel Accommodations", deadline: "2 Mos Out", done: true },
+            { id: 3, text: "Badge Lanyard & Swag Bag Print", deadline: "1 Mo Out", done: true },
+            { id: 4, text: "AV Livestream Streamyard Setup", deadline: "3 Days Out", done: false },
+            { id: 5, text: "VIP Executive Dinner Seating", deadline: "Day Of", done: false }
+          ]
+        };
+      }
+      saveState();
+      initApp();
+      showToast(`Loaded ${type.toUpperCase()} template!`);
+    }
+
+    // Expandable accordion helpers
+    function toggleDetails(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text);
+      showToast("Copied to clipboard!");
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2000);
+    }
+
+    // AI Generation (Direct Gemini API Call with intelligent offline fallback)
+    function setPromptGoal(goal) {
+      const promptBox = document.getElementById('ai-custom-prompt');
+      if (goal === 'cocktails') {
+        promptBox.value = `Invent 3 signature cocktail recipes and high-energy names fitting our "${currentEvent.name}" (${currentEvent.category}). Include ingredients and garnish ideas.`;
+      } else if (goal === 'runofshow') {
+        promptBox.value = `Draft an hour-by-hour day-of Run-of-Show timeline for "${currentEvent.name}" for ${currentEvent.guests} guests, from morning setup to midnight wrap-up.`;
+      } else if (goal === 'crisis') {
+        promptBox.value = `Provide a 3-step rapid emergency contingency plan for "${currentEvent.name}" in case of sudden weather changes, caterer delay, or audio failure.`;
+      } else if (goal === 'icebreakers') {
+        promptBox.value = `Suggest 4 modern, non-cringe interactive games or crowd moments tailored for "${currentEvent.name}" with ${currentEvent.guests} guests.`;
+      }
+    }
+
+    async function generateAIResponse() {
+      const apiKey = document.getElementById('gemini-api-key').value.trim();
+      const promptInput = document.getElementById('ai-custom-prompt').value.trim() || 
+        `Draft 3 creative signature theme enhancements and a vendor negotiation checklist for: ${currentEvent.name} (${currentEvent.category}, ${currentEvent.guests} guests, Budget: $${currentEvent.budget})`;
+      
+      const spinner = document.getElementById('ai-spinner');
+      const btnText = document.getElementById('ai-btn-text');
+      const outContainer = document.getElementById('ai-output-container');
+      const outText = document.getElementById('ai-output-text');
+
+      spinner.classList.remove('hidden');
+      btnText.innerText = "THINKING...";
+
+      if (!apiKey) {
+        // High quality offline fallback generator
+        setTimeout(() => {
+          spinner.classList.add('hidden');
+          btnText.innerText = "⚡ GENERATE WITH GEMINI / LOCAL AI";
+          outContainer.classList.remove('hidden');
+          
+          outText.innerText = `[OFFLINE SMART ADVISOR FOR: ${currentEvent.name}]\n\n` +
+            `★ THEMATIC CONCEPT: "LUMINOUS RETRO-EDITORIAL"\n` +
+            `• Signature Cocktail #1: "The Golden Hour" (Bourbon, Smoked Peach Puree, Thyme Sprig)\n` +
+            `• Signature Mocktail: "Citrus Sparkler" (Yuzu, Tonic, Rosemary Mist)\n\n` +
+            `★ TIME-SAVING LOGISTICS TIP:\n` +
+            `For ${currentEvent.guests} attendees, station 2 distinct bar areas rather than 1 central bar. This prevents 15-minute congestion bottlenecks.\n\n` +
+            `★ EMERGENCY VENDOR BUFFER:\n` +
+            `Ensure you have a designated "Lead Point-of-Contact" who is NOT the host or honoree to handle day-of parking deliveries.\n\n` +
+            `*(Tip: Add your Gemini API key above for live generative reasoning).*`;
+          
+          showToast("Generated with built-in templates!");
+        }, 600);
+        return;
+      }
+
+      // Live Gemini 2.5 Flash API Call
+      try {
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{
+              parts: [{
+                text: `You are Eventora, a high-octane championship event director. Provide practical, high-value, crisp advice with bullet points for this request:\n\n${promptInput}`
+              }]
+            }]
+          })
+        });
+
+        const data = await response.json();
+        spinner.classList.add('hidden');
+        btnText.innerText = "⚡ GENERATE WITH GEMINI / LOCAL AI";
+
+        if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+          outContainer.classList.remove('hidden');
+          outText.innerText = data.candidates[0].content.parts[0].text;
+          showToast("Gemini response received!");
+        } else if (data.error) {
+          alert(`Gemini API Error: ${data.error.message || 'Check key and permissions'}`);
+        } else {
+          alert("Unexpected response format. Please verify API key.");
+        }
+      } catch (err) {
+        spinner.classList.add('hidden');
+        btnText.innerText = "⚡ GENERATE WITH GEMINI / LOCAL AI";
+        alert("Network error contacting Gemini. Using offline fallback instead.");
+      }
+    }
+
+    function copyAIResult() {
+      const text = document.getElementById('ai-output-text').innerText;
+      copyText(text);
+    }
+
+    // Persistence & Backup Functions
+    function exportJSONBackup() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentEvent, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `eventora_${currentEvent.name.toLowerCase().replace(/[^a-z0-9]/g, '_')}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast("Backup JSON Downloaded");
+    }
+
+    function importJSONBackup(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (parsed.name && parsed.budget) {
+            currentEvent = parsed;
+            saveState();
+            initApp();
+            showToast("Plan Imported Successfully!");
+            switchTab('tab-overview');
+          } else {
+            alert("Invalid Eventora backup format.");
+          }
+        } catch (err) {
+          alert("Corrupted JSON file.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function printRunOfShow() {
+      window.print();
+    }
+
+    function resetDefaultData() {
+      if (confirm("Reset current plan back to default demo state?")) {
+        currentEvent = JSON.parse(JSON.stringify(DEFAULT_DATA));
+        saveState();
+        initApp();
+        showToast("Reset to Default");
+        switchTab('tab-overview');
+      }
+    }
+
+    // App Initialization
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+<!-- END: ApplicationLogic -->
+</body></html>

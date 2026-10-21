@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Space+Grotesk:wght@400;700&amp;family=Chivo:wght@400;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-lowest":"#0f0e0c","secondary-fixed":"#dbe3f3","surface-tint":"#ffb59c","secondary-fixed-dim":"#bfc7d6","on-surface-variant":"#e5beb2","on-background":"#e7e1dd","surface":"#151311","primary":"#ffb59c","on-tertiary-fixed-variant":"#004883","on-primary":"#5c1900","secondary":"#bfc7d6","surface-bright":"#3b3936","on-error":"#690005","surface-container-high":"#2c2a27","secondary-container":"#3f4754","on-secondary-container":"#aeb5c5","on-tertiary-fixed":"#001c39","surface-container-highest":"#373432","error":"#ffb4ab","on-primary-fixed":"#390c00","on-secondary-fixed":"#141c27","background":"#151311","primary-fixed":"#ffdbcf","error-container":"#93000a","on-tertiary-container":"#002a51","on-surface":"#e7e1dd","on-primary-container":"#511500","outline-variant":"#5c4037","surface-container":"#211f1d","inverse-surface":"#e7e1dd","outline":"#ac897e","tertiary-fixed":"#d4e3ff","inverse-primary":"#aa3600","on-primary-fixed-variant":"#822700","tertiary":"#a4c9ff","on-secondary-fixed-variant":"#3f4754","primary-container":"#ff5708","surface-dim":"#151311","on-tertiary":"#00315d","primary-fixed-dim":"#ffb59c","on-secondary":"#29313d","surface-container-low":"#1d1b19","on-error-container":"#ffdad6","tertiary-fixed-dim":"#a4c9ff","tertiary-container":"#4d93e5","surface-variant":"#373432","inverse-on-surface":"#32302e"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin":"1rem","gutter":"1rem","margin-tablet":"2rem","space-md":"1rem","space-xs":"0.25rem","space-lg":"1.5rem","space-sm":"0.5rem","margin-desktop":"3rem","space-xl":"2.5rem","gutter-desktop":"1.5rem"},fontFamily:{"display-hero-mobile":["Anton"],"title-scoreboard":["Space Grotesk"],"body-lg":["Chivo"],"headline-sm":["Anton"],"body-sm":["Chivo"],"headline-lg":["Anton"],"headline-lg-mobile":["Anton"],"label-badge":["Space Grotesk"],"label-stat":["Anton"],"body-md":["Chivo"],"headline-md":["Anton"],"display-hero":["Anton"]},fontSize:{"display-hero-mobile":["48px",{lineHeight:"52px",letterSpacing:"0.04em",fontWeight:"400"}],"title-scoreboard":["20px",{lineHeight:"24px",letterSpacing:"0.08em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"headline-sm":["24px",{lineHeight:"28px",letterSpacing:"0.02em",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"20px",fontWeight:"400"}],"headline-lg":["48px",{lineHeight:"52px",letterSpacing:"0.02em",fontWeight:"400"}],"headline-lg-mobile":["32px",{lineHeight:"36px",letterSpacing:"0.02em",fontWeight:"400"}],"label-badge":["12px",{lineHeight:"16px",letterSpacing:"0.12em",fontWeight:"700"}],"label-stat":["36px",{lineHeight:"40px",letterSpacing:"0.02em",fontWeight:"400"}],"body-md":["15px",{lineHeight:"24px",fontWeight:"400"}],"headline-md":["32px",{lineHeight:"36px",letterSpacing:"0.02em",fontWeight:"400"}],"display-hero":["80px",{lineHeight:"84px",letterSpacing:"0.04em",fontWeight:"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-low border-r border-outline-variant/30 flex flex-col justify-between z-50"><div class="flex flex-col"><div class="px-space-lg pt-space-lg pb-space-md border-b border-outline-variant/20"><div class="flex items-center gap-space-xs text-primary-container mb-space-xs"><span class="material-symbols-outlined text-[14px]">star</span><span class="material-symbols-outlined text-[14px]">star</span><span class="material-symbols-outlined text-[14px]">star</span></div><div class="flex items-center justify-between"><span class="font-headline-sm text-headline-sm tracking-wider uppercase text-on-surface">EVENTORA.OS</span><span class="font-label-badge text-label-badge px-space-xs py-0.5 bg-surface-container-highest text-primary font-bold uppercase rounded">PRO</span></div><div class="mt-space-md p-space-sm bg-surface-container border border-outline-variant/40 rounded"><div class="font-label-badge text-[10px] uppercase text-on-surface-variant flex items-center gap-1 mb-1"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>ACTIVE CELEBRATION</div><p class="font-title-scoreboard text-body-sm text-on-surface font-bold truncate">Sophia &amp; Liam's Golden Wedding</p></div></div><nav class="flex flex-col py-space-md px-space-sm gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-bold border-l-4 border-on-primary-container"><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="overview-and-plan" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">grid_view</span>Overview &amp; Plan</a><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="create-plan" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">add_circle</span>Create Plan</a><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="budget-and-cap" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">account_balance_wallet</span>Budget &amp; Cap</a><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="timeline-and-tasks" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">event_upcoming</span>Timeline &amp; Tasks</a><a class="flex items-center px-space-md py-space-sm rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-title-scoreboard text-body-sm uppercase tracking-wider" data-path="gemini-studio" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">auto_awesome</span>Gemini Studio</a></nav></div><div class="p-space-md"><div class="p-space-md bg-surface-container-highest border border-primary-container/40 rounded"><div class="flex items-center gap-space-xs text-primary-container font-label-badge text-label-badge uppercase tracking-wider mb-space-xs"><span class="material-symbols-outlined text-[16px]">military_tech</span>Championship Tenet</div><p class="font-body-sm text-body-sm text-on-surface-variant italic leading-snug">“Flawless execution is built in the drills of preparation.”</p><div class="mt-space-sm pt-space-xs border-t border-outline-variant/30 flex justify-between items-center"><span class="font-label-badge text-[10px] uppercase text-on-surface-variant">TACTICAL DISCIPLINE</span><span class="material-symbols-outlined text-primary-container text-[14px]">verified</span></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-container border border-outline-variant/50 rounded"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="font-label-badge text-label-badge uppercase text-on-surface tracking-wider">Local Engine Active</span></div><div class="flex items-center gap-space-xs text-on-surface-variant font-title-scoreboard text-body-sm uppercase"><span class="material-symbols-outlined text-[16px]">stadium</span><span class="hover:text-on-surface cursor-pointer">Events</span><span class="text-outline">/</span><span class="text-on-surface font-bold">Golden Wedding #248</span></div></div><div class="flex items-center gap-space-md"><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" title="Toggle Dark Mode" type="button"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><button class="p-space-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" title="Tactile Audio Feedback" type="button"><span class="material-symbols-outlined text-[20px]">volume_up</span></button><button class="flex items-center gap-space-xs px-space-sm py-1.5 border border-outline-variant text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-title-scoreboard text-label-badge uppercase rounded" type="button"><span class="material-symbols-outlined text-[16px]">download</span>Export JSON</button><button class="flex items-center gap-space-xs px-space-md py-2 bg-primary-container text-on-primary-container font-headline-sm text-headline-sm uppercase tracking-wide hover:brightness-110 active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_#000000] transition-all rounded-none" type="button"><span class="material-symbols-outlined text-[20px]">add</span>+ Plan Event</button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-background min-h-screen px-gutter-desktop py-space-xl"><div class="flex flex-col w-full">
+<!-- TOP SCOREBOARD HEADER & MASTER CHRONOMETER BANNER -->
+<section class="w-full bg-surface-container-lowest p-space-lg mb-space-xl shadow-xl">
+<div class="flex flex-col xl:flex-row items-stretch justify-between gap-space-lg">
+<!-- Primary Countdown Lockup -->
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex flex-wrap items-center gap-space-sm mb-space-md">
+<span class="font-label-badge text-label-badge px-space-sm py-1 bg-primary-container text-on-primary-container uppercase font-bold tracking-widest">
+            ★★★ SHOWTIME LOCK ★★★
+          </span>
+<span class="font-label-badge text-label-badge px-space-sm py-1 bg-secondary-container text-on-secondary-container uppercase tracking-wider">
+            OPERATION: GOLDEN WEDDING #248
+          </span>
+<span class="font-label-badge text-label-badge px-space-sm py-1 bg-surface-container text-tertiary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+            LIVE BROADCAST TELEMETRY
+          </span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface-variant block tracking-wider">
+            T-MINUS 42 DAYS // COUNTDOWN TO SHOWTIME
+          </span>
+<!-- Scoreboard Digital Flip Blocks -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm mt-space-sm max-w-2xl">
+<div class="bg-surface-container-high p-space-sm text-center flex flex-col justify-center shadow-[3px_3px_0px_#000000]">
+<span class="font-display-hero text-headline-lg text-primary tracking-tight" id="timer-days">42</span>
+<span class="font-title-scoreboard text-body-sm text-on-surface-variant uppercase font-bold mt-1">DAYS</span>
+</div>
+<div class="bg-surface-container-high p-space-sm text-center flex flex-col justify-center shadow-[3px_3px_0px_#000000]">
+<span class="font-display-hero text-headline-lg text-on-surface tracking-tight" id="timer-hours">04</span>
+<span class="font-title-scoreboard text-body-sm text-on-surface-variant uppercase font-bold mt-1">HOURS</span>
+</div>
+<div class="bg-surface-container-high p-space-sm text-center flex flex-col justify-center shadow-[3px_3px_0px_#000000]">
+<span class="font-display-hero text-headline-lg text-on-surface tracking-tight" id="timer-mins">08</span>
+<span class="font-title-scoreboard text-body-sm text-on-surface-variant uppercase font-bold mt-1">MINS</span>
+</div>
+<div class="bg-surface-container-high p-space-sm text-center flex flex-col justify-center shadow-[3px_3px_0px_#000000]">
+<span class="font-display-hero text-headline-lg text-primary-container tracking-tight" id="timer-secs">06</span>
+<span class="font-title-scoreboard text-body-sm text-on-surface-variant uppercase font-bold mt-1">SECS</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Velocity & Readiness Telemetry Block -->
+<div class="xl:w-96 bg-surface-container p-space-lg flex flex-col justify-between shadow-[4px_4px_0px_#000000]">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-label-badge text-label-badge uppercase text-primary tracking-widest flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">speed</span>
+              EXECUTION VELOCITY
+            </span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase">WEEK 34/52</span>
+</div>
+<div class="mt-space-sm">
+<div class="font-label-stat text-label-stat uppercase text-on-surface flex items-baseline gap-2">
+              62<span class="text-primary-container text-headline-sm">%</span>
+<span class="font-title-scoreboard text-body-sm text-on-surface-variant uppercase ml-auto">13/21 OPS CLEARED</span>
+</div>
+<!-- Segmented Athletic Readiness Meter -->
+<div class="grid grid-cols-10 gap-1.5 mt-space-sm">
+<div class="h-3 bg-primary-container"></div>
+<div class="h-3 bg-primary-container"></div>
+<div class="h-3 bg-primary-container"></div>
+<div class="h-3 bg-primary-container"></div>
+<div class="h-3 bg-primary-container"></div>
+<div class="h-3 bg-primary-container"></div>
+<div class="h-3 bg-tertiary-container animate-pulse"></div>
+<div class="h-3 bg-surface-container-highest"></div>
+<div class="h-3 bg-surface-container-highest"></div>
+<div class="h-3 bg-surface-container-highest"></div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm bg-surface-container-lowest p-space-sm">
+<div class="flex items-center justify-between font-label-badge text-[11px] text-on-surface uppercase">
+<span class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[14px]">shield_with_heart</span>
+              SYSTEM INTEGRITY: OPTIMAL
+            </span>
+<span class="text-on-surface-variant">FLIGHT DRILL #9</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- QUICK INJECTION TACTICAL TASK BAR -->
+<section class="w-full bg-surface-container-high p-space-md mb-space-xl shadow-lg">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center gap-space-md">
+<div class="flex items-center gap-space-xs text-primary-container px-space-xs">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+<span class="font-title-scoreboard text-body-md uppercase font-bold tracking-wider whitespace-nowrap">TACTICAL INJECT:</span>
+</div>
+<!-- Input Form -->
+<div class="flex-1 flex items-stretch gap-space-xs">
+<input class="w-full bg-surface-container-lowest px-space-md py-space-sm text-on-surface placeholder-outline font-title-scoreboard text-body-sm focus:outline-none focus:bg-surface" id="tactical-input" placeholder="Inject tactical milestone, load protocol, or vendor audit task..." type="text"/>
+<button class="bg-primary-container text-on-primary-container px-space-lg py-space-sm font-headline-sm text-headline-sm uppercase tracking-wide hover:brightness-110 active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_#000000] flex items-center gap-1 whitespace-nowrap" id="inject-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+          ADD PROTOCOL
+        </button>
+</div>
+<!-- Quick Preset Chips -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="preset-tag bg-surface-container px-space-sm py-1 font-title-scoreboard text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors uppercase" type="button">
+          + Weather Backup
+        </button>
+<button class="preset-tag bg-surface-container px-space-sm py-1 font-title-scoreboard text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors uppercase" type="button">
+          + Allergen Matrix
+        </button>
+<button class="preset-tag bg-surface-container px-space-sm py-1 font-title-scoreboard text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-colors uppercase" type="button">
+          + Sound Check DMX
+        </button>
+</div>
+</div>
+</section>
+<!-- FILTER & CONTROL NAVIGATION TICKET STRIP -->
+<section class="w-full mb-space-lg overflow-x-auto">
+<div class="flex items-center gap-space-xs min-w-max pb-space-xs">
+<button class="filter-btn active-filter px-space-md py-2 bg-primary-container text-on-primary-container font-title-scoreboard text-body-sm uppercase font-bold tracking-wider shadow-[2px_2px_0px_#000000]">
+        ALL OPS (21)
+      </button>
+<button class="filter-btn px-space-md py-2 bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-title-scoreboard text-body-sm uppercase font-bold tracking-wider transition-colors">
+        T-6M CORE FOUNDATION (2/2)
+      </button>
+<button class="filter-btn px-space-md py-2 bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-title-scoreboard text-body-sm uppercase font-bold tracking-wider transition-colors">
+        T-2M PRODUCTION SPRINT (1/3)
+      </button>
+<button class="filter-btn px-space-md py-2 bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-title-scoreboard text-body-sm uppercase font-bold tracking-wider transition-colors">
+        T-1M REFINEMENT LOCK (0/3)
+      </button>
+<button class="filter-btn px-space-md py-2 bg-surface-container text-tertiary hover:bg-surface-container-high font-title-scoreboard text-body-sm uppercase font-bold tracking-wider transition-colors flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+        DAY 0: RUN-OF-SHOW (ACTIVE)
+      </button>
+</div>
+</section>
+<!-- MAIN 2-COLUMN TACTICAL FIELD -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: MULTI-HORIZON FLIGHT PLAN CARDS (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- PHASE 01: CORE FOUNDATION (COMPLETED BRACKET) -->
+<article class="bg-surface-container-low p-space-lg shadow-md relative overflow-hidden">
+<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 bg-surface-container-highest text-primary font-title-scoreboard text-body-sm uppercase font-bold">
+              PHASE 01 // T-6M
+            </span>
+<h2 class="font-headline-md text-headline-sm uppercase text-on-surface tracking-wide">
+              CORE FOUNDATION
+            </h2>
+</div>
+<span class="font-label-badge text-label-badge px-space-sm py-1 bg-surface-container-high text-tertiary uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span> VERIFIED 2/2 CLEARED
+          </span>
+</div>
+<div class="space-y-space-sm">
+<!-- Item 1 -->
+<div class="p-space-md bg-surface-container flex items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<button class="task-checkbox w-6 h-6 bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<div>
+<p class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface line-through opacity-80">
+                  Grand Glasshouse Lease Locked
+                </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Contract ID #GGL-8849 // Escrow 100% Cleared</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase px-2 py-1 bg-surface-container-highest">
+              LEGAL OK
+            </span>
+</div>
+<!-- Item 2 -->
+<div class="p-space-md bg-surface-container flex items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<button class="task-checkbox w-6 h-6 bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<div>
+<p class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface line-through opacity-80">
+                  VIP Roster &amp; Seating Matrix
+                </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">240 Confirmed Guests // 24 Prime Tables Tiered</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase px-2 py-1 bg-surface-container-highest">
+              MANIFEST #1
+            </span>
+</div>
+</div>
+</article>
+<!-- PHASE 02: PRODUCTION SPRINT (CURRENT ACTIVE LOCKUP) -->
+<article class="bg-surface-container-low p-space-lg shadow-md relative">
+<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 bg-primary-container text-on-primary-container font-title-scoreboard text-body-sm uppercase font-bold">
+              PHASE 02 // T-2M
+            </span>
+<h2 class="font-headline-md text-headline-sm uppercase text-on-surface tracking-wide">
+              PRODUCTION SPRINT
+            </h2>
+</div>
+<span class="font-label-badge text-label-badge px-space-sm py-1 bg-surface-container-highest text-primary uppercase flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+            IN PROGRESS (1/3)
+          </span>
+</div>
+<div class="space-y-space-sm">
+<!-- Item 1 (Done) -->
+<div class="p-space-md bg-surface-container flex items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<button class="task-checkbox w-6 h-6 bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<div>
+<p class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface line-through opacity-80">
+                  Holographic Invitations Dispatched
+                </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Courier Batches A/B/C in Transit with RFID Tags</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-tertiary uppercase px-2 py-1 bg-surface-container-highest">
+              DISPATCHED
+            </span>
+</div>
+<!-- Item 2 (Active Target) -->
+<div class="p-space-md bg-surface-container-high flex flex-col md:flex-row md:items-center justify-between gap-space-md shadow-md">
+<div class="flex items-start md:items-center gap-space-md">
+<button class="task-checkbox w-6 h-6 bg-surface-container-lowest text-primary-container hover:bg-primary-container hover:text-on-primary-container transition-colors flex items-center justify-center font-bold mt-1 md:mt-0">
+<span class="material-symbols-outlined text-[18px]">radio_button_unchecked</span>
+</button>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-badge text-[10px] px-1 bg-primary-container text-on-primary-container font-bold uppercase">HOT TARGET</span>
+<p class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface">
+                    Photography Shortlist Audit &amp; Run-of-Day Spec
+                  </p>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Evaluating 3 Lead Cinematographers for Golden Hour Flight</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 bg-surface-container text-on-surface hover:bg-surface-bright font-title-scoreboard text-body-sm uppercase">
+                Assign Lead
+              </button>
+<button class="px-space-sm py-1 bg-primary text-on-primary font-title-scoreboard text-body-sm uppercase font-bold">
+                Review (3)
+              </button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="p-space-md bg-surface-container flex items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<button class="task-checkbox w-6 h-6 bg-surface-container-lowest text-outline hover:bg-primary-container hover:text-on-primary-container transition-colors flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[18px]">radio_button_unchecked</span>
+</button>
+<div>
+<p class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface">
+                  Floral Installation &amp; Acoustic Truss Mapping
+                </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ceiling payload approval pending structural signoff</span>
+</div>
+</div>
+<span class="font-label-badge text-label-badge text-primary uppercase px-2 py-1 bg-surface-container-highest">
+              PENDING ENG
+            </span>
+</div>
+</div>
+</article>
+<!-- PHASE 03: REFINEMENT LOCK (UPCOMING BRACKET) -->
+<article class="bg-surface-container-low p-space-lg shadow-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 bg-surface-container-highest text-on-surface-variant font-title-scoreboard text-body-sm uppercase font-bold">
+              PHASE 03 // T-1M
+            </span>
+<h2 class="font-headline-md text-headline-sm uppercase text-on-surface tracking-wide">
+              REFINEMENT LOCK
+            </h2>
+</div>
+<span class="font-label-badge text-label-badge px-space-sm py-1 bg-surface-container-high text-on-surface-variant uppercase">
+            0/3 STAGED (LOCKED)
+          </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<div class="p-space-md bg-surface-container flex flex-col justify-between h-32">
+<span class="font-label-badge text-label-badge text-primary-container uppercase">DRILL 3.1</span>
+<p class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface">
+              Gala Couture Fittings Final Pass
+            </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Target Date: Nov 14</span>
+</div>
+<div class="p-space-md bg-surface-container flex flex-col justify-between h-32">
+<span class="font-label-badge text-label-badge text-primary-container uppercase">DRILL 3.2</span>
+<p class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface">
+              5-Course Tasting &amp; Sommelier Pairing
+            </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Target Date: Nov 18</span>
+</div>
+<div class="p-space-md bg-surface-container flex flex-col justify-between h-32">
+<span class="font-label-badge text-label-badge text-primary-container uppercase">DRILL 3.3</span>
+<p class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface">
+              Ceremony Audio Mastering &amp; Playback
+            </p>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Target Date: Nov 22</span>
+</div>
+</div>
+</article>
+<!-- PHASE 04: DAY 0 RUN-OF-SHOW PROTOCOL (TIME-STAMPED BROADCAST LOG) -->
+<article class="bg-surface-container-lowest p-space-lg shadow-xl">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-md mb-space-md bg-surface-container-low p-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 bg-primary-container animate-pulse"></span>
+<h2 class="font-headline-md text-headline-sm uppercase text-on-surface tracking-wide">
+              DAY 0 RUN-OF-SHOW PROTOCOL
+            </h2>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-badge text-label-badge px-space-sm py-1 bg-surface-container-high text-primary font-bold uppercase">
+              SYNCHRONIZED (MIL-SPEC)
+            </span>
+</div>
+</div>
+<!-- Timeline Graphic Band -->
+<div class="relative pl-6 space-y-space-md before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant/40">
+<!-- Event 1 -->
+<div class="relative group">
+<div class="absolute -left-[23px] top-1.5 w-3.5 h-3.5 bg-primary-container shadow-[0_0_8px_#ff5708]"></div>
+<div class="bg-surface-container p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-display-hero text-headline-sm text-primary tracking-wide">08:00 AM // CALL TIME</span>
+<span class="font-title-scoreboard text-body-md text-on-surface font-bold uppercase">Main Rigging &amp; Acoustic Truss Alignment</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lead Engineer: Marcus Vance // Secondary Sound Verification at 09:30 AM</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-badge text-label-badge px-space-sm py-1 bg-surface-container-high text-on-surface uppercase">SECTOR A</span>
+</div>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="relative group">
+<div class="absolute -left-[23px] top-1.5 w-3.5 h-3.5 bg-tertiary"></div>
+<div class="bg-surface-container p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-display-hero text-headline-sm text-tertiary tracking-wide">14:00 PM // BROADCAST</span>
+<span class="font-title-scoreboard text-body-md text-on-surface font-bold uppercase">4K Sat-Uplink Keynote &amp; Vow Broadcast</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Live streaming across 3 secure family hubs // 6 camera dynamic switch</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-badge text-label-badge px-space-sm py-1 bg-surface-container-high text-tertiary uppercase">SANCTUARY MAIN</span>
+</div>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="relative group">
+<div class="absolute -left-[23px] top-1.5 w-3.5 h-3.5 bg-primary"></div>
+<div class="bg-surface-container p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-display-hero text-headline-sm text-primary-fixed-dim tracking-wide">17:00 PM // PRIME RECEPTION</span>
+<span class="font-title-scoreboard text-body-md text-on-surface font-bold uppercase">5-Course Grand Banquet &amp; Live Synth Band</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">First course drop strictly synced with Golden Hour speech at 17:45 PM</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-badge text-label-badge px-space-sm py-1 bg-surface-container-high text-on-surface uppercase">PAVILION EAST</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- RIGHT COLUMN: VENDOR INTERROGATION & AUDIT PROTOCOLS (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- AUDIT ACCORDIONS CONTAINER -->
+<aside class="bg-surface-container-low p-space-lg shadow-lg">
+<div class="flex items-center justify-between pb-space-sm mb-space-md bg-surface-container p-space-sm">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">assignment_late</span>
+<h3 class="font-headline-sm text-headline-sm uppercase tracking-wide">
+              VENDOR AUDIT LOCK
+            </h3>
+</div>
+<span class="font-label-badge text-label-badge px-space-xs py-0.5 bg-primary-container text-on-primary-container font-bold uppercase">
+            3 CONTRACTS
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+          Standardized gameday interrogation interrogatives for zero-failure field execution.
+        </p>
+<!-- Accordions -->
+<div class="space-y-space-sm">
+<!-- Accordion 1: Catering -->
+<div class="audit-item bg-surface-container overflow-hidden shadow-sm">
+<button class="audit-trigger w-full px-space-md py-space-sm flex items-center justify-between bg-surface-container-high hover:bg-surface-bright transition-colors text-left" type="button">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface">Catering Director Audit</span>
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</div>
+<span class="material-symbols-outlined text-[20px] transition-transform duration-200">expand_more</span>
+</button>
+<div class="audit-content p-space-md bg-surface-container-lowest space-y-space-sm font-body-sm text-body-sm">
+<div class="p-space-xs bg-surface-container">
+<span class="font-label-badge text-[10px] uppercase text-primary block">Pacing Cadence</span>
+<p class="text-on-surface">Maximum 18 minutes window between Champagne toast &amp; entrée delivery across 24 tables.</p>
+</div>
+<div class="p-space-xs bg-surface-container">
+<span class="font-label-badge text-[10px] uppercase text-error block">Allergen Matrix Protocol</span>
+<p class="text-on-surface">14 Shellfish &amp; 6 Celiac plates designated with gold-rim cloches.</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-label-badge text-[11px] text-on-surface-variant">
+<span>STATUS: 85% REVISE</span>
+<span class="text-primary-container font-bold cursor-pointer hover:underline uppercase">EDIT CHECKLIST →</span>
+</div>
+</div>
+</div>
+<!-- Accordion 2: Venue Ops -->
+<div class="audit-item bg-surface-container overflow-hidden shadow-sm">
+<button class="audit-trigger w-full px-space-md py-space-sm flex items-center justify-between bg-surface-container-high hover:bg-surface-bright transition-colors text-left" type="button">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface">Venue &amp; Rigging Limits</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+<span class="material-symbols-outlined text-[20px] transition-transform duration-200">expand_more</span>
+</button>
+<div class="audit-content hidden p-space-md bg-surface-container-lowest space-y-space-sm font-body-sm text-body-sm">
+<div class="p-space-xs bg-surface-container">
+<span class="font-label-badge text-[10px] uppercase text-tertiary block">Overhead Load Maximum</span>
+<p class="text-on-surface">Glasshouse beam truss rated for 2,400 lbs total hanging load. Floral chandeliers spec'd at 1,120 lbs.</p>
+</div>
+<div class="p-space-xs bg-surface-container">
+<span class="font-label-badge text-[10px] uppercase text-on-surface-variant block">Power &amp; Generator Reserve</span>
+<p class="text-on-surface">Primary 200A 3-phase box with 150kVA silent backup diesel parked at Gate 4.</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-label-badge text-[11px] text-on-surface-variant">
+<span>STATUS: CLEARED</span>
+<span class="text-tertiary font-bold cursor-pointer hover:underline uppercase">VIEW PERMITS →</span>
+</div>
+</div>
+</div>
+<!-- Accordion 3: AV & Broadcast -->
+<div class="audit-item bg-surface-container overflow-hidden shadow-sm">
+<button class="audit-trigger w-full px-space-md py-space-sm flex items-center justify-between bg-surface-container-high hover:bg-surface-bright transition-colors text-left" type="button">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-scoreboard text-body-md uppercase font-bold text-on-surface">AV, Lighting &amp; Acoustics</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<span class="material-symbols-outlined text-[20px] transition-transform duration-200">expand_more</span>
+</button>
+<div class="audit-content hidden p-space-md bg-surface-container-lowest space-y-space-sm font-body-sm text-body-sm">
+<div class="p-space-xs bg-surface-container">
+<span class="font-label-badge text-[10px] uppercase text-primary block">DMX 512 Latency &amp; RF Channels</span>
+<p class="text-on-surface">6 Sennheiser wireless mics mapped to clean 518-530 MHz band away from local cellular repeaters.</p>
+</div>
+<div class="p-space-xs bg-surface-container">
+<span class="font-label-badge text-[10px] uppercase text-on-surface-variant block">Lux Level Balance</span>
+<p class="text-on-surface">3200K warm wash across altar for 4K broadcast sensors, transitioning to 2700K ambient dinner.</p>
+</div>
+<div class="flex items-center justify-between pt-space-xs font-label-badge text-[11px] text-on-surface-variant">
+<span>STATUS: BENCH TESTING</span>
+<span class="text-primary font-bold cursor-pointer hover:underline uppercase">RUN DRILL →</span>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-space-md py-space-sm bg-surface-container text-on-surface hover:bg-surface-bright font-title-scoreboard text-body-sm uppercase font-bold tracking-wide transition-colors" type="button">
+          + DOWNLOAD DRILL PACK (PDF)
+        </button>
+</aside>
+<!-- COMMEMORATIVE ATHLETIC POSTER CARD / STUB -->
+<div class="bg-primary-container p-space-lg text-on-primary-container shadow-[4px_4px_0px_#000000] relative overflow-hidden">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-badge text-[11px] tracking-widest font-bold uppercase">OFFICIAL COMMEMORATIVE TICKET</span>
+<span class="font-label-badge text-[11px] font-bold">SEC 01 // ROW A</span>
+</div>
+<div class="my-space-md">
+<span class="font-display-hero text-headline-lg uppercase block leading-none tracking-tighter">
+            GOLDEN VOW
+          </span>
+<span class="font-title-scoreboard text-headline-sm uppercase block font-bold text-on-primary tracking-wide">
+            SOPHIA &amp; LIAM
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary-container/90 leading-tight">
+          Admit 240 Champions to the historic Grand Glasshouse. Absolute focus. Zero tolerance for uncalibrated execution.
+        </p>
+<div class="mt-space-md pt-space-sm bg-on-primary-container/10 p-space-xs flex items-center justify-between font-label-badge text-[10px] uppercase">
+<span>TIME-LOCK VERIFIED</span>
+<span>EST. NOV 2025</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Dynamic Countdown Micro-interaction
+    let days = 42;
+    let hours = 4;
+    let mins = 8;
+    let secs = 6;
+
+    const elDays = document.getElementById('timer-days');
+    const elHours = document.getElementById('timer-hours');
+    const elMins = document.getElementById('timer-mins');
+    const elSecs = document.getElementById('timer-secs');
+
+    setInterval(() => {
+      secs--;
+      if (secs < 0) {
+        secs = 59;
+        mins--;
+        if (mins < 0) {
+          mins = 59;
+          hours--;
+          if (hours < 0) {
+            hours = 23;
+            days--;
+          }
+        }
+      }
+      if (elSecs) elSecs.textContent = secs.toString().padStart(2, '0');
+      if (elMins) elMins.textContent = mins.toString().padStart(2, '0');
+      if (elHours) elHours.textContent = hours.toString().padStart(2, '0');
+      if (elDays) elDays.textContent = days.toString().padStart(2, '0');
+    }, 1000);
+
+    // Vendor Accordions Behavior
+    const triggers = document.querySelectorAll('.audit-trigger');
+    triggers.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('.material-symbols-outlined');
+        const isOpen = !content.classList.contains('hidden');
+
+        if (isOpen) {
+          content.classList.add('hidden');
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // Task Checkbox Toggle Micro-interaction
+    const taskCheckboxes = document.querySelectorAll('.task-checkbox');
+    taskCheckboxes.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const icon = btn.querySelector('.material-symbols-outlined');
+        const row = btn.closest('div').querySelector('p');
+        
+        if (icon.textContent.trim() === 'check') {
+          icon.textContent = 'radio_button_unchecked';
+          btn.classList.remove('bg-primary-container', 'text-on-primary-container');
+          btn.classList.add('bg-surface-container-lowest', 'text-outline');
+          if (row) row.classList.remove('line-through', 'opacity-80');
+        } else {
+          icon.textContent = 'check';
+          btn.classList.remove('bg-surface-container-lowest', 'text-outline');
+          btn.classList.add('bg-primary-container', 'text-on-primary-container');
+          if (row) row.classList.add('line-through', 'opacity-80');
+        }
+      });
+    });
+
+    // Preset Chip Injections into Tactical Input
+    const presetBtns = document.querySelectorAll('.preset-tag');
+    const input = document.getElementById('tactical-input');
+    const injectBtn = document.getElementById('inject-btn');
+
+    presetBtns.forEach(pBtn => {
+      pBtn.addEventListener('click', () => {
+        const text = pBtn.textContent.replace('+', '').trim();
+        input.value = 'DRILL SPEC: ' + text;
+        input.focus();
+      });
+    });
+
+    if (injectBtn && input) {
+      injectBtn.addEventListener('click', () => {
+        if (!input.value.trim()) return;
+        const val = input.value.trim();
+        alert('Protocol locked into Phase 02 backlog: ' + val);
+        input.value = '';
+      });
+    }
+
+    // Filter Buttons Toggle
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(fb => {
+      fb.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-[2px_2px_0px_#000000]');
+          b.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        fb.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        fb.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-[2px_2px_0px_#000000]');
+      });
+    });
+  })();
+</script></main></div></body></html>
